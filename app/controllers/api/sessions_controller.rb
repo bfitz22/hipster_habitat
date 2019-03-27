@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
         @user = User.find_by_credentials(params[:user][:email_address], params[:user][:password])
         if @user 
             login(@user)
-            render # finish later
+            render 'api/users/show'
         else
             render json: ['invalid credentials'], status: 404
         end

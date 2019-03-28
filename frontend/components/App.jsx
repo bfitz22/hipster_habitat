@@ -1,25 +1,12 @@
 import React from 'react';
-import GreetingContainer from './greeting/greeting_container';
-import Modal from './modal/modal';
-// import LoginFormContainer from './session_form/login_form_container';
-// import SignupFormContainer from './session_form/signup_form_container';
-import { Link } from 'react-router-dom';
+import Nav from './nav';
+import Footer from './footer';
 
 const App = () => (
-    <div className="app">
-        <Modal />
-        <header className="header">
-            <Link className="header-left" to='/'>
-                <h2>HIPSTER<br />HABITAT</h2>
-            </Link>
-            <div className="header-right">
-                <GreetingContainer />
-            </div>
-        </header>
-        <footer className="footer">
-            
-        </footer>
-    </div>
+    <body className="body">
+        <Nav />
+        <Footer />
+    </body>
 );
 
 export default App; 

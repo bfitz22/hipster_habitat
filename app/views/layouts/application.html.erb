@@ -6,6 +6,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script type="text/javascript">
+      window.footerURL = "<%= image_url('footer-img.png') %>"
+    </script>
+    <style type="text/css">
+      body { margin:0 }
+    </style>
+
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro:700" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>

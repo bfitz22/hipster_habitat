@@ -25,26 +25,32 @@
 }
 
 .login-form-container {
-        
-}
-
-.login-form-box {
-    width: 30%;
+    width: auto;
     display: flex;
     justify-items: center;
     align-content: center;
     flex-wrap: wrap;
 }
 
-.signup-form-container {
-    
+.login-form-box {
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.signup-form-box {
-    width: 30%;
+.signup-form-container {
+    width: auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.signup-form-box {
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .close-x {
@@ -56,12 +62,25 @@
 
 .names {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .names input {
     border-color: black;
     width: 40%;
+    height: 68px;
+    font-size: 1.8rem;
+}
+
+.email, .password {
+    width: auto;
+}
+
+.email input, .password input {
+    border-color: black;
+    width: 40%;
+    height: 68px;
+    font-size: 1.8rem;
 }
 
 .button {
@@ -70,19 +89,21 @@
     font-weight: 700;
     font-size: 1rem;
     padding: 18px, 20px;
-    border: none;
     width: 90%;
+    border: 3px solid white;
+    height: 68px;
 }
 
 .button:hover {
     background-color: white;
     cursor: pointer;
-    border-color: #40d9ac;
     color: #40d9ac;
+    border: 3px solid #40d9ac;
 }
 
 .other-button {
     border: none;
+    width: 20%;
     margin: 10px;
     border-bottom: 1px solid #ebebeb;
     font-size: 1rem;
@@ -92,3 +113,14 @@
 .other-button:hover {
     cursor: pointer;
     border-bottom: 1px solid black;
+}
+
+.form-bottom {
+    display: flex; 
+    justify-content: flex-end;
+    align-items: center
+}
+
+.form-title h1 {
+    font-size: 20px;
+}

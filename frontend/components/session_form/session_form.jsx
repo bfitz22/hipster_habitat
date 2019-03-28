@@ -55,19 +55,22 @@ class SessionForm extends React.Component {
             return (
                 <div className="login-form-container">
                     <form onSubmit={this.handleSubmit} className="login-form-box">
-                        <div className="close-x" onClick={this.props.closeModal}>X</div>
                         {this.renderErrors()}
-                        <h2>Welcome Back</h2>
-                        It's about time for another camping trip
+                        <div className="form-title">
+                            <h1>Welcome Back</h1>
+                            <br />
+                            It's about time for another camping trip
+                            </div>
                         <br/>
-                        <div className="login-email">
+                        <br />
+                        <div className="email">
                             <input type="text" 
                             value={this.state.email_address} 
                             placeholder="Email address" 
                             onChange={this.update("email_address")}/>
                         </div>
                         <br/>
-                        <div className="login-password">
+                        <div className="password">
                             <input type="password" 
                             value={this.state.password} 
                             placeholder="Password" 
@@ -78,8 +81,10 @@ class SessionForm extends React.Component {
                         <br/>
                         <input className="button" type="submit" value="Log In"/>
                         <br/>
-                        Don't have a HipsterHabitat account? 
-                        {this.props.otherForm}
+                        <div className="form-bottom">
+                            Don't have a HipsterHabitat account? 
+                            {this.props.otherForm}
+                        </div>
                     </form>
                 </div>
             )
@@ -87,10 +92,13 @@ class SessionForm extends React.Component {
             return (
                 <div className="signup-form-container">
                     <form onSubmit={this.handleSubmit} className="signup-form-box">
-                        <div className="close-x" onClick={this.props.closeModal}>X</div>
                         {this.renderErrors()}
-                        <h2>Join HipsterHabitat</h2>
-                        Discover the best camping near me
+                        <div className="form-title">
+                            <h1>Join HipsterHabitat</h1>
+                            <br />
+                            Discover the best camping near me
+                        </div>
+                        <br />
                         <br />
                         <div className="names">
                             <input type="text" 
@@ -103,14 +111,14 @@ class SessionForm extends React.Component {
                             onChange={this.update("last_name")}/>
                         </div>
                         <br/>
-                        <div className="signup-email">
+                        <div className="email">
                             <input type="text" 
                             value={this.state.email_address} 
                             placeholder="Email address..." 
                             onChange={this.update("email_address")}/>
                         </div>
                         <br/>
-                        <div className="signup-password">
+                        <div className="password">
                             <input type="password" 
                             value={this.state.password} 
                             placeholder="Password..." 
@@ -121,8 +129,10 @@ class SessionForm extends React.Component {
                         <br />
                         <input className="button" type="submit" value="Join HipsterHabitat"/>
                         <br />
-                        Already a Hipster?
-                        {this.props.otherForm}
+                        <div className="form-bottom">
+                            Already a Hipster?
+                            {this.props.otherForm}
+                        </div>
                     </form>
                 </div>
             )

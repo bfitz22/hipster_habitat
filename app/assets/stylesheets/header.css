@@ -3,10 +3,41 @@
 *= require_self
 */
 
-.header-left {
-    width: 0;
+.header {
+    display: flex;
+    align-items: row;
 }
 
-.header-rigth {
+.header-left {
+    display: flex;
+    align-items: center;
     width: 50%;
+    text-decoration: none;
+    padding: 20px;
+    padding-top: 10px;
+}
+
+.header-left h2 {
+    font-family: 'Maven Pro', sans-serif;
+    color: rgb(67, 67, 67);
+}
+
+.header-right {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.login, .signup, .logout, .demo {
+    border: none;
+    margin: 10px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 1rem;
+    color: rgb(67, 67, 67);
+}
+
+.login:hover, .signup:hover, .logout:hover, .demo:hover {
+    cursor: pointer;
+    border-bottom: 1px solid black;
 }

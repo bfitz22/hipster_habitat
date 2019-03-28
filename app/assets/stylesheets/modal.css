@@ -24,12 +24,18 @@
     padding: 20px;
 }
 
-.login, .signup, .logout {
-    border: none;
-    margin: 0 6px; 
-    margin-right: 20px;
+.login-form-container {
+    
 }
 
-.login:hover, .signup:hover, .logout:hover {
-    cursor: pointer;
+.login-form-box {
+    
+}
+
+.signup-form-container {
+
+}
+
+.signup-form-box {
+
 }

@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 const App = () => (
     <div>
         <Modal />
-        <header>
-            <Link to='/' className="header-left">
+        <header className="header">
+            <Link className="header-left" to='/'>
                 <h2>HIPSTER<br />HABITAT</h2>
             </Link>
             <div className="header-right">

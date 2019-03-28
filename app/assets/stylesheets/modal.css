@@ -25,17 +25,70 @@
 }
 
 .login-form-container {
-    
+        
 }
 
 .login-form-box {
-    
+    width: 30%;
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
 .signup-form-container {
-
+    
 }
 
 .signup-form-box {
-
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
+.close-x {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer; 
+}
+
+.names {
+    display: flex;
+    justify-content: space-around;
+}
+
+.names input {
+    border-color: black;
+    width: 40%;
+}
+
+.button {
+    background-color: #40d9ac;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 18px, 20px;
+    border: none;
+    width: 90%;
+}
+
+.button:hover {
+    background-color: white;
+    cursor: pointer;
+    border-color: #40d9ac;
+    color: #40d9ac;
+}
+
+.other-button {
+    border: none;
+    margin: 10px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 1rem;
+    color: rgb(67, 67, 67);
+}
+
+.other-button:hover {
+    cursor: pointer;
+    border-bottom: 1px solid black;

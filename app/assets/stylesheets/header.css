@@ -29,7 +29,7 @@
     width: 50%;
 }
 
-.login, .signup, .logout, .demo {
+.login, .signup, .logout {
     border: none;
     margin: 10px;
     border-bottom: 1px solid #ebebeb;
@@ -37,7 +37,11 @@
     color: rgb(67, 67, 67);
 }
 
-.login:hover, .signup:hover, .logout:hover, .demo:hover {
+.login:hover, .signup:hover, .logout:hover:hover {
     cursor: pointer;
     border-bottom: 1px solid black;
+}
+
+.footer-img {
+    width: 100%;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 // class Greeting extends React.Component {
 //     constructor(props) {
 //         super(props);
@@ -31,7 +32,6 @@ const Greeting = ({ currentUser, logout, openModal }) => {
         <nav className="button-nav">
             <button className="login" onClick={() => openModal('login')}>Log in</button>
             <button className="signup" onClick={() => openModal('signup')}>Sign up</button>
-            <button className="demo" onClick={() => openModal('demo')}>Demo</button>
         </nav>
     );
     const endSession = () => (

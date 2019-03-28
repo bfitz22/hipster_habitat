@@ -6,7 +6,7 @@ import Modal from './modal/modal';
 import { Link } from 'react-router-dom';
 
 const App = () => (
-    <div>
+    <div className="app">
         <Modal />
         <header className="header">
             <Link className="header-left" to='/'>
@@ -16,6 +16,9 @@ const App = () => (
                 <GreetingContainer />
             </div>
         </header>
+        <footer className="footer">
+            
+        </footer>
     </div>
 );
 

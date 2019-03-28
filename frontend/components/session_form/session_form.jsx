@@ -44,7 +44,8 @@ class SessionForm extends React.Component {
             return (
                 <div className="login-form-container">
                     <form onSubmit={this.handleSubmit} className="login-form-box">
-                        Welcome Back
+                        <h2>Welcome Back</h2>
+                        It's about time for another camping trip
                         <br/>
                         <input type="text" 
                         value={this.state.email_address} 
@@ -64,7 +65,8 @@ class SessionForm extends React.Component {
             return (
                 <div className="signup-form-container">
                     <form onSubmit={this.handleSubmit} className="signup-form-box">
-                        Join HipsterHabitat
+                        <h2>Join HipsterHabitat</h2>
+                        Discover the best camping near me
                         <br />
                         <input type="text" 
                         value={this.state.first_name} 

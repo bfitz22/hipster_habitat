@@ -9,10 +9,12 @@ const App = () => (
     <div>
         <Modal />
         <header>
-            <Link to='/' className="header-link">
-                <h1>HIPSTER<br/>HABITAT</h1>
-                <GreetingContainer />
+            <Link to='/' className="header-left">
+                <h2>HIPSTER<br />HABITAT</h2>
             </Link>
+            <div className="header-right">
+                <GreetingContainer />
+            </div>
         </header>
     </div>
 );

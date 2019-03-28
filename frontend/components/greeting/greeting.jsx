@@ -28,14 +28,14 @@ import { Link } from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout, openModal }) => {
     const sessionLinks = () => (
-        <nav className="login-signup">
-            <button onClick={() => openModal('login')}>Log in</button>
-            <button onClick={() => openModal('signup')}>Sign up</button>
+        <nav className="button-nav">
+            <button className="login" onClick={() => openModal('login')}>Log in</button>
+            <button className="signup" onClick={() => openModal('signup')}>Sign up</button>
         </nav>
     );
     const endSession = () => (
-        <nav className="logout">
-            <button onClick={logout}>Log out</button>
+        <nav className="logout-nav">
+            <button className="logout" onClick={logout}>Log out</button>
         </nav>
     );
     return (

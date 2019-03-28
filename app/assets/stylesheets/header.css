@@ -1,0 +1,12 @@
+/*
+*= require_tree .
+*= require_self
+*/
+
+.header-left {
+    width: 0;
+}
+
+.header-rigth {
+    width: 50%;
+}

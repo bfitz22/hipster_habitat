@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from './modal/modal';
 import { Link } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
-import Dropdown from './dropdown';
+import Dropdown from './dropdown/dropdown';
  
 class Nav extends React.Component {
     constructor() {
@@ -27,10 +27,6 @@ class Nav extends React.Component {
         });
     }
 
-
-    
-    
-
     render() {
         return(
         <div className="nav">
@@ -50,7 +46,7 @@ class Nav extends React.Component {
                     </button> 
                 </div>
             </header>
-            <Dropdown showMenu={this.state.showMenu}/>
+            <Dropdown className="dropdown" showMenu={this.state.showMenu}/>
         </div>
         )
     }

@@ -41,6 +41,10 @@
     padding-right: 0
 }
 
+.login:focus, .signup:focus, .logout:focus {
+    outline: 0;
+}
+
 .login:hover, .signup:hover, .logout:hover:hover {
     cursor: pointer;
     border-bottom: 1px solid black;
@@ -48,15 +52,6 @@
 
 .greeting {
     margin-right: 20px;
-}
-
-.dropdown {
-    /* position: relative;
-    display: inline-block;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-wrap: wrap;  */
 }
 
 .dropdown-icon {
@@ -71,16 +66,36 @@
     border: none; 
 }
 
-.dropdown-menu {
-    z-index: 1;
+.dropdown-button:focus {
+    outline: 0;
 }
 
-.menu {
-    /* position: absolute; */
+.dropdown-button:hover {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu { 
+    width: 200px;
     bottom: 0;
     top: 100;
     left: -45;
     right: 0; 
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
+    background-color: white;
+}
+
+.menu button {
+    padding: 20px; 
+    height: 40px; 
+     
+}
+
+.menu button:focus {
+    outline: 0;
 }

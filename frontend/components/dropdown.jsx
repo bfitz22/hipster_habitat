@@ -4,7 +4,6 @@ class Dropdown extends React.Component {
     render () {
         return ( 
             <div className="dropdown-menu">
-
                 { 
                     this.props.showMenu 
                         ? (   

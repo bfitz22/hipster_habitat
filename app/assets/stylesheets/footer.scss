@@ -1,0 +1,70 @@
+/*
+*= require_tree .
+*= require_self
+*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.footer { 
+    height: 350px; 
+    background-color: #412F5A;
+    background-image: url("footer-img2.png");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between; 
+    
+}
+
+.footer-body {
+    position: top; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+    align-items: center;
+    margin-top: 20px;
+}
+
+.footer-title {
+    color: #70539F;
+    font-size: 20px; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.footer-text {
+    position: bottom;
+    display: flex;
+    align-items: flex-start;
+    height: 25%;
+    width: 492px; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white; 
+    font-size: 14.4px; 
+    line-height: 1.5;
+}
+
+.icon-links {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-around;
+    align-content: flex-end;
+    width: 100px;
+    height: auto;
+}
+
+.icon-links a {
+    color: #412F5A; 
+    font-size: 18px;
+    padding-top: 10px;   
+}
+
+.icon-links a:hover {
+    color: white;
+}

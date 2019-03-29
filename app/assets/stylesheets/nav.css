@@ -1,0 +1,56 @@
+/*
+*= require_tree .
+*= require_self
+*/
+
+.header {
+    display: flex;
+    align-items: row;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    padding: 20px;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.main-logo {
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
+    color: rgb(67, 67, 67);
+    font-size: 30px;
+}
+
+.header-right {
+    padding-top: 20px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.login, .signup, .logout {
+    border: none;
+    margin: 10px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 1rem;
+    color: rgb(67, 67, 67);
+    padding-right: 0
+}
+
+.login:hover, .signup:hover, .logout:hover:hover {
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}
+
+.greeting {
+    margin-right: 20px;
+}
+
+.dropdown {
+    height: 40px;
+    width: 40px;
+}

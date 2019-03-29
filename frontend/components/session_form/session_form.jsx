@@ -59,7 +59,7 @@ class SessionForm extends React.Component {
                         <div className="form-title">
                             <h1>Welcome Back</h1>
                             <br />
-                            It's about time for another camping trip
+                            <p>It's about time for another camping trip</p>
                             </div>
                         <br/>
                         <br />
@@ -82,7 +82,7 @@ class SessionForm extends React.Component {
                         <input className="button" type="submit" value="Log In"/>
                         <br/>
                         <div className="form-bottom">
-                            Don't have a HipsterHabitat account? 
+                            <p>Don't have a HipsterHabitat account?</p> 
                             {this.props.otherForm}
                         </div>
                     </form>
@@ -95,8 +95,8 @@ class SessionForm extends React.Component {
                         {this.renderErrors()}
                         <div className="form-title">
                             <h1>Join HipsterHabitat</h1>
-                            <br />
-                            Discover the best camping near me
+                            <br /> 
+                            <p>Discover the best camping near me</p>
                         </div>
                         <br />
                         <br />
@@ -130,7 +130,7 @@ class SessionForm extends React.Component {
                         <input className="button" type="submit" value="Join HipsterHabitat"/>
                         <br />
                         <div className="form-bottom">
-                            Already a Hipster?
+                            <p>Already a Hipster?</p>
                             {this.props.otherForm}
                         </div>
                     </form>

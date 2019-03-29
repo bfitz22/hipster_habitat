@@ -68,3 +68,25 @@ html, body {
 .icon-links a:hover {
     color: white;
 }
+
+.footer-bottom {
+    height: 30px;
+    border-top: 5px solid #fde0ab;
+}
+
+.bottom {
+    height: 18px;
+    padding: 10px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3e7e96; 
+    color: white; 
+    font-size: 12.8px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.terms:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

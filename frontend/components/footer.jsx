@@ -3,6 +3,7 @@ import React from 'react';
 class Footer extends React.Component {
     render() {
         return (
+            <>
             <footer className="footer">
                 <div className="icon-links">
                     <a href="https://github.com/bfitz22"><i className="fab fa-github"></i></a>
@@ -21,6 +22,13 @@ class Footer extends React.Component {
                     </section>
                 </div>
             </footer>
+            <footer className="footer-bottom">
+                <section className="bottom">
+                    <p>Made in New York.</p>
+                    <p className="terms">Terms of Service</p>
+                </section>
+            </footer>
+            </>
         )
     }
 }

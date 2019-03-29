@@ -2,8 +2,35 @@ import React from 'react';
 import Modal from './modal/modal';
 import { Link } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
+import Dropdown from './dropdown';
  
 class Nav extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            showMenu: false
+        };
+        this.showMenu = this.showMenu.bind(this);
+        this.closeMenu = this.closeMenu.bind(this);
+    }
+
+    showMenu(e) {
+        e.preventDefault();
+        this.setState({ showMenu: true }, () => {
+            document.addEventListener('click', this.closeMenu);
+        });
+    }
+
+    closeMenu() {
+        this.setState({ showMenu: false }, () => {
+            document.removeEventListener('click', this.closeMenu);
+        });
+    }
+
+
+    
+    
+
     render() {
         return(
         <div className="nav">
@@ -18,9 +45,12 @@ class Nav extends React.Component {
                     <div className="greeting">
                         <GreetingContainer />
                     </div>
-                    <img className="dropdown" src={window.dropdownURL} />
+                    <button className="dropdown-button" onClick={this.showMenu}>
+                        <img className="dropdown-icon" src={window.dropdownURL} />
+                    </button> 
                 </div>
             </header>
+            <Dropdown showMenu={this.state.showMenu}/>
         </div>
         )
     }

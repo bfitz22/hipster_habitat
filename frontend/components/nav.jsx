@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from './modal/modal';
 import { Link } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
-import Dropdown from './dropdown/dropdown';
+import Dropdown from './dropdown';
  
 class Nav extends React.Component {
     constructor() {

@@ -19,3 +19,52 @@ user = User.create({
     email_address: "donut360",
     password: "123456"
 })
+
+Listing.destroy_all
+Listing.create!({
+    host: user,
+    title: "Camp Hope",
+    description: "Weight loss camp for heavyweights",
+    price: 25,
+    pets_allowed: true,
+    campfires_allowed: true, 
+    is_water: true,
+    is_toilets: true,
+    is_showers: true,
+    is_wifi: true,
+    max_capacity: 5,
+    lat: 41.197249,
+    lng: -74.116457
+})
+
+Listing.create!({
+    host: user,
+    title: "Camp Ovation",
+    description: "Wet, hot, and American",
+    price: 35,
+    pets_allowed: true,
+    campfires_allowed: true, 
+    is_water: false,
+    is_toilets: false,
+    is_showers: false,
+    is_wifi: false,
+    max_capacity: 20,
+    lat: 41.243008,
+    lng: -73.582051
+})
+
+Listing.create!({
+    host: user,
+    title: "Camp Crystal Lake",
+    description: "Check in on Friday the 13th",
+    price: 5,
+    pets_allowed: true,
+    campfires_allowed: true, 
+    is_water: true,
+    is_toilets: true,
+    is_showers: true,
+    is_wifi: false,
+    max_capacity: 12,
+    lat: 40.712619,
+    lng: -74.453328
+})

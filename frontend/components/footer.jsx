@@ -11,15 +11,17 @@ class Footer extends React.Component {
                     </section>
                     <br />
                     <div className="icon-links">
-                        <a href="https://github.com/bfitz22"><i className="fab fa-github"> Github</i></a>
-                        <a href="https://www.linkedin.com/in/brian-fitzgerald-643a6757/"><i className="fab fa-linkedin"> LinkedIn</i></a>
+                        <a href="https://github.com/bfitz22"><i className="fab fa-github"></i> Github</a>
+                        <a href="https://www.linkedin.com/in/brian-fitzgerald-643a6757/"><i className="fab fa-linkedin"></i> LinkedIn</a>
                         <a href="https://www.hipcamp.com/"><i className="fas fa-campground"></i> Hipcamp</a>
                     </div>
                 </div>
                 <div className="footer-body">
-                    <section className="footer-title">
-                        HipsterHabitat is everywhere you want to camp.
-                    </section>
+                    <div className="footer-title-div">
+                        <section className="footer-title">
+                            HipsterHabitat is everywhere you want to camp.
+                        </section>
+                    </div>
                     <br />
                     <br />
                     <section className="footer-text">

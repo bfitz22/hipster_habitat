@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { signup, login, logout } from './actions/session_actions';
 import configureStore from './store/store';
 import Root from './components/root';
+import { selectAllListings } from './reducers/selectors';
+import { fetchListings } from './actions/listing_actions';
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById('root');
@@ -19,11 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         store = configureStore();
     }
+    window.fetchListings = fetchListings;
+    window.selector = selectAllListings; 
     window.getState = store.getState;
     window.dispatch = store.dispatch; 
-    window.signup = signup;
-    window.login = login;
-    window.logout = logout;
     ReactDOM.render(<Root store={store} />, root);
 }); 
 

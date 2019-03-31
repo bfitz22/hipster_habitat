@@ -1,6 +1,8 @@
 import React from 'react';
 import Nav from './nav';
 import Footer from './footer';
+import ListingIndexContainer from '../components/listing/listing_index_container';
+import { Route } from 'react-router-dom';
 // import Autocomplete from './autocomplete';
 
 // const names = [
@@ -21,12 +23,13 @@ import Footer from './footer';
 // ];
 
 const App = () => (
-    <body className="body">
-        <Nav />
-        <div>
-            <Footer />
-        </div>
-    </body>
+        <body className="body">   
+            <Nav />
+            <Route path="" component={ListingIndexContainer}/>
+            <div>
+                <Footer />
+            </div>
+        </body>
 );
 
 export default App; 

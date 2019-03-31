@@ -3,6 +3,7 @@ import Nav from './nav';
 import Footer from './footer';
 import ListingIndexContainer from '../components/listing/listing_index_container';
 import { Route, Switch } from 'react-router-dom';
+import MainMenu from './main_menu/main_menu';
 // import SearchBar from './search_bar';
 
 // const names = [
@@ -23,13 +24,14 @@ import { Route, Switch } from 'react-router-dom';
 // ];
 
 const App = () => (
-        <body className="body">   
+        <div className="body">   
             <Nav />
+            <Route exact path="/" component={MainMenu} />
             <Route path="/discover" component={ListingIndexContainer}/>
             <div>
                 <Footer />
             </div>
-        </body>
+        </div>
 );
 
 export default App; 

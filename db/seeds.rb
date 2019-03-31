@@ -39,7 +39,7 @@ Listing.create!({
 
 Listing.create!({
     host: user,
-    title: "Camp Ovation",
+    title: "Camp Firewood",
     description: "Wet, hot, and American",
     price: 35,
     pets_allowed: true,

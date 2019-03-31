@@ -7,10 +7,14 @@ class Listing < ApplicationRecord
         foreign_key: :host_id,
         class_name: :User
 
+    has_many :listing_photos,
+        primary_key: :id,
+        foreign_key: :listing_id,
+        class_name: :ListingPhoto 
+    
     # has_many :bookings
     # has_many activities,
         # through: :listing_activities,
         # source: :activities
-    # has_many :listing_photos
     # has_many :reviews
 end

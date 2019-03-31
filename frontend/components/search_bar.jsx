@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-export default class Autocomplete extends React.Component {
+export default class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

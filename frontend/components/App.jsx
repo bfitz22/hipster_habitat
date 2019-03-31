@@ -2,8 +2,8 @@ import React from 'react';
 import Nav from './nav';
 import Footer from './footer';
 import ListingIndexContainer from '../components/listing/listing_index_container';
-import { Route } from 'react-router-dom';
-// import Autocomplete from './autocomplete';
+import { Route, Switch } from 'react-router-dom';
+// import SearchBar from './search_bar';
 
 // const names = [
 //     <Autocomplete names={names} />
@@ -25,7 +25,7 @@ import { Route } from 'react-router-dom';
 const App = () => (
         <body className="body">   
             <Nav />
-            <Route path="" component={ListingIndexContainer}/>
+            <Route path="/discover" component={ListingIndexContainer}/>
             <div>
                 <Footer />
             </div>

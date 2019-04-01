@@ -21,7 +21,7 @@ user = User.create({
 })
 
 Listing.destroy_all
-Listing.create!({
+hope = Listing.create!({
     host: user,
     title: "Camp Hope",
     description: "Weight loss camp for heavyweights",
@@ -37,7 +37,7 @@ Listing.create!({
     lng: -74.116457
 })
 
-Listing.create!({
+firewood = Listing.create!({
     host: user,
     title: "Camp Firewood",
     description: "Wet, hot, and American",
@@ -53,7 +53,7 @@ Listing.create!({
     lng: -73.582051
 })
 
-Listing.create!({
+crystal_lake = Listing.create!({
     host: user,
     title: "Camp Crystal Lake",
     description: "Check in on Friday the 13th",
@@ -67,4 +67,19 @@ Listing.create!({
     max_capacity: 12,
     lat: 40.712619,
     lng: -74.453328
+})
+
+ListingPhoto.create!({
+    listing: hope,
+    img_url: %w(/assets/camp_hope.jpg)
+})
+
+ListingPhoto.create!({
+    listing: firewood,
+    img_url: %w(/assets/camp_firewood.jpg)
+})
+
+ListingPhoto.create!({
+    listing: crystal_lake,
+    img_url: %w(/assets/camp_crystal_lake.jpg)
 })

@@ -4,6 +4,7 @@ import Footer from './footer';
 import ListingIndexContainer from '../components/listing/listing_index_container';
 import { Route, Switch } from 'react-router-dom';
 import MainMenu from './main_menu/main_menu';
+import ListingDetailContainer from './listing/listing_detail_container';
 // import SearchBar from './search_bar';
 
 // const names = [
@@ -28,8 +29,9 @@ const App = () => (
             <Nav />
             <Route exact path="/" component={MainMenu} />
             <Route path="/discover" component={ListingIndexContainer}/>
+            <Route exact path="/listings/:listingId" component={ListingDetailContainer}/>
             <div>
-                <Footer />
+                <Route exact path="/" component={Footer} />
             </div>
         </div>
 );

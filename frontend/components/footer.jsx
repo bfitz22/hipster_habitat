@@ -16,6 +16,28 @@ class Footer extends React.Component {
                         <a href="https://www.hipcamp.com/"><i className="fas fa-campground"></i> Hipcamp</a>
                     </div>
                 </div>
+                <div className="footer-icons">
+                    <section className="about-title">
+                        About
+                    </section>
+                        <br />
+                    <div className="icon-links">
+                        <a href="/">Journal</a>
+                        <a href="/">Our Story</a>
+                        <a href="/">Careers</a>
+                    </div>
+                </div>
+                <div className="footer-icons">
+                    <section className="social-title">
+                        Browse
+                    </section>
+                        <br />
+                    <div className="icon-links">
+                        <a href="/">Gift Cards</a>
+                        <a href="/">Help</a>
+                        <a href="/">Contact</a>
+                    </div>
+                </div>
                 <div className="footer-body">
                     <div className="footer-title-div">
                         <section className="footer-title">

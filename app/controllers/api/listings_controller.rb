@@ -31,7 +31,8 @@ class Api::ListingsController < ApplicationController
             :is_wifi,
             :max_capacity,
             :lat,
-            :lng
+            :lng,
+            :listing_photos
         )
     end
 end

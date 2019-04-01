@@ -28,6 +28,7 @@
 }
 
 .dropdown-menu {
+    z-index: 1;
     margin-right: 38px; 
     display: flex;
     justify-content: flex-end;

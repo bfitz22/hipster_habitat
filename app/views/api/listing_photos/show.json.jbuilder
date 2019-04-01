@@ -1,0 +1,1 @@
+json.extract! listing_photo, :id, :listing_id, :img_url

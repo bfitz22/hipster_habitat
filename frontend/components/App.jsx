@@ -29,7 +29,7 @@ const App = () => (
             <Nav />
             <Route exact path="/" component={MainMenu} />
             <Route path="/discover" component={ListingIndexContainer}/>
-            <Route exact path="/listings/:listingId" component={ListingDetailContainer}/>
+            <Route path="/listings/:listingId" component={ListingDetailContainer}/>
             <div>
                 <Route exact path="/" component={Footer} />
             </div>

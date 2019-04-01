@@ -1,0 +1,67 @@
+/*
+*= require_tree .
+*= require_self
+*/
+
+.show-page {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;
+}
+
+.listing-show-item {
+    height: 879px; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around;
+}
+
+.listing-show-title h1 {
+    color: rgb(51, 51, 51);
+    font-size: 48px; 
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+
+.listing-show-description {
+    color: rgb(51, 51, 51);
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-size: 18px; 
+}
+
+.info-boxes {
+    width: 720px;
+    height: 360px; 
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
+}
+
+.info-boxes div {
+    border: 2px solid rgb(235, 235, 235);
+    width: 220px;
+    height: 340px; 
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info span {
+    font-size: 24px;
+    color: rgb(51, 51, 51);
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    padding-top: 10px; 
+}
+
+.info li {
+    list-style-type: none;
+    font-size: 16px;  
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    margin-bottom: 5px; 
+}
+
+.booking-box {
+    width: 319px; 
+}

@@ -71,7 +71,7 @@ crystal_lake = Listing.create!({
 
 ListingPhoto.create!({
     listing: hope,
-    img_url: %w(/assets/camp_hope.jpg)
+    img_url: "%w(/assets/camp_hope.jpg)"
 })
 
 ListingPhoto.create!({

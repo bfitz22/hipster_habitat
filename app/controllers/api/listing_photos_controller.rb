@@ -1,4 +1,5 @@
 class Api::ListingPhotosController < ApplicationController
+    
     private
 
     def photo_params

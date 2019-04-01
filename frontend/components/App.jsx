@@ -32,6 +32,7 @@ const App = () => (
             <Route path="/listings/:listingId" component={ListingDetailContainer}/>
             <div>
                 <Route exact path="/" component={Footer} />
+                <Route path="/listings/:listingId" component={Footer} />
             </div>
         </div>
 );

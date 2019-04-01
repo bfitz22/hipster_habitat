@@ -14,39 +14,75 @@ class ListingDetail extends React.Component {
         let campfires; let pets; let toilets; let water; let showers; let wifi;
 
         if (listing.campfires_allowed === true) { 
-            campfires = <li className="campfires"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/campfire.png"/>  Campfires allowed</li>
-        } else {
-            campfires = <li className="no-campfires"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-fire.png" />  Campfires not allowed</li>
+            campfires = <div className="info-item">
+                            <img src="https://s3.amazonaws.com/hipsterhabitat-dev/campfire.png" />
+                            <li>Campfires allowed</li>
+                        </div>
+        } else { 
+            campfires = <div className="info-item">
+                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-fire.png" />  
+                                <li>Campfires not allowed</li>
+                        </div>
         }
 
         if (listing.pets_allowed === true) { 
-            pets = <li className="pets"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/dog.png" />  Pets allowed</li>
+            pets = <div className="info-item">
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/dog.png" />  
+                        <li>Pets allowed</li>
+                    </div>
         } else {
-            pets = <li className="no-pets"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-pets.png" />  Pets not allowed</li>
+            pets = <div className="info-item">
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-pets.png" />  
+                        <li>Pets not allowed</li>
+                    </div>
         }
 
         if (listing.is_toilets === true) { 
-            toilets = <li className="toilets"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/toilet+(1).png" />  Toilet available</li>
+            toilets = <div className="info-item">
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/toilet+(1).png" />  
+                        <li>Toilet available</li>
+                    </div>
         } else {
-            toilets = <li className="no-toilets"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-toileting+(1).png" />  No toilet</li>
+            toilets = <div className="info-item">
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-toileting+(1).png" />  
+                        <li>No toilet</li>
+                    </div>
         }
 
         if (listing.is_water === true) { 
-            water = <li className="water"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/water.png" />  Water available</li>
+            water = <div className="info-item">
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/water.png" />  
+                        <li>Water available</li>
+                    </div>
         } else {
-            water = <li className="no-water"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-water.png" />  No water</li>
+            water = <div className="info-item">
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-water.png" />  
+                        <li>No water</li>
+                    </div>
         }
 
         if (listing.is_showers === true) {
-            showers = <li className="showers"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/shower.png" />  Showers available</li>
+            showers = <div className="info-item">
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/shower.png" />  
+                        <li>Showers available</li>
+                    </div>
         } else {
-            showers = <li className="no-showers"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-shower.png" />  No showers</li>
+            showers = <div className="info-item">
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-shower.png" />  
+                        <li>No showers</li>
+                    </div>
         }
 
         if (listing.is_wifi === true) {
-            wifi = <li className="wifi"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/wifi.png" />  WiFi available</li>
+            wifi = <div className="info-item">
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/wifi.png" />  
+                        <li>WiFi available</li>
+                    </div>
         } else {
-            wifi = <li className="no-wifi"><img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-wifi+(1).png" />  No WiFi</li>
+            wifi = <div className="info-item">
+                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-wifi.png" />  
+                        <li>No WiFi</li>
+                    </div>
         }
 
         return (
@@ -63,10 +99,22 @@ class ListingDetail extends React.Component {
                     <div className="info-boxes">
                         <div className="info">
                             <span>Campsite Area</span>
-                            <li><img src="https://s3.amazonaws.com/hipsterhabitat-dev/camping-tent.png" />  Bring your own tents</li>
-                            <li><img src="https://s3.amazonaws.com/hipsterhabitat-dev/placeholder+(1).png" />  15 sites</li>
-                            <li><img src="https://s3.amazonaws.com/hipsterhabitat-dev/multiple-users-silhouette.png" />  Up to {listing.max_capacity} guests per site</li>
-                            <li><img src="https://s3.amazonaws.com/hipsterhabitat-dev/wheelchair.png" />  Wheelchair access</li>
+                            <div className="info-item">
+                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/camping-tent.png" />
+                                <li>Bring your own tents</li>
+                            </div>
+                            <div className="info-item">
+                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/placeholder+(1).png" />
+                                <li>15 sites</li>
+                            </div>
+                            <div className="info-item">
+                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/multiple-users-silhouette.png" />
+                                <li>Up to {listing.max_capacity} guests per site</li>
+                            </div>
+                            <div className="info-item">
+                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/wheelchair.png" />
+                                <li>Wheelchair access</li>
+                            </div>
                         </div>
                         <div className="info">
                             <span>Essentials</span>

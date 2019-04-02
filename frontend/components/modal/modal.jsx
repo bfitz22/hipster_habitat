@@ -3,12 +3,13 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
+import Dropdown from '../dropdown';
 
 function Modal({modal, closeModal}) {
     if (!modal) {
         return null;
     }
-    let component; 
+    let component; let option;
     switch(modal) {
         case 'login':
             component = <LoginFormContainer />;
@@ -16,16 +17,31 @@ function Modal({modal, closeModal}) {
         case 'signup':
             component = <SignupFormContainer />;
             break;
+        case 'dropdown':
+            option = 2;
+            component = <Dropdown />;
+            break; 
         default: 
             return null; 
     }
-    return (
-        <div className="modal-background" onClick={closeModal}>
-            <div className="modal-child" onClick={e => e.stopPropagation()}>
-                { component }
+
+    if (option === 2) {
+        return (
+            <div className="dropdown-background" onClick={closeModal}>
+                <div className="dropdown-child" onClick={e => e.stopPropagation()}>
+                    { component }
+                </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return (
+            <div className="modal-background" onClick={closeModal}>
+                <div className="modal-child" onClick={e => e.stopPropagation()}>
+                    { component }
+                </div>
+            </div>
+        );
+    }
 }
 
 const msp = state => {

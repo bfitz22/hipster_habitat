@@ -26,7 +26,7 @@ hope = Listing.create!({
     title: "Camp Hope",
     description: "Weight loss camp for heavyweights. Come check out all the fun 
     (and enjoy all the junk food) such as go-karts and the legendary blob before
-    it's too late and Tony Perkis takes it all away!"
+    it's too late and Tony Perkis takes it all away!",
     price: 25,
     pets_allowed: true,
     campfires_allowed: true, 
@@ -44,7 +44,7 @@ firewood = Listing.create!({
     title: "Camp Firewood",
     description: "Wet, hot, and American! Come enjoy a fun, sometimes romantic,
     and always hilarious journey with everyone's favorite counselor crew! Avoid
-    the kitchen but enjoy the activities as summer winds down to an end."  
+    the kitchen but enjoy the activities as summer winds down to an end.", 
     price: 35,
     pets_allowed: true,
     campfires_allowed: true, 
@@ -63,7 +63,7 @@ crystal_lake = Listing.create!({
     description: "Check in only on Friday the 13th. No guarantee of ever leaving. 
     Lake is off limits after a past tragedy that occurred there. The camp 
     counselors (who are still around) are friendly. Don't let the rumors keep 
-    you away!"
+    you away!",
     price: 5,
     pets_allowed: true,
     campfires_allowed: true, 

@@ -41,8 +41,8 @@
     padding-right: 0
 }
 
-.login:focus, .signup:focus, .logout:focus {
-    outline: 0;
+*:focus {
+    outline: none; 
 }
 
 .login:hover, .signup:hover, .logout:hover:hover {

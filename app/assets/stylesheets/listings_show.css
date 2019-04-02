@@ -6,7 +6,7 @@
 .show-page {
     display: flex;
     flex-direction: row; 
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .listing-show-item {
@@ -27,6 +27,7 @@
     color: rgb(51, 51, 51);
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
     font-size: 18px; 
+    width: 480px; 
 }
 
 .info-boxes {
@@ -74,6 +75,17 @@
     margin-left: 10px; 
 }
 
+.no-item {
+    color: rgb(117, 117, 117);
+    list-style-type: none;
+    font-size: 16px;  
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    margin-top: 5px; 
+    margin-left: 10px; 
+}
+
 .booking-box {
-    width: 319px; 
+    height: 370px; 
+    width: 319px;
+    background-color: red;  
 }

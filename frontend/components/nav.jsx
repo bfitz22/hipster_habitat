@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from './modal/modal';
 import { Link } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
-import Dropdown from './dropdown';
+import { openModal } from '../actions/modal_actions';
  
 class Nav extends React.Component {
     constructor() {
@@ -41,12 +41,11 @@ class Nav extends React.Component {
                     <div className="greeting">
                         <GreetingContainer />
                     </div>
-                    <button className="dropdown-button" onClick={this.showMenu}>
+                        <button className="dropdown-button" onClick={() => dispatch(openModal('dropdown'))}>
                         <img className="dropdown-icon" src={window.dropdownURL} />
                     </button> 
                 </div>
             </header>
-            <Dropdown className="dropdown" showMenu={this.state.showMenu}/>
         </div>
         )
     }

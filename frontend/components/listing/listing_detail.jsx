@@ -20,8 +20,8 @@ class ListingDetail extends React.Component {
                         </div>
         } else { 
             campfires = <div className="info-item">
-                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-fire.png" />  
-                                <li>Campfires not allowed</li>
+                            <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-fire.png" />  
+                            <li className="no-item">Campfires not allowed</li>
                         </div>
         }
 
@@ -33,7 +33,7 @@ class ListingDetail extends React.Component {
         } else {
             pets = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-pets.png" />  
-                        <li>Pets not allowed</li>
+                        <li className="no-item">Pets not allowed</li>
                     </div>
         }
 
@@ -45,7 +45,7 @@ class ListingDetail extends React.Component {
         } else {
             toilets = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-toileting+(1).png" />  
-                        <li>No toilet</li>
+                        <li className="no-item">No toilet</li>
                     </div>
         }
 
@@ -57,7 +57,7 @@ class ListingDetail extends React.Component {
         } else {
             water = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-water.png" />  
-                        <li>No water</li>
+                        <li className="no-item">No water</li>
                     </div>
         }
 
@@ -69,7 +69,7 @@ class ListingDetail extends React.Component {
         } else {
             showers = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-shower.png" />  
-                        <li>No showers</li>
+                        <li className="no-item">No showers</li>
                     </div>
         }
 
@@ -80,8 +80,8 @@ class ListingDetail extends React.Component {
                     </div>
         } else {
             wifi = <div className="info-item">
-                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-wifi.png" />  
-                        <li>No WiFi</li>
+                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-wifi.png" />  
+                        <li className="no-item">No WiFi</li>
                     </div>
         }
 

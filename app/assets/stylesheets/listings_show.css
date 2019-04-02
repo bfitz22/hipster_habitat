@@ -47,11 +47,15 @@
     flex-direction: column;
 }
 
+.info div {
+    padding-top: 10px; 
+}
+
 .info span {
     font-size: 24px;
     color: rgb(51, 51, 51);
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
-    padding-top: 10px; 
+    padding-top: 20px; 
     margin-left: 10px;
     margin-bottom: 10px; 
 }
@@ -64,11 +68,13 @@
 }
 
 .info-item img {
+    color: rgb(51, 51, 51);
     width: 20px; 
     height: 20px; 
 }
 
 .info-item li {
+    color: rgb(51, 51, 51);
     list-style-type: none;
     font-size: 16px;  
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
@@ -85,9 +91,19 @@
     margin-left: 10px; 
 }
 
+.fake-box {
+    height: 370px; 
+    width: 319px; 
+}
+
 .booking-box {
     z-index: 1;
     border: 2px solid rgb(235, 235, 235);
-    height: 370px; 
+    height: 320px; 
     width: 319px; 
+    position: absolute;
+    top: 525px; 
+    right: 400px; 
+    background-color: white;
+    position: fixed;
 }

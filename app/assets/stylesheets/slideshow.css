@@ -1,5 +1,32 @@
 .slideshow {
-    border: 2px solid rgb(235, 235, 235);
     height: 480px; 
     width: 1900px; 
+}
+
+.slider-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.slide {
+    border: 2px solid rgb(235, 235, 235);
+    height: 480px;
+    width: 600px;
+    margin-left: 15px; 
+}
+
+.next-arrow {
+    z-index: 1;
+    color: purple;
+    font-size: 35px;
+}
+
+.prev-arrow {
+    z-index: 1;
+    color: purple; 
+    font-size: 35px; 
+}
+
+.next-arrow:hover, .prev-arrow:hover {
+    cursor: pointer; 
 }

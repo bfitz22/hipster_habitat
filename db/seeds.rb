@@ -25,7 +25,7 @@ user = User.create({
 
 Listing.destroy_all
 hope = Listing.create!({
-    host: user,
+    host: demo,
     title: "Camp Hope",
     description: "Weight loss camp for heavyweights. Come check out all the fun 
     (and enjoy all the junk food) such as go-karts and the legendary blob before
@@ -43,7 +43,11 @@ hope = Listing.create!({
     location: "Bronx, New York"
 })
 file = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope.jpg')
+# file3 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope1.jpg')
+# file4 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope2.jpg')
 hope.photos.attach(io: file, filename: 'camp_hope.jpg')
+# hope.photos.attach(io: file, filename: 'camp_hope1.jpg')
+# hope.photos.attach(io: file, filename: 'camp_hope2.jpg')
 
 firewood = Listing.create!({
     host: user,
@@ -64,7 +68,11 @@ firewood = Listing.create!({
     location: "Essex County, New Jersey"
 })
 file1 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_firewood.jpg')
+file5 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_firewood1.jpg')
+file6 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_firewood2.jpg')
 firewood.photos.attach(io: file1, filename: 'camp_firewood.jpg')
+firewood.photos.attach(io: file5, filename: 'camp_firewood1.jpg')
+firewood.photos.attach(io: file6, filename: 'camp_firewood.jpg')
 
 crystal_lake = Listing.create!({
     host: user,
@@ -86,4 +94,8 @@ crystal_lake = Listing.create!({
     location: "Weston, Connecticut"
 })
 file2 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg')
+file7 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake1.jpg')
+file8 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake2.jpg')
 crystal_lake.photos.attach(io: file2, filename: 'camp_crystal_lake.jpg')
+crystal_lake.photos.attach(io: file7, filename: 'camp_crystal_lake1.jpg')
+crystal_lake.photos.attach(io: file8, filename: 'camp_crystal_lake2.jpg')

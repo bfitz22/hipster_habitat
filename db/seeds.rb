@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'open-uri'
+
 User.destroy_all
 demo = User.create({
     password: "123456",
@@ -35,9 +38,12 @@ hope = Listing.create!({
     is_showers: true,
     is_wifi: true,
     max_capacity: 5,
-    lat: 41.197249,
-    lng: -74.116457
+    lat: 40.864753,
+    lng: -73.796967,
+    location: "Bronx, New York"
 })
+file = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope.jpg')
+hope.photos.attach(io: file, filename: 'camp_hope.jpg')
 
 firewood = Listing.create!({
     host: user,
@@ -53,16 +59,19 @@ firewood = Listing.create!({
     is_showers: false,
     is_wifi: false,
     max_capacity: 20,
-    lat: 41.243008,
-    lng: -73.582051
+    lat: 40.743440,
+    lng: -74.295977,
+    location: "Essex County, New Jersey"
 })
+file1 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_firewood.jpg')
+firewood.photos.attach(io: file1, filename: 'camp_firewood.jpg')
 
 crystal_lake = Listing.create!({
     host: user,
     title: "Camp Crystal Lake",
     description: "Check in only on Friday the 13th. No guarantee of ever leaving. 
     Lake is off limits after a past tragedy that occurred there. The camp 
-    counselors (who are still around) are friendly. Don't let the rumors keep 
+    counselors (who are still with us) are friendly. Don't let the rumors keep 
     you away!",
     price: 5,
     pets_allowed: true,
@@ -72,21 +81,9 @@ crystal_lake = Listing.create!({
     is_showers: true,
     is_wifi: false,
     max_capacity: 12,
-    lat: 40.712619,
-    lng: -74.453328
+    lat: 41.255690,
+    lng: -73.395061,
+    location: "Weston, Connecticut"
 })
-
-ListingPhoto.create!({
-    listing: hope,
-    img_url: "https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope.jpg"
-})
-
-ListingPhoto.create!({
-    listing: firewood,
-    img_url: "https://s3.amazonaws.com/hipsterhabitat-dev/camp_firewood.jpg"
-})
-
-ListingPhoto.create!({
-    listing: crystal_lake,
-    img_url: "https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg"
-})
+file2 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg')
+crystal_lake.photos.attach(io: file2, filename: 'camp_crystal_lake.jpg')

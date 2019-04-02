@@ -12,7 +12,7 @@ html, body {
 .footer { 
     height: 350px; 
     background-color: #412F5A;
-    background-image: image_url("footer-img2.png");
+    background-image: asset_url("footer-img2.png");
     background-repeat: repeat-x;
     background-position: bottom;
     display: flex;

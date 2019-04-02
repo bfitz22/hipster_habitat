@@ -18,6 +18,7 @@
 #  updated_at        :datetime         not null
 #  lat               :float            not null
 #  lng               :float            not null
+#  location          :string           not null
 #
 
 class Listing < ApplicationRecord
@@ -29,10 +30,11 @@ class Listing < ApplicationRecord
         foreign_key: :host_id,
         class_name: :User
 
-    has_many :photos,
-        primary_key: :id,
-        foreign_key: :listing_id,
-        class_name: :ListingPhoto 
+    has_many_attached :photos
+
+    # def listing_photos
+    #     return self.photos.map { |photo| url_for(photo) }
+    # end
     
     # has_many :bookings
     # has_many activities,

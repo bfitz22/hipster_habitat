@@ -3,18 +3,10 @@
 *= require_self
 */
 
-.whole-show-page {
-}
-
 .show-page {
     display: flex;
     flex-direction: row; 
     justify-content: center;
-}
-
-.slideshow {
-    border: 2px solid rgb(235, 235, 235);
-    height: 480px; 
 }
 
 .listing-show-item {

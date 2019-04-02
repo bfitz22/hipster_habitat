@@ -4,7 +4,7 @@ import { selectAllListings } from '../../reducers/selectors';
 import { fetchListings } from '../../actions/listing_actions';
 
 const msp = state => ({
-    listings: selectAllListings(state)
+    listings: selectAllListings(state).slice(0, 3)
 });
 
 const mdp = dispatch => ({

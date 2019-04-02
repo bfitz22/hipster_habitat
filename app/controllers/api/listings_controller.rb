@@ -1,15 +1,15 @@
 class Api::ListingsController < ApplicationController
     def index
-        @listings = Listing.all
+        @listings = Listing.with_attached_photos.all
         # render 'api/listings/index'
     end
 
     def show
-        @listing = Listing.find(params[:id])
+        @listing = Listing.with_attached_photos.find(params[:id])
     end
 
     def create 
-        @bench = Listing.create!(listing_params)
+        @listing = Listing.create!(listing_params)
     end
 
     private
@@ -17,6 +17,7 @@ class Api::ListingsController < ApplicationController
     # def capacity_range
     #     (2..params[:max_capacity])
     # end
+
 
     def listing_params
         params.require(:listing).permit(
@@ -32,7 +33,7 @@ class Api::ListingsController < ApplicationController
             :max_capacity,
             :lat,
             :lng,
-            :listing_photos
+            photos: []
         )
     end
 end

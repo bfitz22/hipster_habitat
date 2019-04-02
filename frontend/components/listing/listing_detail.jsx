@@ -1,4 +1,5 @@
 import React from 'react';
+import Slideshow from '../slideshow/slideshow';
 
 class ListingDetail extends React.Component {
     componentDidMount() {
@@ -87,9 +88,7 @@ class ListingDetail extends React.Component {
 
         return (
             <div className="whole-show-page">
-            <div className="slideshow">
-                <h1>slideshow</h1>
-            </div>
+            <Slideshow />
             <div className="show-page">
                 <div className="listing-show-item">
                     <div className="listing-show-title">

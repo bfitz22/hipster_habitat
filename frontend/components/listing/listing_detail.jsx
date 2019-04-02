@@ -86,7 +86,10 @@ class ListingDetail extends React.Component {
         }
 
         return (
-            // slideshow
+            <div className="whole-show-page">
+            <div className="slideshow">
+                <h1>slideshow</h1>
+            </div>
             <div className="show-page">
                 <div className="listing-show-item">
                     <div className="listing-show-title">
@@ -131,6 +134,7 @@ class ListingDetail extends React.Component {
                     </div>
                 </div>
                 <div className="booking-box"></div>
+            </div>
             </div>
         )
     }

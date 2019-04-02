@@ -19,7 +19,8 @@ class User < ApplicationRecord
 
     attr_reader :password
 
-    has_many :listings
+    has_many :listings,
+        foreign_key: :host_id
     has_many :bookings
     has_many :reviews
 

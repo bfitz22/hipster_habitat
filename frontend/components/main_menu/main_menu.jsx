@@ -1,7 +1,17 @@
 import React from 'react';
+import MainMenuItem from './main_menu_item';
 
-const MainMenu = () => {
-    return (
+class MainMenu extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.props.fetchListings();
+    }
+
+    render() { 
+        return (
         <>
         <div className="home">
                 <h2 className="home-title">Everywhere you want to camp.</h2>
@@ -12,7 +22,7 @@ const MainMenu = () => {
                 and more.
             </div>
         </div>
-        {/* Search Bar */}
+        Search Bar
         <div className="main-menu">
             <h1 className="main-menu-title">Discover camping...</h1>
             <div className="menu-items">
@@ -37,31 +47,12 @@ const MainMenu = () => {
                         <p className="option-location">Best options near me</p>
                     </a>
                 </div> 
-                <div>
-                    <a href="/#/listings/1" className="option-links">
-                    <img className="camp-pic" src="https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope.jpg" />
-                        <p className="option-title">Camp Hope</p>
-                        <p className="option-location"> New York</p>
-                    </a>
-                </div> 
-                <div>
-                    <a href="/#/listings/2" className="option-links">
-                        <img className="camp-pic" src="https://s3.amazonaws.com/hipsterhabitat-dev/camp_firewood.jpg"/>
-                        <p className="option-title">Camp Firewood</p>
-                        <p className="option-location"> New Jersey</p>
-                    </a>
-                </div> 
-                <div>
-                    <a href="/#/listings/3" className="option-links">
-                        <img className="camp-pic" src="https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg" />
-                        <p className="option-title">Camp Crystal Lake</p>
-                        <p className="option-location"> Pennsylvania</p>
-                    </a>
-                </div> 
+                {this.props.listings.map(listing => <MainMenuItem key={listing.id} listing={listing}/>)}
             </div>
         </div>
         </>
     );
+    }
 }
 
 export default MainMenu;

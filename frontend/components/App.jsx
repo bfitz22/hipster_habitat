@@ -3,7 +3,7 @@ import Nav from './nav';
 import Footer from './footer';
 import ListingIndexContainer from '../components/listing/listing_index_container';
 import { Route, Switch } from 'react-router-dom';
-import MainMenu from './main_menu/main_menu';
+import MainMenuContainer from './main_menu/main_menu_container';
 import ListingDetailContainer from './listing/listing_detail_container';
 // import SearchBar from './search_bar';
 
@@ -27,7 +27,7 @@ import ListingDetailContainer from './listing/listing_detail_container';
 const App = () => (
         <div className="body">   
             <Nav />
-            <Route exact path="/" component={MainMenu} />
+            <Route exact path="/" component={MainMenuContainer} />
             <Route path="/discover" component={ListingIndexContainer}/>
             <Route path="/listings/:listingId" component={ListingDetailContainer}/>
             <div>

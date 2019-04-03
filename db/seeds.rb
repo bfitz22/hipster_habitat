@@ -120,7 +120,7 @@ crystal_lake.photos.attach(io: file17, filename: 'camp_crystal_lake5.jpg')
 
 north_star = Listing.create!({
     host: user,
-    title: "Camp Crystal Lake",
+    title: "Camp North Star",
     description: "Practical joker? You'll love this goofball-friendly environment.
     Come check out this Canadian-inspired camp maintained by the legendary Tripper
     Harrison. Lots of fun competition awaits with the many activities available.",

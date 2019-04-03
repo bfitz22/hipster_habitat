@@ -93,10 +93,9 @@ crystal_lake = Listing.create!({
     lng: -73.395061,
     location: "Weston, Connecticut"
 })
-# debugger
-# file2 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg')
+file2 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg')
 file7 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake1.jpg')
 file8 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake2.jpg')
-# crystal_lake.photos.attach(io: file2, filename: 'camp_crystal_lake.jpg')
+crystal_lake.photos.attach(io: file2, filename: 'camp_crystal_lake.jpg')
 crystal_lake.photos.attach(io: file7, filename: 'camp_crystal_lake1.jpg')
 crystal_lake.photos.attach(io: file8, filename: 'camp_crystal_lake2.jpg')

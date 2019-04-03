@@ -17,9 +17,16 @@ export default class Slideshow extends React.Component {
 
     prevSlide() {
         if (this.state.currentIndex === 0) {
-          debugger
             return null; 
         }
+
+      if (this.browserWidth() + (-this.state.translateValue + 600) > this.sliderWidth()) {
+        const translate = (-(this.sliderWidth() - this.browserWidth()));
+        return this.setState({
+          currentIndex: this.state.currentIndex + 1,
+          translateValue: translate - 20
+        });
+      }
 
         this.setState(prevState => ({
             currentIndex: prevState.currentIndex - 1,

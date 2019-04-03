@@ -1,6 +1,6 @@
 .slideshow {
     height: 480px; 
-    width: 1900px; 
+    width: fit-content; 
 }
 
 .slider-wrapper {

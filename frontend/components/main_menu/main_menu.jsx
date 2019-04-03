@@ -4,15 +4,20 @@ import MainMenuItem from './main_menu_item';
 class MainMenu extends React.Component {
     constructor(props) {
         super(props);
+        this.sliceListings = this.sliceListings.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchListings();
     }
 
+    sliceListings() {
+      return this.props.listings.slice(0, 3);
+    }
+
     render() { 
         return (
-        <>
+        <div className="splash">
         <div className="home">
                 <h2 className="home-title">Everywhere you want to camp.</h2>
             <div className="subtext">
@@ -22,7 +27,9 @@ class MainMenu extends React.Component {
                 and more.
             </div>
         </div>
-        Search Bar
+        <div className="search-bar-container">
+          <div className="search-bar">Search Bar</div>
+        </div>
         <div className="main-menu">
             <h1 className="main-menu-title">Discover camping...</h1>
             <div className="menu-items">
@@ -47,10 +54,10 @@ class MainMenu extends React.Component {
                         <p className="option-location">Best options near me</p>
                     </a>
                 </div> 
-                {this.props.listings.map(listing => <MainMenuItem key={listing.id} listing={listing}/>)}
+                {this.sliceListings().map(listing => <MainMenuItem key={listing.id} listing={listing}/>)}
             </div>
         </div>
-        </>
+        </div>
     );
     }
 }

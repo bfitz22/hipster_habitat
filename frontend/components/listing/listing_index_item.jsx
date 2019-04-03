@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const ListingIndexItem = ( props ) => {
     return (
-    <div className="listing-index-item">
-        <Link to={`/listings/${props.listing.id}`}>
-            {/* <img src={`${props.listing.listing_photos[0]}`}/> */}
-            <span>{props.listing.title}</span>
-            <span>${props.listing.price}/night</span>
-        </Link>
-    </div>
+    <div className="choice-div">
+      <a href={`/#/listings/${props.listing.id}`} className="option-links">
+        <img className="choice-pic" src={props.listing.listing_photos[0]} />
+        <p className="option-title">{props.listing.title}</p>
+        <p className="choice-location"> {props.listing.location}</p>
+        <p className="choice-price">${props.listing.price}/night</p>
+      </a>
+    </div> 
     )
 };
 

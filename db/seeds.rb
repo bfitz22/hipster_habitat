@@ -43,11 +43,11 @@ hope = Listing.create!({
     location: "Bronx, New York"
 })
 file = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope.jpg')
-# file3 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope1.jpg')
-# file4 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope2.jpg')
+file3 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope1.jpg')
+file4 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope2.jpg')
 hope.photos.attach(io: file, filename: 'camp_hope.jpg')
-# hope.photos.attach(io: file, filename: 'camp_hope1.jpg')
-# hope.photos.attach(io: file, filename: 'camp_hope2.jpg')
+hope.photos.attach(io: file3, filename: 'camp_hope1.jpg')
+hope.photos.attach(io: file4, filename: 'camp_hope2.jpg')
 
 firewood = Listing.create!({
     host: user,
@@ -93,9 +93,10 @@ crystal_lake = Listing.create!({
     lng: -73.395061,
     location: "Weston, Connecticut"
 })
-file2 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg')
+# debugger
+# file2 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg')
 file7 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake1.jpg')
 file8 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake2.jpg')
-crystal_lake.photos.attach(io: file2, filename: 'camp_crystal_lake.jpg')
+# crystal_lake.photos.attach(io: file2, filename: 'camp_crystal_lake.jpg')
 crystal_lake.photos.attach(io: file7, filename: 'camp_crystal_lake1.jpg')
 crystal_lake.photos.attach(io: file8, filename: 'camp_crystal_lake2.jpg')

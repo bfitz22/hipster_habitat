@@ -54,7 +54,7 @@
 }
 
 .choice-location {
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-family: "calibre", helvetica, sans-serif;
     color: rgb(117, 117, 117);
     font-size: 18px; 
     margin-bottom: 5px;
@@ -62,7 +62,7 @@
 }
 
 .choice-price {
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-family: "calibre", helvetica, sans-serif;
     font-size: 18px; 
     color: black; 
     margin-bottom: 20px;

@@ -110,7 +110,7 @@
     width: 320px;
     border: 3px #40d9ac;
     height: 68px;
-    font-family: 'Maven Pro', sans-serif;
+    font-family: "calibre", helvetica, sans-serif;
 }
 
 .button:hover {
@@ -127,7 +127,7 @@
     border-bottom: 1px solid #ebebeb;
     font-size: 1rem;
     color: rgb(67, 67, 67);
-    font-family: 'Maven Pro', sans-serif;
+    font-family: "calibre", helvetica, sans-serif;
 }
 
 .other-button:hover {
@@ -143,7 +143,7 @@
 
 .form-bottom p {
     font-size: 13px;
-    font-family: 'Maven Pro', sans-serif;
+    font-family: "calibre", helvetica, sans-serif;
     color: rgb(67, 67, 67);
 }
 
@@ -157,17 +157,17 @@
 
 .form-title h1 {
     font-size: 25px;
-    font-family: 'Maven Pro', sans-serif;
+    font-family: "calibre", helvetica, sans-serif;
     color: rgb(67, 67, 67);
 }
 
 .form-title p {
     font-size: 15px;
-    font-family: 'Maven Pro', sans-serif;
+    font-family: "calibre", helvetica, sans-serif;
     color: rgb(67, 67, 67);
 }
 
 ::placeholder {
-    font-family: 'Maven Pro', sans-serif; 
+    font-family: "calibre", helvetica, sans-serif; 
     color: rgb(67, 67, 67);
 }

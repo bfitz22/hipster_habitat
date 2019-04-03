@@ -15,6 +15,7 @@
   border: 2px solid rgb(235, 235, 235);
   margin-right: 15px; 
   margin-left: 15px;
+  margin-bottom: 10px;  
 }
 
 .listing-map {
@@ -38,4 +39,21 @@
 .choice-pic {
   width: 377px;
   height: 252px;
+}
+
+.choice-location {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    color: rgb(117, 117, 117);
+    font-size: 18px; 
+    margin-bottom: 5px;
+    margin-left: 10px; 
+}
+
+.choice-price {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-size: 18px; 
+    color: black; 
+    margin-bottom: 20px;
+    margin-left: 10px; 
+    text-decoration: bold;
 }

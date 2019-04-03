@@ -85,3 +85,17 @@
     margin-bottom: 20px;
     margin-left: 10px; 
 }
+
+.search-bar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  position: relative; 
+  height: 227px;
+  width: 1500px; 
+  border: 2px solid rgb(235, 235, 235);
+  margin: 15px; 
+}

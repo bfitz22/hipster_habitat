@@ -1,0 +1,41 @@
+/*
+*= require_tree .
+*= require_self
+*/
+
+.index {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.filter-bar {
+  height: 190px;
+  border: 2px solid rgb(235, 235, 235);
+  margin-right: 15px; 
+  margin-left: 15px;
+}
+
+.listing-map {
+  width: 1052px; 
+  height: 100%; 
+  border: 2px solid rgb(235, 235, 235);
+  margin: 10px 25px 0px 0px;
+}
+
+.choices {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.choice-div {
+  padding: 12px;
+}
+
+.choice-pic {
+  width: 377px;
+  height: 252px;
+}

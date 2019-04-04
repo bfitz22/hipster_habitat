@@ -31,14 +31,17 @@ class Listing < ApplicationRecord
         class_name: :User
 
     has_many_attached :photos
-
-    # def listing_photos
-    #     return self.photos.map { |photo| url_for(photo) }
-    # end
     
     # has_many :bookings
     # has_many activities,
         # through: :listing_activities,
         # source: :activities
     # has_many :reviews
+
+    # def self.in_bounds(bounds)
+    #     self.where("lat < ?", bounds[:northEast][:lat])
+    #         .where("lat > ?", bounds[:southWest][:lat])
+    #         .where("lng > ?", bounds[:southWest][:lng])
+    #         .where("lng < ?", bounds[:northEast][:lng])
+    # end
 end

@@ -2,7 +2,7 @@ import React from 'react';
 
 const ListingIndexItem = ( props ) => {
   var pic = props.listing.listing_photos[Math.floor(Math.random() * props.listing.listing_photos.length)];
-  // https://www.kirupa.com/html5/picking_random_item_from_array.htm
+  // source - https://www.kirupa.com/html5/picking_random_item_from_array.htm
     return (
     <div className="choice-div">
       <a href={`/#/listings/${props.listing.id}`} className="option-links">

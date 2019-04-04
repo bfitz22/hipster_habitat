@@ -1,4 +1,4 @@
-import listing_index_container from "../listing/listing_index_container";
+
 
 class MarkerManager {
   constructor(map) {
@@ -7,12 +7,22 @@ class MarkerManager {
   }
 
   updateMarkers(listings) {
-    debugger
     const listingsObj = {};
     listings.forEach(listing => listingsObj[listing.id] = listing);
 
     let newListings = listings.filter(listing => !this.markers[listing.id]);
-    newListings.forEach(listing => this.createMarkerFromListing(listing, this.handleClick))
+    newListings.forEach(listing => this.createMarker(listing));
+  }
+
+  createMarker(listing) {
+    const position = new google.maps.LatLng(listing.lat, listing.lng);
+    const marker = new google.maps.Marker({
+      position, 
+      map: this.map,
+      listingId: listing.id
+    });
+
+    this.markers[marker.listingId] = marker; 
   }
 }
 

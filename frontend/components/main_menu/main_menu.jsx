@@ -19,7 +19,7 @@ class MainMenu extends React.Component {
         return (
         <div className="splash">
         <div className="home">
-                <h2 className="home-title">Everywhere you want to camp.</h2>
+            <div className="home-title">Find yourself outside.</div>
             <div className="subtext">
                 Book unique camping experiences on over 
                 <span> 300,000 </span>
@@ -30,9 +30,10 @@ class MainMenu extends React.Component {
         <div className="search-bar-container">
           <div className="search-bar">
             <div className="search-input">
-                <i className="mag-glass" class="fas fa-search"></i>
-                <input className="search" type="text" placeholder="Search..."/>
+                <i className="fas fa-search"></i>
+                <input className="search" type="text" placeholder="Try Yosemite, Napa, pets..."/>
             </div>
+            <div className="spacer"></div>
             <div className="filter-buttons">
                 <button className="filter">Something</button>
                 <button className="filter">Something</button>

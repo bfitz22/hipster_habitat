@@ -92,11 +92,13 @@ class ListingDetail extends React.Component {
             <div className="show-page">
                 <div className="listing-show-item">
                     <div className="listing-show-title">
+                        <p>{listing.location}</p>
+                        <br/>
                         <h1>{listing.title}</h1>
                     </div>
                     <div className="listing-show-description">
-                        {/* <span>{`user.${host_id}`}</span> */}
-                        <p>{listing.description}</p>
+                        <span className="host-id">Host Id: {listing.host_id}</span>
+                        <p className="description">{listing.description}</p>
                     </div>
                     <div className="info-boxes">
                         <div className="info">
@@ -135,7 +137,9 @@ class ListingDetail extends React.Component {
                 <div className="fake-box"></div>
             </div>
             <div id="anchor">
-              <div className="booking-box"></div>
+              <div className="booking-box">
+                
+              </div>
             </div>
           </div>
         )

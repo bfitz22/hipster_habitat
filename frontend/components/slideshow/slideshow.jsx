@@ -34,7 +34,7 @@ export default class Slideshow extends React.Component {
         }));
     }
 
-    nextSlide(e) {
+    nextSlide() {
         if (this.state.currentIndex === this.state.images.length - 1) {
             return this.setState({
                 currentIndex: 0, 

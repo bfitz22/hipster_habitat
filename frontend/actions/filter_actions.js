@@ -2,7 +2,13 @@ import fetchMaptListings from './listing_actions';
 
 export const UPDATE_BOUNDS = "UPDATE_BOUNDS";
 
-export const upddateBounds = bounds => ({
+export const updateBounds = (filter, value) => ({
     type: UPDATE_BOUNDS,
-    bounds
+    filter,
+    value
 });
+
+// export const updateFilter = (filter, value) => (dispatch, getState) => {
+//     dispatch(updateBounds(bounds));
+//     return fetchMaptListings(getState().ui.filters)(dispatch);
+// };

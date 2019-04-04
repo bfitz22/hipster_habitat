@@ -1,9 +1,10 @@
 
 
 class MarkerManager {
-  constructor(map) {
+  constructor(map, handleClick) {
     this.map = map;
     this.markers = {};
+    this.handleClick = handleClick; 
   }
 
   updateMarkers(listings) {
@@ -15,13 +16,18 @@ class MarkerManager {
   }
 
   createMarker(listing) {
+    var icon = {
+      url: window.markerURL,
+      scaledSize: new google.maps.Size(65, 65)
+    };
     const position = new google.maps.LatLng(listing.lat, listing.lng);
     const marker = new google.maps.Marker({
       position, 
       map: this.map,
+      icon: icon,
       listingId: listing.id
     });
-
+    marker.addListener('click', () => this.handleClick(listing));
     this.markers[marker.listingId] = marker; 
   }
 }

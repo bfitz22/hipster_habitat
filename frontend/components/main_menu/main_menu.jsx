@@ -28,7 +28,19 @@ class MainMenu extends React.Component {
             </div>
         </div>
         <div className="search-bar-container">
-          <div className="search-bar">Search Bar</div>
+          <div className="search-bar">
+            <div className="search-input">
+                <i className="mag-glass" class="fas fa-search"></i>
+                <input className="search" type="text" placeholder="Search..."/>
+            </div>
+            <div className="filter-buttons">
+                <button className="filter">Something</button>
+                <button className="filter">Something</button>
+                <button className="filter">Something</button>
+                <button className="filter">Something</button>
+                <button className="search-button">Search</button>
+            </div>
+          </div>
         </div>
         <div className="main-menu">
             <h1 className="main-menu-title">Discover camping...</h1>

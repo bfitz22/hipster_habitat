@@ -3,8 +3,8 @@ class Api::ListingsController < ApplicationController
         @listings = Listing.with_attached_photos.all
         # render 'api/listings/index'
     end
+# .in_bounds(params[:bounds])
 
-    # .in_bounds(params[:bounds])
     def show
         @listing = Listing.with_attached_photos.find(params[:id])
     end

@@ -96,6 +96,11 @@
     width: 319px; 
 }
 
+.anchor {
+  height: 100%;
+  width: 100%;
+}
+
 .booking-box {
     z-index: 1;
     border: 2px solid rgb(235, 235, 235);

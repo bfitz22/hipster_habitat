@@ -8,6 +8,10 @@ class ListingIndex extends React.Component {
         this.props.fetchListings();
     }
 
+    // componentDidUpdate(nextProps) {
+    //   this.state = nextProps; 
+    // }
+
     render() {
         return (
           <div className="index">

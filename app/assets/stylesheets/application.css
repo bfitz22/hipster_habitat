@@ -14,4 +14,22 @@
  *= require_self
  */
 
+ html {
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+main {
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+.body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
  

@@ -27,7 +27,7 @@ class ListingMap extends React.Component {
     componentDidUpdate() {
       this.MarkerManager.updateMarkers(this.props.listings);
     }
-
+    // source BenchBnB
     // addListeners() {
       // google.maps.event.addListener(this.map, 'idle', () => {
       //   const { north, south, east, west } = this.map.getBounds().toJSON();

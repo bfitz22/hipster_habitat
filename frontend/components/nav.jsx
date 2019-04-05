@@ -34,7 +34,7 @@ class Nav extends React.Component {
             <header className="header">
                 <div className="header-left" >
                     <Link className="main-logo"to='/'>
-                        <h1>HIPSTER<br/>HABITAT</h1>
+                    <h1>HIPSTER<br />HABIT<img src={window.tentURL}/>T</h1>
                     </Link>
                 </div>
                 <div className="header-right">

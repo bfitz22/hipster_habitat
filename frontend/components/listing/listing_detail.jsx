@@ -8,80 +8,80 @@ class ListingDetail extends React.Component {
       
     render() {
         const { listing } = this.props;
-
+        // const host = this.props.hosts[listing.hostId];
         if (!listing) return null; 
 
         let campfires; let pets; let toilets; let water; let showers; let wifi;
 
-        if (listing.campfires_allowed === true) { 
+        if (listing.campfires_allowed) { 
             campfires = <div className="info-item">
                             <img src="https://s3.amazonaws.com/hipsterhabitat-dev/campfire.png" />
                             <li>Campfires allowed</li>
                         </div>
         } else { 
-            campfires = <div className="info-item">
+            campfires = <div className="itemless">
                             <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-fire.png" />  
-                            <li className="no-item">Campfires not allowed</li>
+                            <li>Campfires not allowed</li>
                         </div>
         }
 
-        if (listing.pets_allowed === true) { 
+        if (listing.pets_allowed) { 
             pets = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/dog.png" />  
                         <li>Pets allowed</li>
                     </div>
         } else {
-            pets = <div className="info-item">
+            pets = <div className="itemless">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-pets.png" />  
-                        <li className="no-item">Pets not allowed</li>
+                        <li>Pets not allowed</li>
                     </div>
         }
 
-        if (listing.is_toilets === true) { 
+        if (listing.is_toilets) { 
             toilets = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/toilet+(1).png" />  
                         <li>Toilet available</li>
                     </div>
         } else {
-            toilets = <div className="info-item">
+            toilets = <div className="itemless">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-toileting+(1).png" />  
-                        <li className="no-item">No toilet</li>
+                        <li>No toilet</li>
                     </div>
         }
 
-        if (listing.is_water === true) { 
+        if (listing.is_water) { 
             water = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/water.png" />  
                         <li>Water available</li>
                     </div>
         } else {
-            water = <div className="info-item">
+            water = <div className="itemless">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-water.png" />  
-                        <li className="no-item">No water</li>
+                        <li>No water</li>
                     </div>
         }
 
-        if (listing.is_showers === true) {
+        if (listing.is_showers) {
             showers = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/shower.png" />  
                         <li>Showers available</li>
                     </div>
         } else {
-            showers = <div className="info-item">
+            showers = <div className="itemless">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-shower.png" />  
-                        <li className="no-item">No showers</li>
+                        <li>No showers</li>
                     </div>
         }
 
-        if (listing.is_wifi === true) {
+        if (listing.is_wifi) {
             wifi = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/wifi.png" />  
                         <li>WiFi available</li>
                     </div>
         } else {
-            wifi = <div className="info-item">
+            wifi = <div className="itemless">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-wifi.png" />  
-                        <li className="no-item">No WiFi</li>
+                        <li>No WiFi</li>
                     </div>
         }
 
@@ -97,7 +97,7 @@ class ListingDetail extends React.Component {
                         <h1>{listing.title}</h1>
                     </div>
                     <div className="listing-show-description">
-                        <span className="host-id">Host Id: {listing.host_id}</span>
+                        <span className="host-id">Host: </span>
                         <p className="description">{listing.description}</p>
                     </div>
                     <div className="info-boxes">
@@ -138,7 +138,32 @@ class ListingDetail extends React.Component {
             </div>
             <div id="anchor">
               <div className="booking-box">
-                
+                <div className="booking-div-col">
+                  <section className="price">${listing.price}</section>
+                  <section className="per-night">per night</section>
+                </div>
+                <div className="booking-div">
+                  <div className="check-in-div">
+                    <section className="check-bold">Check in</section>
+                    <section>Fri, Apr 5th</section>
+                  </div>
+                  <div className="check-in-div">
+                    <section className="check-bold">Check out</section>
+                    <section>Sun, Apr 7th</section>
+                  </div>
+                  <div className="check-in-div">
+                    <section className="check-bold">Guests</section>
+                    <section>Max: {listing.max_capacity}</section>
+                  </div>
+                </div>
+                <div className="booking-div-space">
+                  <section className="base-price">Base price x 2 nights</section>
+                  <br/>
+                  <section>{`${listing.price}` * 2}</section>
+                </div>
+                <div className="booking-div">
+                  <button className="booking-button">Request to book</button>
+                </div>
               </div>
             </div>
           </div>

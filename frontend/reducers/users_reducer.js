@@ -1,5 +1,6 @@
 import { merge } from 'lodash';
 import { RECEIVE_CURRENT_USER, DELETE_SESSION } from '../actions/session_actions';
+import { RECEIVE_LISTING } from '../actions/listing_actions';
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -9,6 +10,8 @@ const usersReducer = (state = {}, action) => {
             return newState;
         case DELETE_SESSION:
             return {};
+        case RECEIVE_LISTING:
+            return merge({}, state, action.host);
         default: 
             return state; 
     }

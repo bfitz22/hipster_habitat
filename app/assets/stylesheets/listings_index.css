@@ -13,7 +13,7 @@
 .filter-bar {
   height: 190px;
   width: 778px;
-  border: 2px solid rgb(235, 235, 235);
+  /* border: 2px solid rgb(235, 235, 235); */
   margin-right: 15px; 
   margin-left: 15px;
   margin-bottom: 10px;  

@@ -17,7 +17,7 @@ class ListingIndex extends React.Component {
           <div className="index">
             <section className="index-list">
                 <div className="filter-bar">
-                  Filter
+                  
                 </div>
                 <div className="choices">
                     {this.props.listings.map(listing => <ListingIndexItem key={listing.id} listing={listing}/>)}

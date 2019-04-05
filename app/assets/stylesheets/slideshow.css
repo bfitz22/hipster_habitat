@@ -16,15 +16,21 @@
 }
 
 .next-arrow {
-    z-index: 1;
-    color: purple;
-    font-size: 35px;
+  position: absolute;
+  top: 335px;
+  right: 25px; 
+  z-index: 1;
+  color: white;
+  font-size: 40px;
 }
 
 .prev-arrow {
-    z-index: 1;
-    color: purple; 
-    font-size: 35px; 
+  position: absolute;
+  top: 335px;
+  left: 25px;
+  z-index: 1;
+  color: white; 
+  font-size: 40px; 
 }
 
 .next-arrow:hover, .prev-arrow:hover {

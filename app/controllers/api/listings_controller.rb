@@ -1,9 +1,12 @@
 class Api::ListingsController < ApplicationController
     def index
-        @listings = Listing.with_attached_photos.all
+        if params[:filters] 
+            @listings = Listing.in_bounds(params[:bounds]).with_attached_photos.all
+        else
+            @listings = Listing.with_attached_photos.all
+        end
         # render 'api/listings/index'
     end
-# .in_bounds(params[:bounds])
 
     def show
         @listing = Listing.with_attached_photos.find(params[:id])

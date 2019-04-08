@@ -1,6 +1,5 @@
 import React from 'react';
 import MarkerManager from './marker_manager';
-// import { updateBounds } from '../../actions/filter_actions';
 import { withRouter } from 'react-router-dom';
 
 // const getCoordsObj = latLng => ({
@@ -17,30 +16,30 @@ class ListingMap extends React.Component {
       
       this.map = new google.maps.Map(this.mapNode, mapOptions);
       this.MarkerManager = new MarkerManager(this.map, this.handleClick.bind(this));
-      // this.addListeners = this.addListeners.bind(this);
+      this.addListeners = this.addListeners.bind(this);
+
       this.MarkerManager.updateMarkers(this.props.listings);
-      // const map = this.refs.map; 
-      // this.map = new google.maps.Map(map, mapOptions);
-      // this.addListeners();
+      this.addListeners();
     }
     
     componentDidUpdate() {
       this.MarkerManager.updateMarkers(this.props.listings);
     }
-    // source BenchBnB
-    // addListeners() {
-      // google.maps.event.addListener(this.map, 'idle', () => {
-      //   const { north, south, east, west } = this.map.getBounds().toJSON();
-      //   const bounds = {
-      //     northEast: { lat: north, lng: east },
-      //     southWest: { lat: south, lng: west } };
-      //   this.props.updateBounds('bounds', bounds);
-      // });
+    
+    addListeners() {
+      google.maps.event.addListener(this.map, 'idle', () => {
+        const { north, south, east, west } = this.map.getBounds().toJSON();
+        const bounds = {
+          northEast: { lat: north, lng: east },
+          southWest: { lat: south, lng: west } };
+        this.props.updateFilter('bounds', bounds);
+      });
 
       // google.maps.event.addListener(this.map, 'click', (listing) => {
       //   this.handleClick(listing);
       // });
-    // }
+    }
+    // source: BenchBnB
 
     handleClick(listing) {
       this.props.history.push(`/listings/${listing.id}`);

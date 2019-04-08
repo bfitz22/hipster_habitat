@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import { selectAllListings } from './reducers/selectors';
-import { fetchListings, fetchListing } from './actions/listing_actions';
+import { fetchListings, fetchListing, fetchMapListings } from './actions/listing_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         store = configureStore();
     }
+    window.fetchMapListings = fetchMapListings;
     window.fetchListing = fetchListing;
     window.fetchListings = fetchListings;
     window.selector = selectAllListings; 

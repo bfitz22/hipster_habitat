@@ -1,14 +1,18 @@
-import fetchMaptListings from './listing_actions';
+import { fetchMapListings } from './listing_actions';
 
-export const UPDATE_BOUNDS = "UPDATE_BOUNDS";
+export const CHANGE_FILTER = "CHANGE_FILTER";
 
-export const updateBounds = (filter, value) => ({
-    type: UPDATE_BOUNDS,
-    filter,
+export const changeFilter = (filter, value) => {
+    return ({
+    type: CHANGE_FILTER,
+    filter, 
     value
-});
+    })
+};
 
-// export const updateFilter = (filter, value) => (dispatch, getState) => {
-//     dispatch(updateBounds(bounds));
-//     return fetchMaptListings(getState().ui.filters)(dispatch);
-// };
+export function updateFilter(filter, value) {
+    return (dispatch, getState) => {
+        dispatch(updateBounds(filter, value));
+        return fetchMapListings(getState().ui.filters)(dispatch);
+    }
+};

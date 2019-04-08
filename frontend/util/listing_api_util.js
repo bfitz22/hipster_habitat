@@ -5,13 +5,15 @@ export const fetchListings = () => (
     })
 );
 
-export const fetchMapListings = (data) => (
+export const fetchMapListings = (filters) => {
+    return (
     $.ajax({
         method: 'GET',
-        url: 'api/listings',
-        data
+        url: `api/listings`,
+        filters
     })
-);
+    )
+};
 
 export const fetchListing = id => (
     $.ajax({

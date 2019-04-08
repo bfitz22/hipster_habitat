@@ -29,11 +29,11 @@ export const fetchListings = () => dispatch => (
     )
 );
 
-// export const fetchMapListings = (filters) => dispatch => (
-//     APIUtil.fetchMapListings().then(
-//         listings => dispatch(receiveMapListings(listings))
-//     )
-// );
+export const fetchMapListings = (filters) => dispatch => (
+    APIUtil.fetchMapListings(filters).then(
+        listings => dispatch(receiveListings(listings))
+    )
+);
 
 export const fetchListing = id => dispatch => (
     APIUtil.fetchListing(id).then(

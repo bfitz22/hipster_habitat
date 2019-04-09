@@ -4,6 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { selectAllListings } from './reducers/selectors';
 import { fetchListings, fetchListing, fetchMapListings } from './actions/listing_actions';
+import { updateFilter } from './actions/filter_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         store = configureStore();
     }
+    window.updateFilter = updateFilter;
     window.fetchMapListings = fetchMapListings;
     window.fetchListing = fetchListing;
     window.fetchListings = fetchListings;

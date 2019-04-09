@@ -6,12 +6,20 @@ import { Route } from 'react-router-dom';
 import MainMenuContainer from './main_menu/main_menu_container';
 import ListingDetailContainer from './listing/listing_detail_container';
 import ListingForm from './listing/listing_create/listing_form';
+import ListingLocationForm from './listing/listing_create/listing_location_form';
+import ListingAmenitiesForm from './listing/listing_create/listing_amenities_form';
+import ListingPriceForm from './listing/listing_create/listing_price_form';
 
 const App = () => (
-        <div className="body"> 
-            <Route path="/listingcreate" component={ListingForm}/>     
+        <div className="body">     
             <Route exact path="/" component={Nav}/>
             <Route path="/discover" component={Nav}/>
+            <div className="create-body">
+                <Route exact path="/listing_create/" component={ListingForm}/> 
+                <Route path="/listing_create/location" component={ListingLocationForm}/>
+                <Route path="/listing_create/amenities" component={ListingAmenitiesForm}/> 
+                <Route path="/listing_create/price" component={ListingPriceForm}/> 
+            </div>
             <Route path="/listings/:listingId" component={Nav}/>
             <Route exact path="/" component={MainMenuContainer} />
             <Route path="/discover" component={ListingIndexContainer}/>

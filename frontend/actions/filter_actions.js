@@ -10,9 +10,9 @@ export const changeFilter = (filter, value) => {
     })
 };
 
-export function updateFilter(filter, value) {
-    return (dispatch, getState) => {
-        dispatch(updateBounds(filter, value));
+export const updateFilter = (filter, value) => {
+        (dispatch, getState) => {
+        dispatch(changeFilter(filter, value));
         return fetchMapListings(getState().ui.filters)(dispatch);
     }
 };

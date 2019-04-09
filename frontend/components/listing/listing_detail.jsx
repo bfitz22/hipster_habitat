@@ -145,11 +145,11 @@ class ListingDetail extends React.Component {
                 <div className="booking-div">
                   <div className="check-in-div">
                     <section className="check-bold">Check in</section>
-                    <section>Fri, Apr 5th</section>
+                    <section>{listing.check_in}</section>
                   </div>
                   <div className="check-in-div">
                     <section className="check-bold">Check out</section>
-                    <section>Sun, Apr 7th</section>
+                    <section>{listing.check_out}</section>
                   </div>
                   <div className="check-in-div">
                     <section className="check-bold">Guests</section>

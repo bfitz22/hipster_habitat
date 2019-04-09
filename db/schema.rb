@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_180950) do
+ActiveRecord::Schema.define(version: 2019_04_09_191144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2019_04_02_180950) do
     t.float "lat", null: false
     t.float "lng", null: false
     t.string "location", null: false
+    t.string "check_in", null: false
+    t.string "check_out", null: false
+    t.boolean "is_hiking", null: false
+    t.boolean "is_biking", null: false
+    t.boolean "is_swimming", null: false
+    t.boolean "is_fishing", null: false
+    t.boolean "is_horseback", null: false
+    t.boolean "is_climbing", null: false
     t.index ["host_id"], name: "index_listings_on_host_id"
   end
 

@@ -14,12 +14,12 @@ const App = () => (
         <div className="body">     
             <Route exact path="/" component={Nav}/>
             <Route path="/discover" component={Nav}/>
-            <div className="create-body">
+            
                 <Route exact path="/listing_create/" component={ListingForm}/> 
                 <Route path="/listing_create/location" component={ListingLocationForm}/>
                 <Route path="/listing_create/amenities" component={ListingAmenitiesForm}/> 
                 <Route path="/listing_create/price" component={ListingPriceForm}/> 
-            </div>
+            
             <Route path="/listings/:listingId" component={Nav}/>
             <Route exact path="/" component={MainMenuContainer} />
             <Route path="/discover" component={ListingIndexContainer}/>

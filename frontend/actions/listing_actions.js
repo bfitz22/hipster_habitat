@@ -4,10 +4,12 @@ export const RECEIVE_LISTINGS = "RECEIVE_LISTINGS";
 export const RECEIVE_LISTING = "RECEIVE_LISTING";
 export const RECEIVE_MAP_LISTINGS = "RECEIVE_MAP_LISTINGS";
 
-const receiveListings = listings => ({
+const receiveListings = listings => {
+    debugger
+    return {
     type: RECEIVE_LISTINGS,
     listings
-});
+}};
 
 // const receiveMapListings = listings => ({
 //     type: RECEIVE_MAP_LISTINGS,
@@ -29,11 +31,10 @@ export const fetchListings = () => dispatch => (
     )
 );
 
-export const fetchMapListings = (filters) => dispatch => (
-    APIUtil.fetchMapListings(filters).then(
+export const fetchMapListings = (filters) => dispatch => {
+    return APIUtil.fetchMapListings(filters).then(
         listings => dispatch(receiveListings(listings))
-    )
-);
+    )};
 
 export const fetchListing = id => dispatch => (
     APIUtil.fetchListing(id).then(

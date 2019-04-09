@@ -4,9 +4,9 @@ import ListingMap from '../listing_map/listing_map';
 // import FilterForm from '../listing_map/filter_form';
 
 class ListingIndex extends React.Component {
-    // componentDidMount() {
-    //     this.props.fetchMapListings();
-    // }
+    componentDidMount() {
+        this.props.fetchMapListings(filter);
+    }
 
     render() {
         return (

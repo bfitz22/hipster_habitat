@@ -1,5 +1,6 @@
 class Api::ListingsController < ApplicationController
     def index
+        debugger
         if params[:filters] 
             @listings = Listing.in_bounds(params[:bounds]).with_attached_photos.all
         else

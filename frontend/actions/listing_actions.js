@@ -12,20 +12,20 @@ const receiveListings = listings => {
 }};
 
 const receiveListing = ({ listing }) => {
-    return ({
+    return {
         type: RECEIVE_LISTING,
         listingId: listing.id,
         listing,
         // host 
-    });
+    };
 };
 
 export const updateCreation = (key, value) => {
-    return ({
+    return {
         type: UPDATE_CREATION,
         key,
         value
-    })
+    }
 }
 
 export const fetchListings = () => dispatch => (

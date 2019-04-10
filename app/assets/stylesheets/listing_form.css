@@ -3,19 +3,66 @@
 *= require_self
 */
 
-.create-body {
+.form-body {
     height: 100%;
-    width: 100%; 
+    width: 100%;
+    background-color: rgb(249, 249, 249);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }
 
-.form-body {
-    height: 1000px;
-    width: 1000px;
+.form-container {
+    width: 670px !important;
+    height: 460px !important; 
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 40px; 
+}
+
+.form-blah {
+    width: 670px !important;
+    height: 460px !important; 
+    background-color: white;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 40px; 
 }
 
 .form-title {
-    width: 500px;
-    height: 500px; 
+    font-family: "calibre", helvetica, sans-serif;
+}
+
+.form-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "calibre", helvetica, sans-serif;
+    font-size: 18px; 
+    width: 300px;
+    height: 55px;
+}
+
+.form-input input {
+    width: 300px;
+    height: 55px;
+}
+
+.form-input textarea {
+    width: 300px; 
+    height: 200px; 
+}
+
+.form-input:focus {
+    border-color: black;
 }
 
 .form-buttons {
@@ -24,13 +71,13 @@
 }
 
 .grey {
-    border: 1px solid black;
+    border-color: rgb(235, 235, 235);
     width: 20px; 
     height: 10px;
 }
 
 .grey:hover {
-    background-color: #40d9ac;
+    border-color: black;
 }
 
 .green {
@@ -38,4 +85,20 @@
     width: 20px; 
     height: 10px;
     background-color: #40d9ac;
+}
+
+.directions-container {
+    height: 500px;
+    width: 200px; 
+    margin: 20px;
+    padding-left: 40px; 
+    padding-right: 40px; 
+    padding-bottom: 40px; 
+}
+
+.directions {
+    height: 200px;
+    width: 200px; 
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }

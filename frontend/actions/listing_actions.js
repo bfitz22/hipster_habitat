@@ -3,27 +3,30 @@ import * as APIUtil from '../util/listing_api_util';
 export const RECEIVE_LISTINGS = "RECEIVE_LISTINGS";
 export const RECEIVE_LISTING = "RECEIVE_LISTING";
 export const RECEIVE_MAP_LISTINGS = "RECEIVE_MAP_LISTINGS";
+export const UPDATE_CREATION = "UPDATE_CREATION";
 
 const receiveListings = listings => {
-    debugger
     return {
     type: RECEIVE_LISTINGS,
     listings
 }};
 
-// const receiveMapListings = listings => ({
-//     type: RECEIVE_MAP_LISTINGS,
-//     listings
-// });
-
-const receiveListing = ({listing}) => {
+const receiveListing = ({ listing }) => {
     return ({
-    type: RECEIVE_LISTING,
-    listingId: listing.id,
-    listing,
-    // host 
+        type: RECEIVE_LISTING,
+        listingId: listing.id,
+        listing,
+        // host 
     });
 };
+
+export const updateCreation = (key, value) => {
+    return ({
+        type: UPDATE_CREATION,
+        key,
+        value
+    })
+}
 
 export const fetchListings = () => dispatch => (
     APIUtil.fetchListings().then(

@@ -2,28 +2,23 @@
 #
 # Table name: listings
 #
-#  id                :bigint(8)        not null, primary key
-#  host_id           :integer          not null
-#  title             :string           not null
-#  description       :text             not null
-#  price             :float            not null
-#  pets_allowed      :boolean          not null
-#  campfires_allowed :boolean          not null
-#  is_water          :boolean          not null
-#  is_toilets        :boolean          not null
-#  is_showers        :boolean          not null
-#  is_wifi           :boolean          not null
-#  max_capacity      :integer          not null
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  lat               :float            not null
-#  lng               :float            not null
-#  location          :string           not null
+#  id           :bigint(8)        not null, primary key
+#  host_id      :integer          not null
+#  title        :string           not null
+#  description  :text             not null
+#  price        :float            not null
+#  max_capacity :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  lat          :float            not null
+#  lng          :float            not null
+#  location     :string           not null
+#  check_in     :string           not null
+#  check_out    :string           not null
 #
 
 class Listing < ApplicationRecord
     validates :host_id, :title, :description, :price, :max_capacity, :lat, :lng, presence: true
-    validates :pets_allowed, :campfires_allowed, :is_water, :is_toilets, :is_showers, :is_wifi, inclusion: { in: [true, false] }
 
     belongs_to :host,
         primary_key: :id,

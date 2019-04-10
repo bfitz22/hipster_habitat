@@ -22,3 +22,20 @@
     display: flex;
     justify-content: space-between;
 }
+
+.grey {
+    border: 1px solid black;
+    width: 20px; 
+    height: 10px;
+}
+
+.grey:hover {
+    background-color: #40d9ac;
+}
+
+.green {
+    border: black;
+    width: 20px; 
+    height: 10px;
+    background-color: #40d9ac;
+}

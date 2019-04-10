@@ -9,6 +9,7 @@ import ListingForm from './listing/listing_create/listing_form';
 import ListingLocationForm from './listing/listing_create/listing_location_form';
 import ListingAmenitiesForm from './listing/listing_create/listing_amenities_form';
 import ListingPriceForm from './listing/listing_create/listing_price_form';
+import ListingActivitiesForm from './listing/listing_create/listing_activities_form';
 
 const App = () => (
         <div className="body">     
@@ -17,7 +18,8 @@ const App = () => (
             
                 <Route exact path="/listing_create/" component={ListingForm}/> 
                 <Route path="/listing_create/location" component={ListingLocationForm}/>
-                <Route path="/listing_create/amenities" component={ListingAmenitiesForm}/> 
+                <Route path="/listing_create/amenities" component={ListingAmenitiesForm}/>
+                <Route path="/listing_create/activities" component={ListingActivitiesForm}/> 
                 <Route path="/listing_create/price" component={ListingPriceForm}/> 
             
             <Route path="/listings/:listingId" component={Nav}/>

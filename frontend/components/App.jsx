@@ -10,17 +10,18 @@ import ListingLocationForm from './listing/listing_create/listing_location_form'
 import ListingAmenitiesForm from './listing/listing_create/listing_amenities_form';
 import ListingPriceForm from './listing/listing_create/listing_price_form';
 import ListingActivitiesForm from './listing/listing_create/listing_activities_form';
+import { AuthRoute } from '../util/route_utils';
 
 const App = () => (
         <div className="body">     
             <Route exact path="/" component={Nav}/>
             <Route path="/discover" component={Nav}/>
             
-                <Route exact path="/listing_create/" component={ListingForm}/> 
-                <Route path="/listing_create/location" component={ListingLocationForm}/>
-                <Route path="/listing_create/amenities" component={ListingAmenitiesForm}/>
-                <Route path="/listing_create/activities" component={ListingActivitiesForm}/> 
-                <Route path="/listing_create/price" component={ListingPriceForm}/> 
+                <AuthRoute exact path="/listing_create/" component={ListingForm}/> 
+                <AuthRoute path="/listing_create/location" component={ListingLocationForm}/>
+                <AuthRoute path="/listing_create/amenities" component={ListingAmenitiesForm}/>
+                <AuthRoute path="/listing_create/activities" component={ListingActivitiesForm}/> 
+                <AuthRoute path="/listing_create/price" component={ListingPriceForm}/> 
             
             <Route path="/listings/:listingId" component={Nav}/>
             <Route exact path="/" component={MainMenuContainer} />

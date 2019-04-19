@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Hipster Habitat</title>
-    <%= favicon_link_tag asset_path('tab_icon.jpg') %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC0pn1ErvinGCDqDgU6Dvj6XeiOqNEF9L0"%>
@@ -10,7 +10,8 @@
       window.dropdownURL = "<%= image_url('tab_icon.jpg') %>"
       window.footerURL = "<%= image_url('footer-img2.png') %>"
       window.markerURL = "<%= image_url('marker.png') %>"
-      window.tentURL = "<%= image_url('logo-tent.png') %>"
+      window.logoURL = "<%= image_url('main-logo.png') %>"
+      window.favURL = "<%= image_url('favicon.png') %>"
     </script>
     
 

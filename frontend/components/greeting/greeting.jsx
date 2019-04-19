@@ -7,7 +7,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
             <button className="signup" onClick={() => openModal('signup')}>Sign up</button>
         </nav>
     );
-    const endSession = () => (
+    const endSession = (logout) => (
         <nav className="logout-nav">
             <button className="logout" onClick={logout}>Log out</button>
         </nav>

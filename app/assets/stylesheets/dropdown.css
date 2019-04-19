@@ -13,7 +13,8 @@
 .dropdown-button {
     size: absolute; 
     height: 40px;
-    border: none; 
+    border: none;
+    background-color: white; 
 }
 
 .dropdown-button:focus {

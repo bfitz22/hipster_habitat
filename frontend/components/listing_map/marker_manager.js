@@ -17,7 +17,7 @@ class MarkerManager {
   createMarker(listing) {
     var icon = {
       url: window.markerURL,
-      scaledSize: new google.maps.Size(65, 65)
+      scaledSize: new google.maps.Size(50, 50)
     };
     const position = new google.maps.LatLng(listing.lat, listing.lng);
     const marker = new google.maps.Marker({

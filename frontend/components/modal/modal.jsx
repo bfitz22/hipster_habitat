@@ -3,7 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
-import Dropdown from '../dropdown';
+import DropdownContainer from '../dropdown/dropdown_container';
 
 function Modal({modal, closeModal}) {
     if (!modal) {
@@ -19,7 +19,7 @@ function Modal({modal, closeModal}) {
             break;
         case 'dropdown':
             option = 2;
-            component = <Dropdown />;
+            component = <DropdownContainer />;
             break; 
         default: 
             return null; 

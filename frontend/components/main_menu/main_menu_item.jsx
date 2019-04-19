@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MainMenuItem = ( props ) => {
-  var pic = props.listing.listing_photos[Math.floor(Math.random() * props.listing.listing_photos.length)];
+  var pic = props.listing.listing_photos[0];
 
     return (
         <div>

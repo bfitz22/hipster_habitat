@@ -5,8 +5,8 @@ import GreetingContainer from './greeting/greeting_container';
 import { openModal } from '../actions/modal_actions';
  
 class Nav extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             showMenu: false
         };
@@ -33,8 +33,8 @@ class Nav extends React.Component {
             <Modal />
             <header className="header">
                 <div className="header-left" >
-                    <Link className="main-logo"to='/'>
-                    <h1>HIPSTER HABIT<img className="tent-logo" src={window.tentURL}/>T</h1>
+                    <Link className="main-logo-link"to='/'>
+                    <img className="main-logo" src={window.logoURL}/>
                     </Link>
                 </div>
                 <div className="header-right">

@@ -12,8 +12,13 @@ class SessionForm extends React.Component {
             first_name: "",
             last_name: ""
         };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.loginDemo = this.loginDemo.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.loginDemo = this.loginDemo.bind(this);
+        this.redirect = this.redirect.bind(this);
+    }
+
+    redirect() {
+        location.href = this.props.host
     }
 
     update(field) {
@@ -23,9 +28,16 @@ class SessionForm extends React.Component {
     }
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
         const user = merge({}, this.state);
+        if (this.props.host === "/#/listing_create/") {
+            debugger
+            this.props.processForm(user).then(this.props.closeModal)
+            .then(this.redirect()); 
+        } else {
         this.props.processForm(user).then(this.props.closeModal);
+        }
     }
 
     loginDemo(e) {

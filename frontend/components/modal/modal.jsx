@@ -9,7 +9,7 @@ function Modal({modal, closeModal}) {
     if (!modal) {
         return null;
     }
-    let component; let option;
+    let component; let option; let host = "/#/listing_create/";
     switch(modal) {
         case 'login':
             component = <LoginFormContainer />;
@@ -21,6 +21,9 @@ function Modal({modal, closeModal}) {
             option = 2;
             component = <DropdownContainer />;
             break; 
+        case 'login-host':
+            component = <LoginFormContainer host={host}/>;
+            break;
         default: 
             return null; 
     }

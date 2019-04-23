@@ -44,14 +44,14 @@ class ListingActivitiesForm extends React.Component {
 
         return (
             <div className="form-body">
-                <div>
-                    <h2>Select the activities available at or near your listing</h2> 
+                <div className="listing-form-title">
+                    <h2>Select the activities available near your listing</h2> 
                 </div>
                 <div className="form-buttons">
                     {options}
                 </div>
                 <div>
-                    <button onClick={this.onClick}>Create your new Listing!</button>
+                    <button className="ok" onClick={this.onClick}>Create your new Listing!</button>
                 </div>
             </div>
         )

@@ -44,14 +44,18 @@ class ListingAmenitiesForm extends React.Component {
 
         return (
             <div className="form-body">
-                <div>
-                    <h2>Select the activities available at or near your listing</h2> 
+                <div className="nav-arrow-container">
+                    <div className="nav-arrow-grey"><i className="fas fa-chevron-left" aria-hidden="true"></i></div>
+                    <div className="nav-arrow"><i className="fas fa-chevron-right"></i></div>
+                </div>
+                <div className="listing-form-title">
+                    <h2>Select the amenities available near your listing</h2> 
                 </div>
                 <div className="form-buttons">
                     {options}
                 </div>
                 <div>
-                    <button onClick={this.onClick}>Ok</button>
+                    <button className="ok" onClick={this.onClick}>Ok</button>
                 </div>
             </div>
         )

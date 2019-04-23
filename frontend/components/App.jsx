@@ -17,7 +17,7 @@ const App = () => (
             <Route exact path="/" component={Nav}/>
             <Route path="/discover" component={Nav}/>
             
-                <AuthRoute exact path="/listing_create/" component={ListingForm}/> 
+                <AuthRoute path="/listing_create/" component={ListingForm}/> 
                 <AuthRoute path="/listing_create/location" component={ListingLocationForm}/>
                 <AuthRoute path="/listing_create/amenities" component={ListingAmenitiesForm}/>
                 <AuthRoute path="/listing_create/activities" component={ListingActivitiesForm}/> 

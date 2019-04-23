@@ -10,7 +10,7 @@ const msp = ({ session, entities: { users } }) => {
 
 const Auth = ({ currentUser, path, component: Component }) => (
     <Route
-        path={path}
+        exact path={path}
         render={props => (
             currentUser ? <Component {...props} /> : <Redirect to="/" />
         )}

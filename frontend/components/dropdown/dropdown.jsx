@@ -1,32 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Dropdown extends React.Component  {
-    handleClickLogout() {
+    handleClick() {
         this.props.logout().then(this.props.closeModal())
-    }
-
-    handleClickHost() {
-        let path = "/listing_create/";
-        this.state.history.push(path);
     }
     
     render() {
         const loggedIn = () => (
             <div className="dropdown-menu">
                 <div className="menu">
-                    <button>Manage Account</button>
-                    <button onClick={this.handleClickHost.bind(this)}>Host</button>
-                    <button onClick={this.handleClickLogout.bind(this)} >Log Out</button>
+                    <Link to="/" onClick={() => this.props.closeModal()}> Manage Account</Link>
+                    <Link to="/listing_create/">Host</Link>
+                    <Link to="" onClick={this.handleClick.bind(this)}>Log Out</Link>
                 </div> 
             </div>
         );
         const loggedOut = () => (
             <div className="dropdown-menu">
                 <div className="menu">
-                    <button onClick={() => this.props.openModal('login')}>Start Hosting</button>
-                    <button>Community</button>
-                    <button>Help</button>
+                    <Link to="" onClick={() => this.props.openModal('login-host')}>Start Hosting</Link>
+                    <Link to="/"onClick={() => this.props.closeModal()}> Community</Link>
+                    <Link to="/"onClick={() => this.props.closeModal()}> Help</Link>
                 </div> 
             </div>
         );

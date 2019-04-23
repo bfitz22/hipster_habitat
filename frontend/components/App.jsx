@@ -21,7 +21,8 @@ const App = () => (
                 <AuthRoute path="/listing_create/location" component={ListingLocationForm}/>
                 <AuthRoute path="/listing_create/amenities" component={ListingAmenitiesForm}/>
                 <AuthRoute path="/listing_create/activities" component={ListingActivitiesForm}/> 
-                <AuthRoute path="/listing_create/price" component={ListingPriceForm}/> 
+                <AuthRoute path="/listing_create/price" component={ListingPriceForm}/>
+                {/* <AuthRoute path="/listing_create/photos" component={ListingPhotosForm}/>  */}
             
             <Route path="/listings/:listingId" component={Nav}/>
             <Route exact path="/" component={MainMenuContainer} />

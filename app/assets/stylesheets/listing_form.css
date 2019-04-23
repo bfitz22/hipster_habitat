@@ -3,6 +3,47 @@
 *= require_self
 */
 
+.listing-nav {
+    width: 100%;
+    height: 79px; 
+    border: 1.25px solid #ebebeb;
+    display: flex; 
+    flex-direction: row;
+}
+
+.listing-nav-img {
+    width: 81px;
+    height: 69px; 
+    padding: 10px; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    border-right: 1.25px solid #ebebeb;
+}
+
+.listing-nav-body {
+    width: 88%;
+}
+
+.listing-nav-right {
+    padding: 15px;
+    border-left: 1.25px solid #ebebeb;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.save-and-exit {
+    text-decoration: none; 
+    color: black; 
+    font-family: "calibre", helvetica, sans-serif;
+}
+
+.tent-nav {
+    height: 50px;
+    width: 50px;  
+}
+
 .form-body {
     height: 100%;
     width: 100%;
@@ -88,7 +129,7 @@
 }
 
 .form-price {
-    margin: 10px;
+    margin: 20px;
     font-family: "calibre", helvetica, sans-serif;
     font-size: 18px;
     height: 300px;  
@@ -109,6 +150,16 @@
     text-indent: 15px; 
 }
 
+.form-price div {
+    height: 41px;
+    width: auto; 
+    padding: 0px 10px 0px 10px;
+    background-color: rgb(235, 235, 235);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-input textarea {
     width: 70%; 
     height: 200px; 
@@ -121,30 +172,45 @@
 }
 
 .form-buttons {
-    width: 200px; 
-    height: 200px; 
+    margin: 40px 0px 0px 20px;
+    width: 600px; 
+    height: 300px; 
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .grey {
+    background-color: white; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid rgb(235, 235, 235);
     padding: 18px, 20px;
-    width: 100px;
-    height: 58px;
+    width: 275px;
+    height: 60px;
+    font-family: "calibre", helvetica, sans-serif;
 }
 
 .grey:hover {
     border-color: black;
+    cursor: pointer; 
 }
 
 .green {
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 18px, 20px;
-    width: 100px;
-    border: 3px #40d9ac;
-    height: 58px;
+    width: 275px;
+    border: 1px solid black;
+    height: 60px;
     background-color: #40d9ac;
+    font-family: "calibre", helvetica, sans-serif;
+}
+
+.green:hover {
+    cursor: pointer; 
 }
 
 .directions-container {

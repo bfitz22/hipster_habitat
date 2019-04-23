@@ -1,5 +1,6 @@
 import React from 'react';
 import { updateCreation } from '../../../actions/listing_actions';
+import ListingNav from './listing_form_nav';
 
 class ListingLocationForm extends React.Component {
     constructor(props) {
@@ -22,6 +23,8 @@ class ListingLocationForm extends React.Component {
 
     render() {
         return (
+            <>
+            <ListingNav />
             <div className="form-body">
                 <div className="nav-arrow-container">
                     <div className="nav-arrow-grey"><i className="fas fa-chevron-left" aria-hidden="true"></i></div>
@@ -52,6 +55,7 @@ class ListingLocationForm extends React.Component {
                 </div>
                 
             </div>
+            </>
         )
     } 
 }

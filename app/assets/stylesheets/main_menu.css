@@ -24,6 +24,10 @@
     font-weight: 600;
 }
 
+.fa-calendar, .fa-home, .fa-shuttle-van, .search-image {
+    font-size: 32px; 
+}
+
 .subtext {
     font-size: 18px;
     line-height: 1.25; 

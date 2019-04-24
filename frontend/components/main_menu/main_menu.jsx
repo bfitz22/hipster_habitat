@@ -1,5 +1,6 @@
 import React from 'react';
 import MainMenuItem from './main_menu_item';
+import classNames from 'classnames';
 
 class MainMenu extends React.Component {
     constructor(props) {
@@ -35,10 +36,10 @@ class MainMenu extends React.Component {
             </div>
             <div className="spacer"></div>
             <div className="filter-buttons">
-                <button className="filter">Something</button>
-                <button className="filter">Something</button>
-                <button className="filter">Something</button>
-                <button className="filter">Something</button>
+                <button className="filter"><i className="far fa-calendar" ></i>Anytime</button>
+                <button className="filter"><i className={classNames("fas fa-campground", "search-image")}></i>Campsites</button>
+                <button className="filter"><i className="fas fa-home"></i>Lodging</button>
+                <button className="filter"><i className="fas fa-shuttle-van"></i>RVs</button>
                 <button className="search-button">Search</button>
             </div>
           </div>

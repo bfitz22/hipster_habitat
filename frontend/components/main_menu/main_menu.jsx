@@ -6,6 +6,18 @@ class MainMenu extends React.Component {
     constructor(props) {
         super(props);
         this.sliceListings = this.sliceListings.bind(this);
+        this.state = { "arr": [
+            {title: "Anytime", active: false, image: "far fa-calendar"},
+            {title: "Campsites", active: false, image: "fas fa-campground"},
+            {title: "Lodging", active: false, image: "fas fa-home"},
+            {title: "RVs", active: false, image: "fas fa-shuttle-van"}
+        ]}
+    }
+
+    toggle(index) {
+        let arr = this.state.arr;
+        arr[index].active = !arr[index].active;
+        this.setState({ arr: arr });
     }
 
     componentDidMount() {
@@ -17,6 +29,12 @@ class MainMenu extends React.Component {
     }
 
     render() { 
+        const options = this.state.arr.map((el, i) => 
+            <button key={i} className={el.active ? "filtered" : "unfiltered"} 
+            onClick={() => this.toggle(i)}><i className={classNames(el.image, "search-image")} ></i>
+            {el.title}</button>
+        )
+
         return (
         <div className="splash">
         <div className="home">
@@ -36,10 +54,7 @@ class MainMenu extends React.Component {
             </div>
             <div className="spacer"></div>
             <div className="filter-buttons">
-                <button className="filter"><i className="far fa-calendar" ></i>Anytime</button>
-                <button className="filter"><i className={classNames("fas fa-campground", "search-image")}></i>Campsites</button>
-                <button className="filter"><i className="fas fa-home"></i>Lodging</button>
-                <button className="filter"><i className="fas fa-shuttle-van"></i>RVs</button>
+                {options}
                 <button className="search-button">Search</button>
             </div>
           </div>

@@ -24,10 +24,6 @@
     font-weight: 600;
 }
 
-.fa-calendar, .fa-home, .fa-shuttle-van, .search-image {
-    font-size: 32px; 
-}
-
 .subtext {
     font-size: 18px;
     line-height: 1.25; 
@@ -164,7 +160,12 @@
     justify-content: space-between;
 }
 
-.filter {
+.search-image {
+    font-size: 18px; 
+    margin-right: 10px; 
+}
+
+.unfiltered {
     background-color: rgb(255, 255, 255);
     width: 19.5%; 
     height: 60px; 
@@ -174,6 +175,18 @@
     color: rgb(51, 51, 51);
     font-family: "calibre", helvetica, sans-serif;
     font-weight: 200; 
+}
+
+.filtered {
+    background-color: #f3fbfb;
+    width: 19.5%; 
+    height: 60px; 
+    border: 1.5px solid #40d9ac;
+    font-size: 16px;
+    font-weight: bold;
+    color: #40d9ac;
+    font-family: "calibre", helvetica, sans-serif;
+    font-weight: 200;
 }
 
 .search-button {
@@ -187,11 +200,15 @@
     font-family: "calibre", helvetica, sans-serif;
 }
 
-.filter:hover {
+.unfiltered:hover {
     background-color: #f3fbfb;
     border-color: #40d9ac;
     color: #40d9ac;
     cursor: pointer;
+}
+
+.filtered:hover {
+    cursor: pointer; 
 }
 
 .search-button:hover {

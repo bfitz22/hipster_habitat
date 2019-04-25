@@ -1,7 +1,6 @@
 import React from 'react';
 import { merge } from 'lodash';
 import { withRouter } from 'react-router-dom';
-import { login } from '../../actions/session_actions';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -13,7 +12,6 @@ class SessionForm extends React.Component {
             last_name: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.loginDemo = this.loginDemo.bind(this);
         this.redirect = this.redirect.bind(this);
     }
 
@@ -32,22 +30,11 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const user = merge({}, this.state);
         if (this.props.host === "/#/listing_create/") {
-            debugger
             this.props.processForm(user).then(this.props.closeModal)
-            .then(this.redirect()); 
+            .then(this.redirect); 
         } else {
         this.props.processForm(user).then(this.props.closeModal);
         }
-    }
-
-    loginDemo(e) {
-        e.preventDefault();
-        const user = {
-            email_address: "yogibear@picnicbasket.com",
-            password: "123456",
-            first_name: "Yogi",
-            last_name: "Bear" };
-        dispatch(login(user)).then(this.props.closeModal);
     }
 
     renderErrors() {
@@ -89,7 +76,7 @@ class SessionForm extends React.Component {
                             onChange={this.update("password")}/>
                         </div>
                         <br/>
-                        <button className="button" onClick={this.loginDemo}>Demo</button>
+                        <button className="button" onClick={this.props.demo}>Demo</button>
                         <br/>
                         <input className="button" type="submit" value="Log In"/>
                         <br/>
@@ -137,7 +124,7 @@ class SessionForm extends React.Component {
                             onChange={this.update("password")}/>
                         </div>
                         <br/>
-                        <button className="button" onClick={this.loginDemo}>Demo</button>
+                        <button className="button" onClick={(e) => {e.preventDefault(); this.props.demo()}}>Demo</button>
                         <br />
                         <input className="button" type="submit" value="Join HipsterHabitat"/>
                         <br />

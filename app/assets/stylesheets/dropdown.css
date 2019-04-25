@@ -53,3 +53,13 @@
 .menu button:focus {
     outline: 0;
 }
+
+.dropdown-links {
+    text-decoration: none; 
+    transition: all 0.25s ease 0s; 
+    cursor: pointer; 
+    font-family: "calibre", helvetica, sans-serif;
+    padding: 20px 14px 14px 0px; 
+    color: rgb(67, 67, 67);
+    border-bottom: 1px solid #ebebeb;
+}

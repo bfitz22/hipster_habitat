@@ -4,9 +4,13 @@ import { selectAllListings } from '../../reducers/selectors';
 import { fetchMapListings } from '../../actions/listing_actions';
 import { updateFilter } from '../../actions/filter_actions';
 
-const msp = state => ({
-    listings: selectAllListings(state)
-});
+const msp = state => {
+    let filter = state.ui.filters;
+    return (
+    {listings: selectAllListings(state),
+    filter: filter}
+    );
+};
 
 const mdp = dispatch => ({
     fetchMapListings: (filter) => dispatch(fetchMapListings(filter)),

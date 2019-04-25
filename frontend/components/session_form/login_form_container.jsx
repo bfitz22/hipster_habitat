@@ -11,6 +11,13 @@ const msp = ({ errors }) => {
     };
 };
 
+const demoUser = {
+    email_address: "yogibear@picnicbasket.com",
+    password: "123456",
+    first_name: "Yogi",
+    last_name: "Bear" 
+};
+
 const mdp = dispatch => {
     return {
         processForm: (user) => dispatch(login(user)),
@@ -19,7 +26,8 @@ const mdp = dispatch => {
                 Signup
             </button>
         ),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        demo: () => dispatch(login(demoUser))
     }
 };
 

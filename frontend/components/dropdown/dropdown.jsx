@@ -11,18 +11,18 @@ class Dropdown extends React.Component  {
         const loggedIn = () => (
             <div className="dropdown-menu">
                 <div className="menu">
-                    <Link to="/" onClick={() => this.props.closeModal()}> Manage Account</Link>
-                    <Link to="/listing_create/">Host</Link>
-                    <Link to="" onClick={this.handleClick.bind(this)}>Log Out</Link>
+                    <Link className="dropdown-links" to="/" onClick={() => this.props.closeModal()}> Manage Account</Link>
+                    <Link className="dropdown-links" to="/listing_create/">Host</Link>
+                    <Link className="dropdown-links" to="" onClick={this.handleClick.bind(this)}>Log Out</Link>
                 </div> 
             </div>
         );
         const loggedOut = () => (
             <div className="dropdown-menu">
                 <div className="menu">
-                    <Link to="" onClick={() => this.props.openModal('login-host')}>Start Hosting</Link>
-                    <Link to="/"onClick={() => this.props.closeModal()}> Community</Link>
-                    <Link to="/"onClick={() => this.props.closeModal()}> Help</Link>
+                    <Link className="dropdown-links" to="" onClick={() => this.props.openModal('login-host')}>Start Hosting</Link>
+                    <Link className="dropdown-links" to="/"onClick={() => this.props.closeModal()}> Community</Link>
+                    <Link className="dropdown-links" to="/"onClick={() => this.props.closeModal()}> Help</Link>
                 </div> 
             </div>
         );

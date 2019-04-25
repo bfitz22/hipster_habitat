@@ -4,8 +4,7 @@ import { CLOSE_MODAL } from '../actions/modal_actions';
 const sessionErrorsReducer = (state = [], action) => {
     Object.freeze(state);
     switch(action.type){
-        case RECEIVE_ERRORS:
-        debugger 
+        case RECEIVE_ERRORS: 
             return action.errors;
         case RECEIVE_CURRENT_USER:
         case CLOSE_MODAL:

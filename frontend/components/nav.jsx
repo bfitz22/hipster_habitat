@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Modal from './modal/modal';
 import { Link } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
@@ -7,9 +8,9 @@ import { openModal } from '../actions/modal_actions';
 class Nav extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showMenu: false
-        };
+        // this.state = {
+        //     showMenu: false
+        // };
         this.showMenu = this.showMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
     }
@@ -41,7 +42,7 @@ class Nav extends React.Component {
                     <div className="greeting">
                         <GreetingContainer />
                     </div>
-                        <button className="dropdown-button" onClick={() => dispatch(openModal('dropdown'))}>
+                        <button className="dropdown-button" onClick={this.props.dropdown}>
                         <img className="dropdown-icon" src={window.dropdownURL} />
                     </button> 
                 </div>
@@ -51,4 +52,16 @@ class Nav extends React.Component {
     }
 };
 
-export default Nav;
+const msp = state => {
+    return {
+        showMenu: false
+    }
+}
+
+const mdp = dispatch => {
+    return{
+        dropdown: () => dispatch(openModal('dropdown'))
+    }
+}
+
+export default connect(msp, mdp)(Nav);

@@ -5,7 +5,8 @@ import MarkerManager from '../listing_map/marker_manager';
 // import FilterForm from '../listing_map/filter_form';
 
 class ListingIndex extends React.Component {
-    componentDidMount() {
+
+  componentDidMount() {
         const mapOptions = {
           center: { lat: 40.880799, lng: -73.812353 },
           zoom: 10
@@ -17,7 +18,7 @@ class ListingIndex extends React.Component {
   
         this.MarkerManager.updateMarkers(this.props.listings);
         this.addListeners();
-        this.props.fetchMapListings(getState().ui.filters);
+        this.props.fetchMapListings(this.props.filter);
     }
 
     componentDidUpdate() {

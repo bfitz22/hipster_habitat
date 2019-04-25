@@ -121,6 +121,7 @@
 }
 
 .other-button {
+    background-color: white; 
     border: none;
     width: 20%;
     margin: 10px;

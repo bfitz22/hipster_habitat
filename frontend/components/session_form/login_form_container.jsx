@@ -27,7 +27,7 @@ const mdp = dispatch => {
             </button>
         ),
         closeModal: () => dispatch(closeModal()),
-        demo: () => dispatch(login(demoUser))
+        demo: () => dispatch(login(demoUser)).then(() => dispatch(closeModal()))
     }
 };
 

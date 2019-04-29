@@ -36,10 +36,6 @@
     width: 200px;
     position: top; 
     z-index: 1;
-    /* bottom: 0;
-    top: 100;
-    left: -45;
-    right: 0;  */
     display: flex;
     flex-direction: column; 
     background-color: white;
@@ -62,4 +58,8 @@
     padding: 20px 14px 14px 0px; 
     color: rgb(67, 67, 67);
     border-bottom: 1px solid #ebebeb;
+}
+
+.dropdown-links:hover {
+    padding-left: 15px; 
 }

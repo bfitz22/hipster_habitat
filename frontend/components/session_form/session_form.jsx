@@ -26,7 +26,6 @@ class SessionForm extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
         const user = merge({}, this.state);
         if (this.props.host === "/#/listing_create/") {

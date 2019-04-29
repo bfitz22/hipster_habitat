@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_205540) do
+ActiveRecord::Schema.define(version: 2019_04_29_205852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_205540) do
     t.boolean "is_climbing", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "listing_id", null: false
   end
 
   create_table "listings", force: :cascade do |t|
@@ -67,11 +68,6 @@ ActiveRecord::Schema.define(version: 2019_04_09_205540) do
     t.string "check_in", null: false
     t.string "check_out", null: false
     t.index ["host_id"], name: "index_listings_on_host_id"
-  end
-
-  create_table "provisions", force: :cascade do |t|
-    t.integer "listing_id", null: false
-    t.integer "amenity_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

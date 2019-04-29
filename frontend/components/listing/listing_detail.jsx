@@ -151,7 +151,7 @@ class ListingDetail extends React.Component {
                     <section className="check-bold">Check out</section>
                     <section>{listing.check_out}</section>
                   </div>
-                  <div className="check-in-div">
+                  <div className="guests-div">
                     <section className="check-bold">Guests</section>
                     <section>Max: {listing.max_capacity}</section>
                   </div>
@@ -159,7 +159,7 @@ class ListingDetail extends React.Component {
                 <div className="booking-div-space">
                   <section className="base-price">Base price x 2 nights</section>
                   <br/>
-                  <section>{`${listing.price}` * 2}</section>
+                  <section>${`${listing.price}` * 2}</section>
                 </div>
                 <div className="booking-div">
                   <button className="booking-button">Request to book</button>

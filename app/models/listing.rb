@@ -26,11 +26,9 @@ class Listing < ApplicationRecord
         class_name: :User
 
     has_many_attached :photos
+
+    has_many :amenities
     
-    # has_many :bookings
-    # has_many activities,
-        # through: :listing_activities,
-        # source: :activities
     # has_many :reviews
 
     def self.in_bounds(bounds)

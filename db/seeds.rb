@@ -128,3 +128,67 @@ north_star.photos.attach(io: file18, filename: 'camp_north_star5.jpg')
 north_star.photos.attach(io: file19, filename: 'camp_north_star5.jpg')
 north_star.photos.attach(io: file20, filename: 'camp_north_star5.jpg')
 north_star.photos.attach(io: file21, filename: 'camp_north_star5.jpg')
+
+Amenity.create!({
+    listing_id: hope.id,
+    pets_allowed: true,
+    campfires_allowed: true,
+    is_water: true,
+    is_toilets: true,
+    is_showers: true,
+    is_wifi: true, 
+    is_hiking: true,
+    is_biking: false,
+    is_swimming: true,
+    is_fishing: false,
+    is_horseback: false,
+    is_climbing: false
+})
+
+Amenity.create!({
+    listing_id: firewood.id,
+    pets_allowed: true,
+    campfires_allowed: true,
+    is_water: true,
+    is_toilets: true,
+    is_showers: false,
+    is_wifi: false, 
+    is_hiking: true,
+    is_biking: true,
+    is_swimming: true,
+    is_fishing: false,
+    is_horseback: false,
+    is_climbing: true
+})
+
+Amenity.create!({
+    listing_id: crystal_lake.id,
+    pets_allowed: false,
+    campfires_allowed: true,
+    is_water: true,
+    is_toilets: true,
+    is_showers: true,
+    is_wifi: false, 
+    is_hiking: true,
+    is_biking: true,
+    is_swimming: true,
+    is_fishing: true,
+    is_horseback: true,
+    is_climbing: true
+})
+
+Amenity.create!({
+    listing_id: north_star.id,
+    pets_allowed: false,
+    campfires_allowed: false,
+    is_water: false,
+    is_toilets: false,
+    is_showers: false,
+    is_wifi: false, 
+    is_hiking: true,
+    is_biking: false,
+    is_swimming: true,
+    is_fishing: false,
+    is_horseback: false,
+    is_climbing: true
+})

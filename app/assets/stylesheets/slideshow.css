@@ -1,24 +1,27 @@
 .slideshow {
-    height: 480px; 
-    width: fit-content; 
+  height: 480px; 
+  width: 100%; 
 }
 
 .slider-wrapper {
-    display: flex;
-    flex-direction: row;
+  width: 100%;
+  height: 480px; 
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
 }
 
 .slide {
-    border: 2px solid rgb(235, 235, 235);
-    height: 480px;
-    width: 600px;
-    margin-left: 15px; 
+  position: absolute;
+  border: 2px solid rgb(235, 235, 235);
+  height: 480px;
+  width: 600px;
 }
 
 .next-arrow {
   position: absolute;
   top: 335px;
-  right: 25px; 
+  right: 50px; 
   z-index: 1;
   color: white;
   font-size: 40px;
@@ -27,12 +30,12 @@
 .prev-arrow {
   position: absolute;
   top: 335px;
-  left: 25px;
+  left: 50px;
   z-index: 1;
   color: white; 
   font-size: 40px; 
 }
 
 .next-arrow:hover, .prev-arrow:hover {
-    cursor: pointer; 
+  cursor: pointer; 
 }

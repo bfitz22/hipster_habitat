@@ -86,12 +86,12 @@ class ListingDetail extends React.Component {
                     </div>
         }
 
-        const activities = [[listing.amenity.is_hiking, <i class="fas fa-hiking"></i>, "Hiking"],
-            [listing.amenity.is_biking, <i class="fas fa-bicycle"></i>, "Biking"],
-            [listing.amenity.is_swimming, <i class="fas fa-swimmer"></i>, "Swimming"],
-            [listing.amenity.is_fishing, <i class="fas fa-fish"></i>, "Fishing"],
-            [listing.amenity.is_horseback, <i class="fas fa-horse"></i>, "Horseback-Riding"],
-            [listing.amenity.is_climbing, <i class="fas fa-mountain"></i>, "Climbing"]
+        const activities = [[listing.amenity.is_hiking, <i className="fas fa-hiking"></i>, "Hiking"],
+            [listing.amenity.is_biking, <i className="fas fa-bicycle"></i>, "Biking"],
+            [listing.amenity.is_swimming, <i className="fas fa-swimmer"></i>, "Swimming"],
+            [listing.amenity.is_fishing, <i className="fas fa-fish"></i>, "Fishing"],
+            [listing.amenity.is_horseback, <i className="fas fa-horse"></i>, "Horseback-Riding"],
+            [listing.amenity.is_climbing, <i className="fas fa-mountain"></i>, "Climbing"]
             ]
 
         const available_activities = activities.map(activity => {

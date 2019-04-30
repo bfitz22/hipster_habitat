@@ -203,14 +203,15 @@
     align-items: center;
     padding: 18px, 20px;
     width: 275px;
-    border: 1px solid black;
+    border: 1px solid #40d9ac;
     height: 60px;
     background-color: #40d9ac;
     font-family: "calibre", helvetica, sans-serif;
 }
 
 .green:hover {
-    cursor: pointer; 
+    cursor: pointer;
+    border-color: black;  
 }
 
 .directions-container {

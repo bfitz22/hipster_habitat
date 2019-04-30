@@ -74,7 +74,7 @@ export default class Slideshow extends React.Component {
                     }}>
                     {   
                         this.state.images.map((image, i) => (
-                            <Slide key={i} image={image} />
+                            <Slide key={i} image={image} position={i * 615}/>
                         ))
                     }
                 </div>

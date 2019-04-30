@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Slide = ({ image }) => {
+const Slide = ({ image, position }) => {
     const style = {
-        backgroundImage: `url(${image})`
+        backgroundImage: `url(${image})`,
+        left: position
     };
 
     return <div className="slide" style={style}></div>

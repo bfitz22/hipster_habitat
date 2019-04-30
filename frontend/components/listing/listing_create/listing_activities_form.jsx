@@ -81,11 +81,4 @@ class ListingActivitiesForm extends React.Component {
     }
 } 
 
-                    // <button className="grey" value="off" onClick={this.toggle("is_hiking")}>Hiking</button>
-                    // <button className="grey" value="off" onClick={this.toggle("is_biking")}>Biking</button>
-                    // <button className="grey" value="off" onClick={this.toggle("is_swimming")}>Swimming</button>
-                    // <button className="grey" value="off" onClick={this.toggle("is_fishing")}>Fishing</button>
-                    // <button className="grey" value="off" onClick={this.toggle("is_horseback")}>Horseback-Riding</button>
-                    // <button className="grey" value="off" onClick={this.toggle("is_climbing")}>Climbing</button>
-
 export default ListingActivitiesForm;

@@ -22,7 +22,7 @@ class ListingActivitiesForm extends React.Component {
         this.state.arr.map(el => {
             updateCreation(el.type, el.active);
         }),
-        location.href = "/#/listing_create/activities"
+        location.href = "/#/listing_create/photos"
     }
 
     // update(type, value) {

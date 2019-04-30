@@ -86,22 +86,24 @@ class ListingDetail extends React.Component {
                     </div>
         }
 
-        const activities = [listing.amenity.is_hiking,
-            listing.amenity.is_biking, 
-            listing.amenity.is_swimming,
-            listing.amenity.is_fishing,
-            listing.amenity.is_horseback,
-            listing.amenity.is_climbing
+        const activities = [[listing.amenity.is_hiking, <i class="fas fa-hiking"></i>, "Hiking"],
+            [listing.amenity.is_biking, <i class="fas fa-bicycle"></i>, "Biking"],
+            [listing.amenity.is_swimming, <i class="fas fa-swimmer"></i>, "Swimming"],
+            [listing.amenity.is_fishing, <i class="fas fa-fish"></i>, "Fishing"],
+            [listing.amenity.is_horseback, <i class="fas fa-horse"></i>, "Horseback-Riding"],
+            [listing.amenity.is_climbing, <i class="fas fa-mountain"></i>, "Climbing"]
             ]
 
         const available_activities = activities.map(activity => {
-            if (activity) {
+            if (activity[0]) {
                 return (
+                <div className="activity-box">
                 <div className="activity">
                     <div className="activity-item">
-                        <li key={activity.id}>image</li>
+                        {activity[1]}
                     </div>
-                    <span>{activity}</span>
+                </div>
+                <span className="activity-title">{activity[2]}</span>
                 </div>
                 )
             }
@@ -162,8 +164,10 @@ class ListingDetail extends React.Component {
             <div className="activities-show">
                 <div className="activities-containter">
                     <p className="activity-p">Activities</p>
-                    <p className="qwerty" >Offered on the Host's property or nearby.</p>
-                    <div className="activity-boxes">{available_activities}</div>
+                    <p className="activity-p2" >Offered on the Host's property or nearby.</p>
+                    <div className="activity-box-container">
+                        <div className="activity-boxes">{available_activities}</div>
+                    </div>
                 </div>
                 <div className="fake-box"></div>
             </div>

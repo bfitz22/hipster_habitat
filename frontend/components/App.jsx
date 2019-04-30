@@ -10,6 +10,7 @@ import ListingLocationForm from './listing/listing_create/listing_location_form'
 import ListingAmenitiesForm from './listing/listing_create/listing_amenities_form';
 import ListingPriceForm from './listing/listing_create/listing_price_form';
 import ListingActivitiesForm from './listing/listing_create/listing_activities_form';
+import ListingPhotosForm from './listing/listing_create/listing_photos_form';
 import { AuthRoute } from '../util/route_utils';
 
 const App = () => (
@@ -22,7 +23,7 @@ const App = () => (
                 <AuthRoute path="/listing_create/amenities" component={ListingAmenitiesForm}/>
                 <AuthRoute path="/listing_create/activities" component={ListingActivitiesForm}/> 
                 <AuthRoute path="/listing_create/price" component={ListingPriceForm}/>
-                {/* <AuthRoute path="/listing_create/photos" component={ListingPhotosForm}/>  */}
+                <AuthRoute path="/listing_create/photos" component={ListingPhotosForm}/>
             
             <Route path="/listings/:listingId" component={Nav}/>
             <Route exact path="/" component={MainMenuContainer} />

@@ -13,6 +13,12 @@
   display: flex;
   flex-direction: row; 
   justify-content: center;
+  height: 500px; 
+}
+
+.activities-container {
+  width: 100%; 
+  flex-direction: row;
 }
 
 .listing-show-title {
@@ -23,10 +29,10 @@
 }
 
 .listing-show-item {
-  height: 879px; 
+  height: 750px; 
   display: flex;
   flex-direction: column; 
-  /* justify-content: center; */
+  border-bottom: 1.5px solid #ebebeb;
 }
 
 .listing-show-title h1 {
@@ -74,15 +80,20 @@
   line-height: 2; 
 }
 
-.qwerty {
-  text-align: center;  
+.activity-p {
+  margin: 30px 0px 5px 0px;
+  padding: 10px 0px 20px 0px;
+  font-weight: bold;  
   font-family: "calibre", helvetica, sans-serif;
+  font-size: 18px; 
 }
 
-.activity-p {
-  font-weight: bold; 
-  text-align: center;  
+.activity-p2 {
+  margin: 0px 0px 30px 0px;
+  padding-bottom: 10px; 
   font-family: "calibre", helvetica, sans-serif;
+  color: #757575;
+  font-size: 18px; 
 }
 
 .info-boxes {
@@ -93,13 +104,25 @@
   justify-content: space-between; 
 }
 
-.activity-boxes {
-  width: 720px;
-  height: 360px; 
-  display: flex;
-  flex-direction: row; 
-  justify-content: space-between; 
+.activity-box-container {
+  width: 700px; 
+  display: flex; 
+  flex-direction: row;
   flex-wrap: wrap; 
+}
+
+.activity-boxes {
+  width: 100%;
+  height: auto; 
+  display: flex;
+  flex-direction: row;  
+  flex-wrap: wrap; 
+}
+
+.activity-box {
+  margin: 0px 30px 30px 0px; 
+  display: flex;
+  flex-direction: column;
 }
 
 .info {
@@ -115,7 +138,17 @@
   width: 100px;
   height: 100px; 
   display: flex;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+}
+
+.activity-title {
+  font-size: 15px;
+  color: rgb(51, 51, 51);
+  font-family: "calibre", helvetica, sans-serif; 
+  text-align: center;
 }
 
 .info div {
@@ -142,7 +175,11 @@
   height: 28px; 
   display: flex;
   flex-direction: row; 
-  margin-left: 13px; 
+  font-size: 40px; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  color: rgb(51, 51, 51);
 }
 
 .itemless {
@@ -183,7 +220,7 @@
 }
 
 .fake-box {
-    height: 370px; 
+    height: 750px; 
     width: 319px; 
 }
 

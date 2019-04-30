@@ -62,7 +62,7 @@ class SessionForm extends React.Component {
                         <br/>
                         <br />
                         <div className="email">
-                            <input type="text" 
+                            <input type="email" 
                             value={this.state.email_address} 
                             placeholder="Email address" 
                             onChange={this.update("email_address")}/>
@@ -110,7 +110,7 @@ class SessionForm extends React.Component {
                         </div>
                         <br/>
                         <div className="email">
-                            <input type="text" 
+                            <input type="email" 
                             value={this.state.email_address} 
                             placeholder="Email address..." 
                             onChange={this.update("email_address")}/>

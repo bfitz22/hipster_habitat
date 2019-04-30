@@ -43,6 +43,7 @@
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
+  overflow: scroll;
 }
 
 .choice-div {

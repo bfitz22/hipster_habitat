@@ -19,7 +19,7 @@ demo = User.create({
 user = User.create({
     first_name: "Brian",
     last_name: "Fitz",
-    email_address: "donut360",
+    email_address: "thecreator@master.com",
     password: "123456"
 })
 

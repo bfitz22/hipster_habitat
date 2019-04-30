@@ -1,5 +1,6 @@
 import React from 'react';
 import Slideshow from '../slideshow/slideshow';
+import Booking_Box from './booking_box/booking_box';
 
 class ListingDetail extends React.Component {
     componentDidMount() {
@@ -13,7 +14,7 @@ class ListingDetail extends React.Component {
 
         let campfires; let pets; let toilets; let water; let showers; let wifi;
 
-        if (listing.campfires_allowed) { 
+        if (listing.amenity.campfires_allowed) { 
             campfires = <div className="info-item">
                             <img src="https://s3.amazonaws.com/hipsterhabitat-dev/campfire.png" />
                             <li>Campfires allowed</li>
@@ -25,7 +26,7 @@ class ListingDetail extends React.Component {
                         </div>
         }
 
-        if (listing.pets_allowed) { 
+        if (listing.amenity.pets_allowed) { 
             pets = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/dog.png" />  
                         <li>Pets allowed</li>
@@ -37,7 +38,7 @@ class ListingDetail extends React.Component {
                     </div>
         }
 
-        if (listing.is_toilets) { 
+        if (listing.amenity.is_toilets) { 
             toilets = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/toilet+(1).png" />  
                         <li>Toilet available</li>
@@ -49,7 +50,7 @@ class ListingDetail extends React.Component {
                     </div>
         }
 
-        if (listing.is_water) { 
+        if (listing.amenity.is_water) { 
             water = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/water.png" />  
                         <li>Water available</li>
@@ -61,7 +62,7 @@ class ListingDetail extends React.Component {
                     </div>
         }
 
-        if (listing.is_showers) {
+        if (listing.amenity.is_showers) {
             showers = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/shower.png" />  
                         <li>Showers available</li>
@@ -73,7 +74,7 @@ class ListingDetail extends React.Component {
                     </div>
         }
 
-        if (listing.is_wifi) {
+        if (listing.amenity.is_wifi) {
             wifi = <div className="info-item">
                         <img src="https://s3.amazonaws.com/hipsterhabitat-dev/wifi.png" />  
                         <li>WiFi available</li>
@@ -85,8 +86,27 @@ class ListingDetail extends React.Component {
                     </div>
         }
 
-        return (
+        const activities = [listing.amenity.is_hiking,
+            listing.amenity.is_biking, 
+            listing.amenity.is_swimming,
+            listing.amenity.is_fishing,
+            listing.amenity.is_horseback,
+            listing.amenity.is_climbing
+            ]
 
+        const available_activities = activities.map(activity => {
+            if (activity) {
+                return (
+                <div className="activity">
+                    <div className="activity-item">
+                        <li key={activity.id}>image</li>
+                    </div>
+                    <span>{activity}</span>
+                </div>
+                )
+            }
+        })
+        return (
             <div className="whole-show-page">
             <Slideshow listing={listing}/>
             <div className="show-page">
@@ -137,34 +157,15 @@ class ListingDetail extends React.Component {
                 <div className="fake-box"></div>
             </div>
             <div id="anchor">
-              <div className="booking-box">
-                <div className="booking-div-col">
-                  <section className="price">${listing.price}</section>
-                  <section className="per-night">per night</section>
+              <Booking_Box listing={listing} />
+            </div>
+            <div className="activities-show">
+                <div className="activities-containter">
+                    <p className="activity-p">Activities</p>
+                    <p className="qwerty" >Offered on the Host's property or nearby.</p>
+                    <div className="activity-boxes">{available_activities}</div>
                 </div>
-                <div className="booking-div">
-                  <div className="check-in-div">
-                    <section className="check-bold">Check in</section>
-                    <section>{listing.check_in}</section>
-                  </div>
-                  <div className="check-in-div">
-                    <section className="check-bold">Check out</section>
-                    <section>{listing.check_out}</section>
-                  </div>
-                  <div className="guests-div">
-                    <section className="check-bold">Guests</section>
-                    <section>Max: {listing.max_capacity}</section>
-                  </div>
-                </div>
-                <div className="booking-div-space">
-                  <section className="base-price">Base price x 2 nights</section>
-                  <br/>
-                  <section>${`${listing.price}` * 2}</section>
-                </div>
-                <div className="booking-div">
-                  <button className="booking-button">Request to book</button>
-                </div>
-              </div>
+                <div className="fake-box"></div>
             </div>
           </div>
         )

@@ -27,7 +27,7 @@ class Listing < ApplicationRecord
 
     has_many_attached :photos
 
-    has_many :amenities
+    has_one :amenity
     
     # has_many :reviews
 

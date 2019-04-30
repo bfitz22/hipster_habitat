@@ -20,9 +20,11 @@
 #
 
 class Amenity < ApplicationRecord
+    validates :listing_id, presence: true
+
     validates :pets_allowed, :campfires_allowed, :is_water, :is_toilets, :is_showers, :is_wifi,
     :is_hiking, :is_biking, :is_swimming, :is_fishing, :is_horseback, :is_climbing, inclusion: { in: [true, false] }
 
-    belongs_to :listings
+    belongs_to :listing
 
 end

@@ -6,10 +6,20 @@ class ListingDetail extends React.Component {
     componentDidMount() {
         this.props.fetchListing(this.props.match.params.listingId);
     }
-      
+    
     render() {
         const { listing } = this.props;
-        // const host = this.props.hosts[listing.hostId];
+        const { users } = this.props;
+        let host;
+        if (listing && users) {
+            host = <ul className="host-info">
+                    <li>{users[listing.host_id].first_name}</li>
+                    <li>{users[listing.host_id].last_name}</li>
+                </ul>
+        } else {
+            host = "loading"
+        }
+
         if (!listing) return null; 
 
         let campfires; let pets; let toilets; let water; let showers; let wifi;
@@ -119,7 +129,7 @@ class ListingDetail extends React.Component {
                         <h1>{listing.title}</h1>
                     </div>
                     <div className="listing-show-description">
-                        <span className="host-id">Host: </span>
+                        <span className="host-id">Host: {host}</span>
                         <p className="description">{listing.description}</p>
                     </div>
                     <div className="info-boxes">

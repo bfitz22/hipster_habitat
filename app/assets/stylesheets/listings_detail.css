@@ -71,8 +71,15 @@
 }
 
 .host-id {
+  margin-top: 8px; 
   width: 220px;
   padding-right: 15px; 
+  display: flex;
+  flex-direction: row; 
+}
+
+.host-id li {
+  margin: 0px 0px 10px 50px; 
 }
 
 .description {

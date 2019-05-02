@@ -1,6 +1,8 @@
 import React from 'react';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
+import NavRight from './nav_right';
+import NavLeft from './nav_left';
 
 class ListingPhotosForm extends React.Component {
     constructor(props) {
@@ -27,28 +29,31 @@ class ListingPhotosForm extends React.Component {
             <ListingNav />
             <div className="form-body">
                 <div className="nav-arrow-container">
-                    <div className="nav-arrow-grey"><i className="fas fa-chevron-left" aria-hidden="true"></i></div>
-                    <div className="nav-arrow"><i className="fas fa-chevron-right"></i></div>
+                    <NavLeft/>
+                    <NavRight/>
                 </div>
-                <form className="form-vessel" action="upload.php" enctype="multipart/form-data">
+                <form className="form-vessel" action="upload.php" encType="multipart/form-data">
                     <div className="form-container">
                         <div className="listing-form-title">
                             <h2>Upload photos of your Listing</h2>
                         </div>
                         <div className="form-input">
-                            <input type="file" name="fileToUpload" onChange={this.update("lat")}/>
+                            <input className="upload-button" id="file" type="file" name="fileToUpload" />
+                            <label className="image-upload" for="file"><i class="fas fa-camera"></i>Click to add photos</label>
                         </div>
                         <div>
-                            <button className="ok" onClick={this.onClick}>Ok</button>
+                            <button className="ok-create" onClick={this.onClick}>Create Your Listing!</button>
                         </div>
                     </div>
                     <div className="directions-container">
                         <div className="directions">
-                            <p className="directions-title">Why do you need this?</p>
+                            <p className="directions-title">How photos on HipsterHabitat work</p>
                             <br/>
-                            <p className="directions-body">To ensure Hipsters can find you, you’ll need to tell us where your 
-                            property can be found on a map. Remote and rural properties are welcome as they make for some of the 
-                            best Habitats. </p>
+                            <p className="directions-body">Make sure you put the best photo first.
+                            <br/>
+                            <br/>
+                            This photo appears in HipsterHabitat searches so it's important you showcase your
+                            listing with it </p>
                         </div>
                     </div>
                 </form>

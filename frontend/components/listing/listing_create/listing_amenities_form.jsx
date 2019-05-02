@@ -1,6 +1,8 @@
 import React from 'react';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
+import NavRight from './nav_right';
+import NavLeft from './nav_left';
 
 class ListingAmenitiesForm extends React.Component {
     constructor(props) {
@@ -39,6 +41,13 @@ class ListingAmenitiesForm extends React.Component {
     // https://stackoverflow.com/questions/45420503/how-to-handle-state-of-multiple-buttons-with-react
 
     render() {
+        let ok;
+        if (this.state.arr.every(el => !el.active)) {
+            ok = <button className="not-ok">Ok</button>
+        } else {
+            ok = <button className="ok" onClick={this.onClick}>Ok</button>
+        }
+
         const options = this.state.arr.map((el, i) => 
             <div key={i} className={el.active ? "green" : "grey"} type={el.type} active={el.active ? "true" : "false"} 
             onClick={() => this.toggle(i)}>{el.title}</div>
@@ -49,8 +58,8 @@ class ListingAmenitiesForm extends React.Component {
             <ListingNav />
             <div className="form-body">
                     <div className="nav-arrow-container">
-                        <div className="nav-arrow-grey"><i className="fas fa-chevron-left" aria-hidden="true"></i></div>
-                        <div className="nav-arrow"><i className="fas fa-chevron-right"></i></div>
+                        <NavLeft/>
+                        <NavRight/>
                     </div>
                 <div className="form-vessel">
                     <div className="form-container">
@@ -61,7 +70,7 @@ class ListingAmenitiesForm extends React.Component {
                             {options}
                         </div>
                         <div>
-                            <button className="ok" onClick={this.onClick}>Ok</button>
+                            {ok}
                         </div>
                     </div>
                 

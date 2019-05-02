@@ -1,6 +1,8 @@
 import React from 'react';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
+import NavRight from './nav_right';
+import NavLeft from './nav_left';
 
 class ListingForm extends React.Component {
     constructor(props) {
@@ -22,13 +24,19 @@ class ListingForm extends React.Component {
     }
 
     render() {
+        let ok;
+        if (this.state.title === "" || this.state.description === "") {
+            ok = <button className="not-ok">Ok</button>
+        } else {
+            ok = <button className="ok" onClick={this.onClick}>Ok</button>
+        }
         return (
             <>
             <ListingNav />
             <div className="form-body">
                 <div className="nav-arrow-container">
-                        <div className="nav-arrow-grey"><i className="fas fa-chevron-left" aria-hidden="true"></i></div>
-                        <div className="nav-arrow"><i className="fas fa-chevron-right"></i></div>
+                    <NavLeft/>
+                    <NavRight/>
                 </div>
                 <div className="form-vessel">
                     <div className="form-container">
@@ -45,7 +53,8 @@ class ListingForm extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <button className="ok" onClick={this.onClick}>Ok</button>
+                            {/* <button className="ok" onClick={this.onClick}>Ok</button> */}
+                            {ok}
                         </div>
                     </div>
 

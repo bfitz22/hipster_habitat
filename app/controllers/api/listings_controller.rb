@@ -10,6 +10,7 @@ class Api::ListingsController < ApplicationController
 
     def show
         @listing = Listing.with_attached_photos.find(params[:id])
+        @host = User.find(@listing.host_id)
     end
 
     def create 
@@ -41,3 +42,5 @@ class Api::ListingsController < ApplicationController
         )
     end
 end
+
+# store.getState().entities.users[listings.host_id]

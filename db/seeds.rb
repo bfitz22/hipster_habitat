@@ -25,7 +25,7 @@ user = User.create({
 
 Listing.destroy_all
 hope = Listing.create!({
-    host: demo,
+    host_id: demo.id,
     title: "Camp Hope",
     description: "Weight loss camp for heavyweights. Come check out all the fun 
     (and enjoy all the junk food) such as go-karts and the legendary blob before
@@ -52,7 +52,7 @@ hope.photos.attach(io: file10, filename: 'camp_hope4.jpg')
 hope.photos.attach(io: file11, filename: 'camp_hope5.jpg')
 
 firewood = Listing.create!({
-    host: user,
+    host_id: demo.id,
     title: "Camp Firewood",
     description: "Wet, hot, and American! Come enjoy a fun, sometimes romantic,
     and always hilarious journey with everyone's favorite counselor crew! Avoid
@@ -79,7 +79,7 @@ firewood.photos.attach(io: file13, filename: 'camp_firewood4.jpg')
 firewood.photos.attach(io: file14, filename: 'camp_firewood5.jpg')
 
 crystal_lake = Listing.create!({
-    host: user,
+    host_id: demo.id,
     title: "Camp Crystal Lake",
     description: "Check in only on Friday the 13th. No guarantee of ever leaving. 
     Lake is off limits after a past tragedy that occurred there. The camp 
@@ -107,7 +107,7 @@ crystal_lake.photos.attach(io: file16, filename: 'camp_crystal_lake4.jpg')
 crystal_lake.photos.attach(io: file17, filename: 'camp_crystal_lake5.jpg')
 
 north_star = Listing.create!({
-    host: user,
+    host_id: demo.id,
     title: "Camp North Star",
     description: "Practical joker? You'll love this goofball-friendly environment.
     Come check out this Canadian-inspired camp maintained by the legendary Tripper

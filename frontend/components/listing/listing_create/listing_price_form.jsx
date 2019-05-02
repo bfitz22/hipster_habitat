@@ -1,6 +1,8 @@
 import React from 'react';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
+import NavRight from './nav_right';
+import NavLeft from './nav_left';
 
 class ListingPriceForm extends React.Component {
     constructor(props) {
@@ -22,20 +24,27 @@ class ListingPriceForm extends React.Component {
     }
 
     render() {
+        let ok;
+        if (this.state.max_capacity === "" || this.state.price === "") {
+            ok = <button className="not-ok">Ok</button>
+        } else {
+            ok = <button className="ok" onClick={this.onClick}>Ok</button>
+        }
+
             return (
             <>
             <ListingNav />
             <div className="form-body">
                 <div className="nav-arrow-container">
-                    <div className="nav-arrow-grey"><i className="fas fa-chevron-left" aria-hidden="true"></i></div>
-                    <div className="nav-arrow"><i className="fas fa-chevron-right"></i></div>
+                    <NavLeft/>
+                    <NavRight/>
                 </div>
                 <div className="form-vessel">
                     <div className="form-container">
                         <div className="listing-form-title">
                             <h2>How many people can your site accommodate?</h2>
                         </div>
-                        <div className="form-input">
+                        <div className="form-capacity">
                             <input type="number" step="1" onChange={this.update("max_capacity")}/>
                         </div>
                         <div className="listing-form-title">
@@ -45,7 +54,7 @@ class ListingPriceForm extends React.Component {
                             <div>$</div><input type="number" step="5" onChange={this.update("price")}/><div>/night</div>
                         </div>
                         <div>
-                            <button className="ok" onClick={this.onClick}>Ok</button>
+                            {ok}
                         </div>
                     </div>
                     <div className="directions-container">

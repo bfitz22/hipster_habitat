@@ -11,7 +11,7 @@ const usersReducer = (state = {}, action) => {
         case DELETE_SESSION:
             return {};
         case RECEIVE_LISTING:
-            return merge({}, state, action.host);
+            return merge({}, state, {[action.listing.host_id]: action.host});
         default: 
             return state; 
     }

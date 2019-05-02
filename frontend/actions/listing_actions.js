@@ -11,12 +11,12 @@ const receiveListings = listings => {
     listings
 }};
 
-const receiveListing = ({ listing }) => {
+const receiveListing = ({ listing, host }) => {
     return {
         type: RECEIVE_LISTING,
         listingId: listing.id,
-        listing,
-        // host 
+        host,
+        listing
     };
 };
 
@@ -41,6 +41,6 @@ export const fetchMapListings = (filters) => dispatch => {
 
 export const fetchListing = id => dispatch => (
     APIUtil.fetchListing(id).then(
-        (listing) => dispatch(receiveListing(listing))
+        (response) => dispatch(receiveListing(response))
     )
 );

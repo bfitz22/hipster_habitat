@@ -11,6 +11,7 @@ import ListingAmenitiesForm from './listing/listing_create/listing_amenities_for
 import ListingPriceForm from './listing/listing_create/listing_price_form';
 import ListingActivitiesForm from './listing/listing_create/listing_activities_form';
 import ListingPhotosForm from './listing/listing_create/listing_photos_form';
+import ListingCheckinForm from './listing/listing_create/listing_check-in_form';
 import { AuthRoute } from '../util/route_utils';
 
 const App = () => (
@@ -24,6 +25,7 @@ const App = () => (
                 <AuthRoute path="/listing_create/activities" component={ListingActivitiesForm}/> 
                 <AuthRoute path="/listing_create/price" component={ListingPriceForm}/>
                 <AuthRoute path="/listing_create/photos" component={ListingPhotosForm}/>
+                <AuthRoute path="/listing_create/check_in" component={ListingCheckinForm}/>
             
             <Route path="/listings/:listingId" component={Nav}/>
             <Route exact path="/" component={MainMenuContainer} />

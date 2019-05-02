@@ -1,6 +1,8 @@
 import React from 'react';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
+import NavRight from './nav_right';
+import NavLeft from './nav_left';
 
 class ListingLocationForm extends React.Component {
     constructor(props) {
@@ -22,13 +24,20 @@ class ListingLocationForm extends React.Component {
     }
 
     render() {
+        let ok;
+        if (this.state.lat === "" || this.state.lng === "") {
+            ok = <button className="not-ok">Ok</button>
+        } else {
+            ok = <button className="ok" onClick={this.onClick}>Ok</button>
+        }
+
         return (
             <>
             <ListingNav />
             <div className="form-body">
                 <div className="nav-arrow-container">
-                    <div className="nav-arrow-grey"><i className="fas fa-chevron-left" aria-hidden="true"></i></div>
-                    <div className="nav-arrow"><i className="fas fa-chevron-right"></i></div>
+                    <NavLeft/>
+                    <NavRight/>
                 </div>
                 <div className="form-vessel">
                     <div className="form-container">
@@ -36,11 +45,11 @@ class ListingLocationForm extends React.Component {
                             <h2>What are the coordinates of your Listing?</h2>
                         </div>
                         <div className="form-input">
-                            <input type="text" placeholder="latitude" onChange={this.update("lat")}/>
-                            <input type="text" placeholder="longitude" onChange={this.update("lng")} />
+                            <input type="number" placeholder="latitude" onChange={this.update("lat")}/>
+                            <input type="number" placeholder="longitude" onChange={this.update("lng")} />
                         </div>
                         <div>
-                            <button className="ok" onClick={this.onClick}>Ok</button>
+                            {ok}
                         </div>
                     </div>
                     <div className="directions-container">

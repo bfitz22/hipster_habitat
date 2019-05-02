@@ -128,6 +128,22 @@
     width: 100%;
 }
 
+.form-capacity {
+    margin-left: 20px;
+    font-family: "calibre", helvetica, sans-serif;
+    font-size: 18px;
+    height: 300px;  
+    width: 100%;
+    display: flex;
+    align-items: center; 
+}
+
+.form-capacity input {
+    width: 70%;
+    height: 35px;
+    text-indent: 15px;
+}
+
 .form-price {
     margin: 20px;
     font-family: "calibre", helvetica, sans-serif;
@@ -144,6 +160,17 @@
     text-indent: 15px; 
 }
 
+.form-input select {
+    background-color: white; 
+    width: 70%;
+    height: 35px;
+    text-indent: 15px; 
+}
+
+.form-input select:focus {
+    border: 1px solid #40d9ac;
+}
+
 .form-price input {
     width: 70%;
     height: 35px;
@@ -158,6 +185,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 0.1px solid gray;
 }
 
 .form-input textarea {
@@ -207,11 +235,12 @@
     height: 60px;
     background-color: #40d9ac;
     font-family: "calibre", helvetica, sans-serif;
+    font-weight: bold; 
+    color: white; 
 }
 
 .green:hover {
     cursor: pointer;
-    border-color: black;  
 }
 
 .directions-container {
@@ -262,9 +291,35 @@
     font-weight: 700;
     font-size: 1rem;
     margin-left: 20px;  
+    padding: 18px 20px;
+    width: 100px;
+    border: 3px white;
+    height: 58px;
+    font-family: "calibre", helvetica, sans-serif;
+}
+
+.ok-create {
+    background-color: #40d9ac;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-left: 20px;  
+    padding: 18px 15px 20px 15px;
+    width: auto;
+    border: 3px white;
+    height: 58px;
+    font-family: "calibre", helvetica, sans-serif;
+}
+
+.not-ok {
+    background-color: rgb(252, 252, 252);
+    color: lightgray;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-left: 20px;  
     padding: 18px, 20px;
     width: 100px;
-    border: 3px #40d9ac;
+    border: 1.25px solid lightgray;
     height: 58px;
     font-family: "calibre", helvetica, sans-serif;
 }
@@ -274,4 +329,41 @@
     cursor: pointer;
     color: #40d9ac;
     border: 3px solid #40d9ac;
+}
+
+.ok-create:hover {
+    background-color: white;
+    cursor: pointer;
+    color: #40d9ac;
+    border: 3px solid #40d9ac;
+}
+
+.upload-button {
+    width: 0.1px;
+    height: 0.1px; 
+    opacity: 0;
+    overflow: hidden;
+    position: absolute; 
+    z-index: -1; 
+}
+
+.image-upload {
+    height: 120px;
+    width: 598px; 
+    border: 3px dashed rgb(180, 180, 180);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(180, 180, 180);
+}
+
+.image-upload:hover {
+    cursor: pointer;
+    border: 3px dashed black;
+    color: black;
+}
+
+.fa-camera {
+    margin-bottom: 15px; 
 }

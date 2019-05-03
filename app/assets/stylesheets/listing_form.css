@@ -242,6 +242,7 @@
 .green:hover {
     cursor: pointer;
     border: 1px solid #40d9ac;
+    color: white; 
 }
 
 .directions-container {

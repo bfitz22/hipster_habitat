@@ -11,7 +11,7 @@ class ListingDetail extends React.Component {
         const { listing } = this.props;
         const { users } = this.props;
         let host;
-        if (listing && users) {
+        if (listing && users[listing.host_id]) {
             host = <ul className="host-info">
                     <li>{users[listing.host_id].first_name}</li>
                     <li>{users[listing.host_id].last_name}</li>
@@ -104,12 +104,12 @@ class ListingDetail extends React.Component {
             [listing.amenity.is_climbing, <i className="fas fa-mountain"></i>, "Climbing"]
             ]
 
-        const available_activities = activities.map(activity => {
+        const available_activities = activities.map((activity, i) => {
             if (activity[0]) {
                 return (
-                <div className="activity-box">
+                <div key={i} className="activity-box">
                 <div className="activity">
-                    <div className="activity-item">
+                    <div  className="activity-item">
                         {activity[1]}
                     </div>
                 </div>

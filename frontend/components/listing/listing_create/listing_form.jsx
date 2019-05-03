@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
@@ -12,8 +13,8 @@ class ListingForm extends React.Component {
     }
 
     onClick() {
-        updateCreation("title", this.state.title),
-        updateCreation("description", this.state.description),
+        this.props.updateCreation("title", this.state.title),
+        this.props.updateCreation("description", this.state.description),
         location.href = "/#/listing_create/location"
     }
 
@@ -72,5 +73,9 @@ class ListingForm extends React.Component {
         )
     }   
 }
+debugger
+const mdp = dispatch => ({
+    updateCreation: (key, value) => dispatch(updateCreation(key, value))
+});
 
-export default ListingForm;
+export default connect(null, mdp)(ListingForm);

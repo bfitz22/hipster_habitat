@@ -241,6 +241,7 @@
 
 .green:hover {
     cursor: pointer;
+    border: 1px solid #40d9ac;
 }
 
 .directions-container {
@@ -296,6 +297,7 @@
     border: 3px white;
     height: 58px;
     font-family: "calibre", helvetica, sans-serif;
+    transition: all 0.65s ease 0s; 
 }
 
 .ok-create {
@@ -309,19 +311,21 @@
     border: 3px white;
     height: 58px;
     font-family: "calibre", helvetica, sans-serif;
+    transition: all 0.25s ease 0s; 
 }
 
 .not-ok {
-    background-color: rgb(252, 252, 252);
-    color: lightgray;
+    background-color: rgb(255, 255, 255);
+    color: rgb(117, 117, 117);
     font-weight: 700;
     font-size: 1rem;
     margin-left: 20px;  
     padding: 18px, 20px;
     width: 100px;
-    border: 1.25px solid lightgray;
+    border: none; 
     height: 58px;
     font-family: "calibre", helvetica, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .ok:hover {

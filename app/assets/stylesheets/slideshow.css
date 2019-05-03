@@ -25,6 +25,7 @@
   z-index: 1;
   color: white;
   font-size: 40px;
+  transition: all 0.25s ease 0s; 
 }
 
 .prev-arrow {
@@ -34,8 +35,10 @@
   z-index: 1;
   color: white; 
   font-size: 40px; 
+  transition: all 0.25s ease 0s; 
 }
 
 .next-arrow:hover, .prev-arrow:hover {
   cursor: pointer; 
+  font-size: 50px; 
 }

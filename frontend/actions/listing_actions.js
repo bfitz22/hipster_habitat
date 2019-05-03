@@ -3,7 +3,7 @@ import * as APIUtil from '../util/listing_api_util';
 export const RECEIVE_LISTINGS = "RECEIVE_LISTINGS";
 export const RECEIVE_LISTING = "RECEIVE_LISTING";
 export const RECEIVE_MAP_LISTINGS = "RECEIVE_MAP_LISTINGS";
-export const UPDATE_CREATION = "UPDATE_CREATION";
+export const UPDATE_CREATION_STATE = "UPDATE_CREATION_STATE";
 
 const receiveListings = listings => {
     return {
@@ -20,13 +20,17 @@ const receiveListing = ({ listing, host }) => {
     };
 };
 
-export const updateCreation = (key, value) => {
+export const updateCreationState = (key, value) => {
     return {
-        type: UPDATE_CREATION,
+        type: UPDATE_CREATION_STATE,
         key,
         value
     }
 }
+
+export const updateCreation = (key, value) => dispatch => (
+    dispatch(updateCreationState(key, value))
+)
 
 export const fetchListings = () => dispatch => (
     APIUtil.fetchListings().then(

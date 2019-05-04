@@ -3,17 +3,18 @@ import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
 import NavLeft from './nav_left';
+import { connect } from 'react-redux';
 
 class ListingPriceForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { max_capacity: "", price: "" }
+        this.state = { max_capacity: this.props.max_capacity, price: this.props.price }
         this.onClick = this.onClick.bind(this);
     }
 
     onClick() {
-        updateCreation("max_capacity", this.state.max_capacity),
-        updateCreation("price", this.state.price),
+        this.props.updateCreation("max_capacity", this.state.max_capacity)
+        this.props.updateCreation("price", this.state.price)
         location.href = "/#/listing_create/amenities"
     }
     
@@ -25,7 +26,7 @@ class ListingPriceForm extends React.Component {
 
     render() {
         let ok;
-        if (this.state.max_capacity === "" || this.state.price === "") {
+        if (this.state.max_capacity === undefined || this.state.price === undefined) {
             ok = <button className="not-ok">Ok</button>
         } else {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>
@@ -45,13 +46,13 @@ class ListingPriceForm extends React.Component {
                             <h2>How many people can your site accommodate?</h2>
                         </div>
                         <div className="form-capacity">
-                            <input type="number" step="1" onChange={this.update("max_capacity")}/>
+                            <input type="number" step="1" value={this.state.max_capacity} onChange={this.update("max_capacity")}/>
                         </div>
                         <div className="listing-form-title">
                             <h2>What do you want your price per night to be?</h2>
                         </div>
                         <div className="form-price">
-                            <div>$</div><input type="number" step="5" onChange={this.update("price")}/><div>/night</div>
+                            <div>$</div><input type="number" step="5" value={this.state.price} onChange={this.update("price")}/><div>/night</div>
                         </div>
                         <div>
                             {ok}
@@ -72,4 +73,15 @@ class ListingPriceForm extends React.Component {
     }
 } 
 
-export default ListingPriceForm;
+const msp = ({ entities: { creations } }) => {
+    return {
+        max_capacity: creations.max_capacity,
+        price: creations.price
+    }
+}
+
+const mdp = dispatch => ({
+    updateCreation: (key, value) => dispatch(updateCreation(key, value))
+});
+
+export default connect(msp, mdp)(ListingPriceForm);

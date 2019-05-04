@@ -3,6 +3,7 @@ import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
 import NavLeft from './nav_left';
+import { connect } from 'react-redux';
 
 class ListingAmenitiesForm extends React.Component {
     constructor(props) {
@@ -10,19 +11,19 @@ class ListingAmenitiesForm extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.onClick = this.onClick.bind(this);
         this.state = { "arr": [
-                {type: "is_pets", active: false, title: "Pets Allowed"},
-                {type: "is_campfires", active: false, title: "Campfires Allowed"},
-                {type: "is_water", active: false, title: "Water Available"},
-                {type: "is_toilets", active: false, title: "Toilets Available"},
-                {type: "is_showers", active: false, title: "Showers Available"},
-                {type: "is_wifi", active: false, title: "WiFi Available"}
+                {type: "is_pets", active: this.props.is_pets, title: "Pets Allowed"},
+                {type: "is_campfires", active: this.props.is_campfires, title: "Campfires Allowed"},
+                {type: "is_water", active: this.props.is_water, title: "Water Available"},
+                {type: "is_toilets", active: this.props.is_toilets, title: "Toilets Available"},
+                {type: "is_showers", active: this.props.is_showers, title: "Showers Available"},
+                {type: "is_wifi", active: this.props.is_wifi, title: "WiFi Available"}
             ]
         }
     }
 
     onClick() {
         this.state.arr.map(el => {
-            updateCreation(el.type, el.active);
+            this.props.updateCreation(el.type, el.active);
         }),
         location.href = "/#/listing_create/activities"
     }
@@ -90,4 +91,19 @@ class ListingAmenitiesForm extends React.Component {
     }
 } 
 
-export default ListingAmenitiesForm;
+const msp = ({ entities: { creations } }) => {
+    return {
+        is_pets: creations.is_pets,
+        is_campfires: creations.is_campfires,
+        is_water: creations.is_water,
+        is_toilets: creations.is_toilets,
+        is_showers: creations.is_showers,
+        is_wifi: creations.is_wifi
+    }
+}
+
+const mdp = dispatch => ({
+    updateCreation: (key, value) => dispatch(updateCreation(key, value))
+});
+
+export default connect(msp, mdp)(ListingAmenitiesForm);

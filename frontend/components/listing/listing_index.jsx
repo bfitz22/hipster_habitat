@@ -5,6 +5,12 @@ import MarkerManager from '../listing_map/marker_manager';
 // import FilterForm from '../listing_map/filter_form';
 
 class ListingIndex extends React.Component {
+    // constructor(props) {
+    //   super(props);
+    //   this.state = {
+    //     listings: listings
+    //   }
+    // }
 
   componentDidMount() {
         const mapOptions = {
@@ -22,6 +28,7 @@ class ListingIndex extends React.Component {
     }
 
     componentDidUpdate() {
+      this.addListeners();
       this.MarkerManager.updateMarkers(this.props.listings);
     }
 

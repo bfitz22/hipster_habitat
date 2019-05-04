@@ -5,7 +5,6 @@ class Api::ListingsController < ApplicationController
         else
             @listings = Listing.with_attached_photos.all
         end
-        # render 'api/listings/index'
     end
 
     def show

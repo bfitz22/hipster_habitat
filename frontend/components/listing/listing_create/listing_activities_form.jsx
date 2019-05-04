@@ -3,6 +3,7 @@ import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
 import NavLeft from './nav_left';
+import { connect } from 'react-redux';
 
 class ListingActivitiesForm extends React.Component {
     constructor(props) {
@@ -10,19 +11,19 @@ class ListingActivitiesForm extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.onClick = this.onClick.bind(this);
         this.state = { "arr": [
-                {type: "is_hiking", active: false, title: "Hiking"},
-                {type: "is_biking", active: false, title: "Biking"},
-                {type: "is_swimming", active: false, title: "Swimming"},
-                {type: "is_fishing", active: false, title: "Fishing"},
-                {type: "is_horseback", active: false, title: "Horseback Riding"},
-                {type: "is_climbing", active: false, title: "Climbing"}
+                {type: "is_hiking", active: this.props.is_hiking, title: "Hiking"},
+                {type: "is_biking", active: this.props.is_biking, title: "Biking"},
+                {type: "is_swimming", active: this.props.is_swimming, title: "Swimming"},
+                {type: "is_fishing", active: this.props.is_fishing, title: "Fishing"},
+                {type: "is_horseback", active: this.props.is_horseback, title: "Horseback Riding"},
+                {type: "is_climbing", active: this.props.is_climbing, title: "Climbing"}
             ]
         }
     }
 
     onClick() {
         this.state.arr.map(el => {
-            updateCreation(el.type, el.active);
+            this.props.updateCreation(el.type, el.active);
         }),
         location.href = "/#/listing_create/check_in"
     }
@@ -90,4 +91,19 @@ class ListingActivitiesForm extends React.Component {
     }
 } 
 
-export default ListingActivitiesForm;
+const msp = ({ entities: { creations } }) => {
+    return {
+        is_hiking: creations.is_hiking,
+        is_swimming: creations.is_swimming,
+        is_horseback: creations.is_horseback,
+        is_biking: creations.is_biking,
+        is_fishing: creations.is_fishing,
+        is_climbing: creations.is_climbing
+    }
+}
+
+const mdp = dispatch => ({
+    updateCreation: (key, value) => dispatch(updateCreation(key, value))
+});
+
+export default connect(msp, mdp)(ListingActivitiesForm);

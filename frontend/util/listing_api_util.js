@@ -1,11 +1,14 @@
-export const fetchListings = () => (
-    $.ajax({
-        method: 'GET',
-        url: 'api/listings'
-    })
-);
+export const fetchListings = () => {
+    return(
+        $.ajax({
+            method: 'GET',
+            url: 'api/listings'
+        })
+    )
+};
 
 export const fetchMapListings = (filters) => {
+    debugger
     return (
     $.ajax({
         method: 'GET',
@@ -21,3 +24,13 @@ export const fetchListing = id => (
         url: `api/listings/${id}`
     })
 );
+
+export const createListing = (listing) => {
+    return(
+        $.ajax({
+            method: 'POST',
+            url: 'api/listings',
+            data: { listing }
+        })
+    )
+}

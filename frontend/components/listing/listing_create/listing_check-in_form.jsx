@@ -3,11 +3,12 @@ import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
 import NavLeft from './nav_left';
+import { connect } from 'react-redux';
 
 class ListingCheckinForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { check_in: "", check_out: "" }
+        this.state = { check_in: this.props.check_in, check_out: this.props.check_out }
         this.onClick = this.onClick.bind(this);
         this.options = ["----", "12:00am", "1:00am", "2:00am", "3:00am", "4:00am",
         "5:00am", "6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am",
@@ -16,8 +17,8 @@ class ListingCheckinForm extends React.Component {
     }
 
     onClick() {
-        updateCreation("check_in", this.state.check_out),
-        updateCreation("check_out", this.state.check_out),
+        this.props.updateCreation("check_in", this.state.check_out),
+        this.props.updateCreation("check_out", this.state.check_out),
         location.href = "/#/listing_create/photos"
     }
     
@@ -55,9 +56,9 @@ class ListingCheckinForm extends React.Component {
                         </div>
                         <div className="form-input">
                             <p>Check in after...</p>
-                            <select name="check-in" onChange={this.update("check_in")}>{times}</select>
+                            <select name="check-in" value={this.state.check_in} onChange={this.update("check_in")}>{times}</select>
                             <p>Check out before...</p>
-                            <select name="check-out" onChange={this.update("check_out")}>{times}</select> 
+                            <select name="check-out" value={this.state.check_out} onChange={this.update("check_out")}>{times}</select> 
                         </div>
                         <div>
                             {ok}
@@ -80,4 +81,15 @@ class ListingCheckinForm extends React.Component {
     } 
 }
 
-export default ListingCheckinForm;
+const msp = ({ entities: { creations } }) => {
+    return {
+        check_in: creations.check_in,
+        check_out: creations.check_out
+    }
+}
+
+const mdp = dispatch => ({
+    updateCreation: (key, value) => dispatch(updateCreation(key, value))
+});
+
+export default connect(msp, mdp)(ListingCheckinForm);

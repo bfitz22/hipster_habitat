@@ -8,13 +8,15 @@ import NavLeft from './nav_left';
 class ListingForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { title: "", description: "" }
+        this.state = { title: this.props.title, description: this.props.description }
         this.onClick = this.onClick.bind(this);
     }
 
     onClick() {
-        this.props.updateCreation("title", this.state.title),
-        this.props.updateCreation("description", this.state.description),
+        this.props.updateCreation("title", this.state.title)
+        this.props.updateCreation("description", this.state.description)
+        this.props.updateCreation("host_id", this.props.currentUser.id)
+        // this.props.updateCreation("prevPage", "/#/listing_create")
         location.href = "/#/listing_create/location"
     }
 
@@ -26,11 +28,12 @@ class ListingForm extends React.Component {
 
     render() {
         let ok;
-        if (this.state.title === "" || this.state.description === "") {
+        if (this.state.title === undefined || this.state.description === undefined) {
             ok = <button className="not-ok">Ok</button>
         } else {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>
         }
+        
         return (
             <>
             <ListingNav />
@@ -47,10 +50,10 @@ class ListingForm extends React.Component {
 
                         <div className="form-input">
                             <div >
-                                <input id="title" type="text" placeholder="Title" onChange={this.update("title")}/>
+                                <input id="title" type="text" placeholder="Title" value={this.state.title} onChange={this.update("title")}/>
                             </div>
                             <div >
-                                <textarea id="description" type="text" placeholder="Description" onChange={this.update("description")}></textarea>
+                                <textarea id="description" type="text" placeholder="Description" value={this.state.description} onChange={this.update("description")}></textarea>
                             </div>
                         </div>
                         <div>
@@ -73,9 +76,18 @@ class ListingForm extends React.Component {
         )
     }   
 }
-debugger
+
+const msp = ({ session, entities: { users, creations } }) => {
+    return {
+        currentUser: users[session.id],
+        title: creations.title,
+        description: creations.description,
+        nextPage: creations.nextPage
+    };
+};
+
 const mdp = dispatch => ({
     updateCreation: (key, value) => dispatch(updateCreation(key, value))
 });
 
-export default connect(null, mdp)(ListingForm);
+export default connect(msp, mdp)(ListingForm);

@@ -3,17 +3,19 @@ import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
 import NavLeft from './nav_left';
+import { connect } from 'react-redux';
 
 class ListingLocationForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { lat: "", lng: "" }
+        this.state = { lat: this.props.lat, lng: this.props.lng, location: this.props.location }
         this.onClick = this.onClick.bind(this);
     }
 
     onClick() {
-        updateCreation("lat", this.state.lat),
-        updateCreation("lng", this.state.lng),
+        this.props.updateCreation("lat", this.state.lat)
+        this.props.updateCreation("lng", this.state.lng)
+        this.props.updateCreation("location", this.state.location)
         location.href = "/#/listing_create/price"
     }
     
@@ -25,7 +27,7 @@ class ListingLocationForm extends React.Component {
 
     render() {
         let ok;
-        if (this.state.lat === "" || this.state.lng === "") {
+        if (this.state.lat === undefined || this.state.lng === undefined || this.state.location === undefined) {
             ok = <button className="not-ok">Ok</button>
         } else {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>
@@ -45,8 +47,9 @@ class ListingLocationForm extends React.Component {
                             <h2>What are the coordinates of your Listing?</h2>
                         </div>
                         <div className="form-input">
-                            <input type="number" placeholder="latitude" onChange={this.update("lat")}/>
-                            <input type="number" placeholder="longitude" onChange={this.update("lng")} />
+                            <input type="number" placeholder="latitude" value={this.state.lat} onChange={this.update("lat")}/>
+                            <input type="number" placeholder="longitude" value={this.state.lng} onChange={this.update("lng")} />
+                            <input type="text" placeholder="city, state" value={this.state.location} onChange={this.update("location")} />
                         </div>
                         <div>
                             {ok}
@@ -69,4 +72,16 @@ class ListingLocationForm extends React.Component {
     } 
 }
 
-export default ListingLocationForm;
+const msp = ({ entities: { creations } }) => {
+    return {
+        lat: creations.lat,
+        lng: creations.lng,
+        location: creations.location
+    }
+}
+
+const mdp = dispatch => ({
+    updateCreation: (key, value) => dispatch(updateCreation(key, value))
+});
+
+export default connect(msp, mdp)(ListingLocationForm);

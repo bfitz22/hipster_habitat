@@ -50,12 +50,6 @@ class ListingIndex extends React.Component {
     handleClick(listing) {
       this.props.history.push(`/listings/${listing.id}`);
     }
-    
-    // render() {
-    //     return (
-      // <div className="map" ref={ map => this.mapNode = map }></div>
-    //     )
-    // }
 
     render() {
         return (

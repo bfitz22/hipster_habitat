@@ -8,7 +8,6 @@ export const fetchListings = () => {
 };
 
 export const fetchMapListings = (filters) => {
-    debugger
     return (
     $.ajax({
         method: 'GET',

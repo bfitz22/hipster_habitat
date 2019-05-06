@@ -71,3 +71,20 @@
     margin-left: 10px; 
     text-decoration: bold;
 }
+
+.option-title {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px; 
+}
+
+.hidden-text {
+  position:relative;
+  bottom:30px;
+  left:0px;
+  visibility:hidden;
+}  
+
+.hidden-text:hover {
+  visibility: visible;
+}

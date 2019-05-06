@@ -37,6 +37,7 @@ hope = Listing.create!({
     location: "Bronx, New York",
     check_in: "Thursday, April 19",
     check_out: "Thursday, April 26",
+    site: "tent"
 })
 file = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope.jpg')
 file3 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope1.jpg')
@@ -64,6 +65,7 @@ firewood = Listing.create!({
     location: "Essex County, New Jersey",
     check_in: "Thursday, April 19",
     check_out: "Thursday, April 26",
+    site: "rv"
 })
 file1 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_firewood.jpg')
 file5 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_firewood1.jpg')
@@ -92,6 +94,7 @@ crystal_lake = Listing.create!({
     location: "Weston, Connecticut",
     check_in: "Friday, September 13",
     check_out: "never",
+    site: "cabin"
 })
 file2 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg')
 file7 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake1.jpg')
@@ -119,6 +122,7 @@ north_star = Listing.create!({
     location: "Queens, New York",
     check_in: "Thursday, April 19",
     check_out: "Thursday, April 26",
+    site: "cabin"
 })
 file18 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_white_pine.jpg')
 file19 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_white_pine1.jpg')

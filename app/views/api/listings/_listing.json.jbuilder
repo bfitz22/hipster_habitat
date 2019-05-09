@@ -1,5 +1,5 @@
 json.extract! listing, :id, :host_id, :title, :description, :price, 
-:max_capacity, :lat, :lng, :location, :amenity
+:max_capacity, :lat, :lng, :location, :site, :amenity
 
 
 

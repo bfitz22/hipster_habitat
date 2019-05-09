@@ -8,7 +8,10 @@ import { connect } from 'react-redux';
 class ListingLocationForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { lat: this.props.lat, lng: this.props.lng, location: this.props.location }
+        const lat = this.props.lat || "";
+        const lng = this.props.lng || "";
+        const location = this.props.location || "";
+        this.state = { lat, lng, location }
         this.onClick = this.onClick.bind(this);
     }
 
@@ -27,7 +30,7 @@ class ListingLocationForm extends React.Component {
 
     render() {
         let ok;
-        if (this.state.lat === undefined || this.state.lng === undefined || this.state.location === undefined) {
+        if (this.state.lat === "" || this.state.lng === "" || this.state.location === "") {
             ok = <button className="not-ok">Ok</button>
         } else {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>

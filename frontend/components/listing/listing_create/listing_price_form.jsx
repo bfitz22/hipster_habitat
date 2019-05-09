@@ -8,14 +8,16 @@ import { connect } from 'react-redux';
 class ListingPriceForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { max_capacity: this.props.max_capacity, price: this.props.price }
+        const max_capacity = this.props.max_capacity || "";
+        const price = this.props.price || "";
+        this.state = { max_capacity, price}
         this.onClick = this.onClick.bind(this);
     }
 
     onClick() {
         this.props.updateCreation("max_capacity", this.state.max_capacity)
         this.props.updateCreation("price", this.state.price)
-        location.href = "/#/listing_create/amenities"
+        location.href = "/#/listing_create/site_type"
     }
     
     update(type) {
@@ -26,7 +28,7 @@ class ListingPriceForm extends React.Component {
 
     render() {
         let ok;
-        if (this.state.max_capacity === undefined || this.state.price === undefined) {
+        if (this.state.max_capacity === "" || this.state.price === "") {
             ok = <button className="not-ok">Ok</button>
         } else {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>

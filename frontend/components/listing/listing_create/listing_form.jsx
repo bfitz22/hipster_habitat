@@ -8,7 +8,9 @@ import NavLeft from './nav_left';
 class ListingForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { title: this.props.title, description: this.props.description }
+        const title = this.props.title || "";
+        const description = this.props.description || "";
+        this.state = { title, description }
         this.onClick = this.onClick.bind(this);
     }
 
@@ -16,7 +18,7 @@ class ListingForm extends React.Component {
         this.props.updateCreation("title", this.state.title)
         this.props.updateCreation("description", this.state.description)
         this.props.updateCreation("host_id", this.props.currentUser.id)
-        // this.props.updateCreation("prevPage", "/#/listing_create")
+        this.props.updateCreation("amenity", [])
         location.href = "/#/listing_create/location"
     }
 
@@ -28,7 +30,7 @@ class ListingForm extends React.Component {
 
     render() {
         let ok;
-        if (this.state.title === undefined || this.state.description === undefined) {
+        if (this.state.title === "" || this.state.description === "") {
             ok = <button className="not-ok">Ok</button>
         } else {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>

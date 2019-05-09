@@ -14,6 +14,8 @@ class Api::ListingsController < ApplicationController
 
     def create 
         @listing = Listing.create!(listing_params)
+        @listing.id 
+        Amenity.create(listing_id: @listing.id)
     end
 
     private

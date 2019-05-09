@@ -116,6 +116,20 @@
     padding: 0;
 }
 
+.listing-site-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 670px !important;
+    margin: 0px 0px 0px 20px;
+    font-size: 32px; 
+    font-family: "calibre", helvetica, sans-serif;
+    line-height: 1.5;
+    text-align: start;
+    text-indent: 0; 
+    padding-bottom: 30px;
+}
+
 .form-input {
     margin: 20px;
     display: flex;
@@ -220,7 +234,24 @@
     font-family: "calibre", helvetica, sans-serif;
 }
 
+.grey-site {
+    background-color: white; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(235, 235, 235);
+    padding: 0px 10px 0px 10px;
+    width: 250px;
+    height: 60px;
+    font-family: "calibre", helvetica, sans-serif;
+}
+
 .grey:hover {
+    border-color: black;
+    cursor: pointer; 
+}
+
+.grey-site:hover {
     border-color: black;
     cursor: pointer; 
 }
@@ -239,10 +270,34 @@
     color: white; 
 }
 
+.green-site {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+    width: 250px;
+    border: 1px solid #40d9ac;
+    height: 60px;
+    background-color: #40d9ac;
+    font-family: "calibre", helvetica, sans-serif;
+    font-weight: bold; 
+    color: white; 
+}
+
 .green:hover {
     cursor: pointer;
     border: 1px solid #40d9ac;
     color: white; 
+}
+
+.green-site:hover {
+    cursor: pointer;
+    border: 1px solid #40d9ac;
+    color: white; 
+}
+
+.site-image {
+    font-size: 20px; 
 }
 
 .directions-container {
@@ -295,7 +350,7 @@
     margin-left: 20px;  
     padding: 18px 20px;
     width: 100px;
-    border: 3px white;
+    border: none;
     height: 58px;
     font-family: "calibre", helvetica, sans-serif;
     transition: all 0.65s ease 0s; 
@@ -309,10 +364,9 @@
     margin-left: 20px;  
     padding: 18px 15px 20px 15px;
     width: auto;
-    border: 3px white;
+    border: none;
     height: 58px;
     font-family: "calibre", helvetica, sans-serif;
-    transition: all 0.25s ease 0s; 
 }
 
 .not-ok {
@@ -329,7 +383,22 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.not-ok-create {
+    background-color: rgb(255, 255, 255);
+    color: rgb(117, 117, 117);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-left: 20px; 
+    padding: 18px 15px 20px 15px;
+    width: auto;
+    border: none; 
+    height: 58px;
+    font-family: "calibre", helvetica, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .ok:hover {
+    padding: 15px;
     background-color: white;
     cursor: pointer;
     color: #40d9ac;
@@ -337,13 +406,14 @@
 }
 
 .ok-create:hover {
+    padding: 15px 12px 17px 12px;
     background-color: white;
     cursor: pointer;
     color: #40d9ac;
     border: 3px solid #40d9ac;
 }
 
-.upload-button {
+.upload-field {
     width: 0.1px;
     height: 0.1px; 
     opacity: 0;

@@ -8,7 +8,9 @@ import { connect } from 'react-redux';
 class ListingCheckinForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { check_in: this.props.check_in, check_out: this.props.check_out }
+        const check_in = this.props.check_in || "";
+        const check_out = this.props.check_out || "";
+        this.state = { check_in, check_out}
         this.onClick = this.onClick.bind(this);
         this.options = ["----", "12:00am", "1:00am", "2:00am", "3:00am", "4:00am",
         "5:00am", "6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am",
@@ -19,7 +21,7 @@ class ListingCheckinForm extends React.Component {
     onClick() {
         this.props.updateCreation("check_in", this.state.check_out),
         this.props.updateCreation("check_out", this.state.check_out),
-        location.href = "/#/listing_create/photos"
+        location.href = "/#/listing_create/confirm"
     }
     
     update(type) {

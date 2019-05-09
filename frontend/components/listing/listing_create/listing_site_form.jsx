@@ -4,38 +4,39 @@ import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
 import NavLeft from './nav_left';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
-class ListingActivitiesForm extends React.Component {
+class ListingSiteForm extends React.Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.onClick = this.onClick.bind(this);
         this.state = { "arr": [
-                {type: "is_hiking", active: this.props.is_hiking, title: "Hiking"},
-                {type: "is_biking", active: this.props.is_biking, title: "Biking"},
-                {type: "is_swimming", active: this.props.is_swimming, title: "Swimming"},
-                {type: "is_fishing", active: this.props.is_fishing, title: "Fishing"},
-                {type: "is_horseback", active: this.props.is_horseback, title: "Horseback Riding"},
-                {type: "is_climbing", active: this.props.is_climbing, title: "Climbing"}
-            ]
-        }
+            {type: "tent", name: "Campsites", active: this.props.site === "tent", image: "fas fa-campground"},
+            {type: "cabin", name: "Lodging", active: this.props.site === "cabin", image: "fas fa-home"},
+            {type: "rv", name: "RVs", active: this.props.site === "rv", image: "fas fa-shuttle-van"}
+        ]}
     }
 
     onClick() {
-        this.state.arr.map(el => {
-            this.props.amenity_arr.push([el.type, el.active])
+        this.state.arr.forEach(el => {
+            if (el.active) {
+                this.props.updateCreation("site", el.type)
+            }
         }),
-        this.props.updateCreation("amenity", this.props.amenity_arr);
-        location.href = "/#/listing_create/check_in"
+        location.href = "/#/listing_create/amenities"
     }
 
     toggle(index) {
         let arr = this.state.arr;
         arr[index].active = !arr[index].active;
+        arr.forEach((el, i) => {
+            if (i !== index) {
+                el.active = false;
+            }
+        })
         this.setState({ arr: arr });
     }
-
-    // https://stackoverflow.com/questions/45420503/how-to-handle-state-of-multiple-buttons-with-react
 
     render() {
         let ok;
@@ -46,8 +47,8 @@ class ListingActivitiesForm extends React.Component {
         }
 
         const options = this.state.arr.map((el, i) => 
-            <div key={i} className={el.active ? "green" : "grey"} type={el.type} active={el.active ? "true" : "false"} 
-            onClick={() => this.toggle(i)}>{el.title}</div>
+            <div key={i} className={el.active ? "green-site" : "grey-site"} type={el.type} active={el.active ? "true" : "false"} 
+            onClick={() => this.toggle(i)}>{el.name}<i className={classNames(el.image, "site-image")}></i></div>
         )
 
         return (
@@ -60,8 +61,8 @@ class ListingActivitiesForm extends React.Component {
                     </div>
                 <div className="form-vessel">
                     <div className="form-container">
-                        <div className="listing-form-title">
-                            <h2>Select the activities available near your listing</h2> 
+                        <div className="listing-site-title">
+                            <h2>Select what type of camping your site provides</h2> 
                         </div>
                         <div className="form-buttons">
                             {options}
@@ -74,10 +75,10 @@ class ListingActivitiesForm extends React.Component {
 
                     <div className="directions-container">
                         <div className="directions">
-                            <p className="directions-title">Why is this important?</p>
+                            <p className="directions-title">Campsite Area</p>
                             <br/>
-                            <p className="directions-body">Hipcampers love learning about the types of activities available on 
-                            and near your land. The more information they have, the more comfortable they are making a booking.</p>
+                            <p className="directions-body">This is the space you will provide. The Hipster will either bring 
+                            their own tent or vehicle to sleep in or you will provide a structure, such as a cabin, for them to use.</p>
                         </div>
                     </div>
                 </div>
@@ -85,17 +86,11 @@ class ListingActivitiesForm extends React.Component {
             </>
         )
     }
-} 
+}
 
 const msp = ({ entities: { creations } }) => {
     return {
-        is_hiking: creations.is_hiking,
-        is_swimming: creations.is_swimming,
-        is_horseback: creations.is_horseback,
-        is_biking: creations.is_biking,
-        is_fishing: creations.is_fishing,
-        is_climbing: creations.is_climbing,
-        amenity_arr: creations.amenity
+        site: creations.site
     }
 }
 
@@ -103,4 +98,4 @@ const mdp = dispatch => ({
     updateCreation: (key, value) => dispatch(updateCreation(key, value))
 });
 
-export default connect(msp, mdp)(ListingActivitiesForm);
+export default connect(msp, mdp)(ListingSiteForm);

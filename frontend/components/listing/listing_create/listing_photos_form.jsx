@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
@@ -7,19 +9,41 @@ import NavLeft from './nav_left';
 class ListingPhotosForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { lat: "", lng: "" }
+        this.state = {
+            file: null,
+            url: null
+        };
         this.onClick = this.onClick.bind(this);
+        this.handleFile = this.handleFile.bind(this);
+        this.handleFileUpload = this.handleFileUpload.bind(this);
     }
 
     onClick() {
-        updateCreation("lat", this.state.lat),
-        updateCreation("lng", this.state.lng),
-        location.href = "/#/listing_create/price"
+        updateCreation("photos",)
+        location.href = "/"
     }
     
-    update(type) {
-        return (e) => this.setState({
-            [type]: e.currentTarget.value
+    handleFile(e) {
+        e.preventDefault();
+        this.setState({
+            file: event.target.files[0]
+        })
+
+        // const fileReader = new FileReader();
+        // fileReader.onloadend = () => {
+        //     debugger
+        //     e.target.files.forEach(file => {
+        //         this.setState({file: file, url: fileReader.result});
+        //     })
+        // };
+    }
+
+    handleFileUpload(e) {
+        // this.setState({file: e.target.files});
+        const fd = new FormData();
+        fd.append('image', this.state.file, this.state.file.name)
+        axios.post('', fd).then(res => {
+            console.log(res);
         })
     }
 
@@ -28,18 +52,15 @@ class ListingPhotosForm extends React.Component {
             <>
             <ListingNav />
             <div className="form-body">
-                <div className="nav-arrow-container">
-                    <NavLeft/>
-                    <NavRight/>
-                </div>
                 <form className="form-vessel" action="upload.php" encType="multipart/form-data">
                     <div className="form-container">
                         <div className="listing-form-title">
                             <h2>Upload photos of your Listing</h2>
                         </div>
                         <div className="form-input">
-                            <input className="upload-button" id="file" type="file" name="fileToUpload" />
-                            <label className="image-upload" for="file"><i class="fas fa-camera"></i>Click to add photos</label>
+                            <input className="upload-field" id="file" type="file" name="fileToUpload" onChange={this.handleFile} />
+                            <label htmlFor="file" className="image-upload" ><i className="fas fa-camera"></i>Click to add photos</label>
+                            <button className="upload-button" onClick={this.handleFileUpload}>Upload</button>
                         </div>
                         <div>
                             <button className="ok-create" onClick={this.onClick}>Create Your Listing!</button>
@@ -64,4 +85,14 @@ class ListingPhotosForm extends React.Component {
     } 
 }
 
-export default ListingPhotosForm;
+const msp = ({ entities: { creations } }) => {
+    return {
+        photos: creations.photos 
+    }
+}
+
+const mdp = dispatch => ({
+    updateCreation: (key, value) => dispatch(updateCreation(key, value))
+})
+
+export default connect(msp, mdp)(ListingPhotosForm);

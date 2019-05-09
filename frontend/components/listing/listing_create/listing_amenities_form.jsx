@@ -23,8 +23,9 @@ class ListingAmenitiesForm extends React.Component {
 
     onClick() {
         this.state.arr.map(el => {
-            this.props.updateCreation(el.type, el.active);
+            this.props.amenity_arr.push([el.type, el.active])
         }),
+        this.props.updateCreation("amenity", this.props.amenity_arr);
         location.href = "/#/listing_create/activities"
     }
 
@@ -36,7 +37,6 @@ class ListingAmenitiesForm extends React.Component {
         let arr = this.state.arr;
         arr[index].active = !arr[index].active;
         this.setState({ arr: arr });
-        // this.update(type, arr[index].active)
     }
 
     // https://stackoverflow.com/questions/45420503/how-to-handle-state-of-multiple-buttons-with-react
@@ -98,7 +98,8 @@ const msp = ({ entities: { creations } }) => {
         is_water: creations.is_water,
         is_toilets: creations.is_toilets,
         is_showers: creations.is_showers,
-        is_wifi: creations.is_wifi
+        is_wifi: creations.is_wifi,
+        amenity_arr: creations.amenity
     }
 }
 

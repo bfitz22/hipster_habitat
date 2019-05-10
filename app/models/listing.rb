@@ -32,6 +32,15 @@ class Listing < ApplicationRecord
     
     # has_many :reviews
 
+    def create_amenity(arr)
+        amenity = Amenity.new
+        amenity.listing_id = self.id
+        arr.each do |el| 
+            amenity[el[0]] = el[1]
+        end
+        amenity.save!
+    end
+
     def self.in_bounds(bounds)
         self.all.where("lat < ?", bounds[:northEast][:lat])
             .where("lat > ?", bounds[:southWest][:lat])

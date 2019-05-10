@@ -8,18 +8,16 @@ import { connect } from 'react-redux';
 class ListingConfirm extends React.Component {
     constructor(props) {
         super(props);
-        const creations = this.props.creations;
-        this.state = { creations }
         this.onClick = this.onClick.bind(this);
     }
 
     onClick() {
-        this.props.createListing(this.state.creations)
+        this.props.createListing(this.props.creations)
         // location.href = "/#/listing_create/photos"
     }
 
     render() {
-        let true_amenities = this.state.creations.amenity.filter(amenity => 
+        let true_amenities = this.props.creations.amenity.filter(amenity => 
             amenity[1] === true 
         )
 
@@ -42,29 +40,29 @@ class ListingConfirm extends React.Component {
                             <h2>Title and Description</h2>
                         </div>
                         <div className="form-input">
-                            <p>Title: {this.state.creations.title}</p>
-                            <p>Description: {this.state.creations.description}</p>
+                            <p>Title: {this.props.creations.title}</p>
+                            <p>Description: {this.props.creations.description}</p>
                         </div>
                         <div className="listing-form-title">
                             <h2>Location</h2>
                         </div>
                         <div className="form-input">
-                            <p>Latitude: {this.state.creations.lat}</p>
-                            <p>Longitude: {this.state.creations.lng}</p>
-                            <p>Location: {this.state.creations.location}</p>
+                            <p>Latitude: {this.props.creations.lat}</p>
+                            <p>Longitude: {this.props.creations.lng}</p>
+                            <p>Location: {this.props.creations.location}</p>
                         </div>
                         <div className="listing-form-title">
                             <h2>Max Capacity and Price per Night</h2>
                         </div>
                         <div className="form-input">
-                            <p>Max Capacity: {this.state.creations.max_capacity}</p>
-                            <p>Price per Night: {this.state.creations.price}</p>
+                            <p>Max Capacity: {this.props.creations.max_capacity}</p>
+                            <p>Price per Night: {this.props.creations.price}</p>
                         </div>
                         <div className="listing-form-title">
                             <h2>Type of Site</h2>
                         </div>
                         <div className="form-input">
-                            <p>{this.state.creations.site}</p>
+                            <p>{this.props.creations.site}</p>
                         </div>
                         <div className="listing-form-title">
                             <h2>Amenities and Activities Available</h2>
@@ -76,8 +74,8 @@ class ListingConfirm extends React.Component {
                             <h2>Available Times for Checking In and Out</h2>
                         </div>
                         <div className="form-input">
-                            <p>Check in after: {this.state.creations.check_in}</p>
-                            <p>Check out before: {this.state.creations.check_out}</p>
+                            <p>Check in after: {this.props.creations.check_in}</p>
+                            <p>Check out before: {this.props.creations.check_out}</p>
                         </div>
                         <div>
                             <button className="ok-create" onClick={this.onClick}>Create Your Listing!</button>

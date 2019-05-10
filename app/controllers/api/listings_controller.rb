@@ -13,22 +13,10 @@ class Api::ListingsController < ApplicationController
     end
 
     def create 
-        debugger
-        @listing = Listing.create!(listing_params)
-        Amenity.create({listing_id => @listing.id,
-            @listing.amenity[0][0] => @listing.amenity[0][1],
-            @listing.amenity[1][0] => @listing.amenity[1][1],
-            @listing.amenity[2][0] => @listing.amenity[2][1],
-            @listing.amenity[3][0] => @listing.amenity[3][1],
-            @listing.amenity[4][0] => @listing.amenity[4][1],
-            @listing.amenity[5][0] => @listing.amenity[5][1],
-            @listing.amenity[6][0] => @listing.amenity[6][1],
-            @listing.amenity[7][0] => @listing.amenity[7][1],
-            @listing.amenity[8][0] => @listing.amenity[8][1],
-            @listing.amenity[9][0] => @listing.amenity[9][1],
-            @listing.amenity[10][0] => @listing.amenity[10][1],
-            @listing.amenity[11][0] => @listing.amenity[11][1]
-        })
+        @listing = Listing.create(listing_params)
+        amenity = JSON.parse(amenity_params[:amenity])
+        @listing.create_amenity(amenity)
+        render 'api/listings/show'
     end
 
     private
@@ -52,6 +40,12 @@ class Api::ListingsController < ApplicationController
             :check_in,
             :check_out,
             photos: []
+        )
+    end
+
+    def amenity_params
+        params.require(:listing).permit(
+            :amenity
         )
     end
 end

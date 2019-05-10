@@ -23,7 +23,11 @@ class ListingAmenitiesForm extends React.Component {
 
     onClick() {
         this.state.arr.map(el => {
-            this.props.amenity_arr.push([el.type, el.active])
+            if (el.active) {
+                this.props.amenity_arr.push([el.type, true])
+            } else {
+                this.props.amenity_arr.push([el.type, false])
+            }
         }),
         this.props.updateCreation("amenity", this.props.amenity_arr);
         location.href = "/#/listing_create/activities"

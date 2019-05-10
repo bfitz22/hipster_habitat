@@ -25,11 +25,12 @@ export const fetchListing = id => (
 );
 
 export const createListing = (listing) => {
+    debugger
     return(
         $.ajax({
             method: 'POST',
             url: 'api/listings',
-            data: listing 
+            data: {listing} 
         })
     )
 }

@@ -45,11 +45,11 @@ export const fetchListing = id => dispatch => (
     )
 );
 
-export const createListing = listing => dispatch => (
-    APIUtil.createListing(listing).then(
+export const createListing = listing => dispatch => {
+    return APIUtil.createListing(listing).then(
         response => dispatch(receiveListing(response))
     )
-);
+};
 
 export const updateCreation = (key, value) => dispatch => {
     return dispatch(updateCreationState(key, value))

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_215955) do
+ActiveRecord::Schema.define(version: 2019_05_10_015337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2019_05_06_215955) do
   end
 
   create_table "amenities", force: :cascade do |t|
-    t.boolean "pets_allowed", null: false
-    t.boolean "campfires_allowed", null: false
+    t.boolean "is_pets", null: false
+    t.boolean "is_campfires", null: false
     t.boolean "is_water", null: false
     t.boolean "is_toilets", null: false
     t.boolean "is_showers", null: false

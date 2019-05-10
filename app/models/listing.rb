@@ -15,6 +15,7 @@
 #  location     :string           not null
 #  check_in     :string           not null
 #  check_out    :string           not null
+#  site         :string           not null
 #
 
 class Listing < ApplicationRecord

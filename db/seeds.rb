@@ -135,8 +135,8 @@ north_star.photos.attach(io: file21, filename: 'camp_north_star5.jpg')
 
 Amenity.create!({
     listing_id: hope.id,
-    pets_allowed: true,
-    campfires_allowed: true,
+    is_pets: true,
+    is_campfires: true,
     is_water: true,
     is_toilets: true,
     is_showers: true,
@@ -151,8 +151,8 @@ Amenity.create!({
 
 Amenity.create!({
     listing_id: firewood.id,
-    pets_allowed: true,
-    campfires_allowed: true,
+    is_pets: true,
+    is_campfires: true,
     is_water: true,
     is_toilets: true,
     is_showers: false,
@@ -167,8 +167,8 @@ Amenity.create!({
 
 Amenity.create!({
     listing_id: crystal_lake.id,
-    pets_allowed: false,
-    campfires_allowed: true,
+    is_pets: false,
+    is_campfires: true,
     is_water: true,
     is_toilets: true,
     is_showers: true,
@@ -183,8 +183,8 @@ Amenity.create!({
 
 Amenity.create!({
     listing_id: north_star.id,
-    pets_allowed: false,
-    campfires_allowed: false,
+    is_pets: false,
+    is_campfires: false,
     is_water: false,
     is_toilets: false,
     is_showers: false,

@@ -133,6 +133,7 @@ north_star.photos.attach(io: file19, filename: 'camp_north_star5.jpg')
 north_star.photos.attach(io: file20, filename: 'camp_north_star5.jpg')
 north_star.photos.attach(io: file21, filename: 'camp_north_star5.jpg')
 
+Amenity.destroy_all
 Amenity.create!({
     listing_id: hope.id,
     is_pets: true,

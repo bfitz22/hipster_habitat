@@ -13,7 +13,7 @@ class ListingConfirm extends React.Component {
 
     onClick() {
         this.props.createListing(this.props.creations)
-        // location.href = "/#/listing_create/photos"
+        location.href = "/#/listing_create/photos"
     }
 
     render() {

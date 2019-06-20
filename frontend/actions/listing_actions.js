@@ -55,5 +55,3 @@ export const updateCreation = (key, value) => dispatch => {
     return dispatch(updateCreationState(key, value))
 };
 
-// Amenity.create!(listing_id: Listing.first.id, "is_pets": true, "is_campfires": true, "is_water": true, "is_toilets": false, "is_showers": false, "is_wifi": false, "is_hiking": true,
-// "is_biking": true, "is_swimming": false, "is_fishing": true, "is_horseback": true, "is_climbing": true)

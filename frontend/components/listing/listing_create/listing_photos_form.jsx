@@ -39,7 +39,7 @@ class ListingPhotosForm extends React.Component {
     }
 
     handleFileUpload(e) {
-        // this.setState({file: e.target.files});
+        this.setState({file: e.target.files});
         const fd = new FormData();
         fd.append('image', this.state.file, this.state.file.name)
         axios.post('', fd).then(res => {

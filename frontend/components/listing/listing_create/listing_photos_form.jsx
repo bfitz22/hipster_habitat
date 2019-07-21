@@ -23,20 +23,20 @@ class ListingPhotosForm extends React.Component {
         location.href = "/"
     }
     
-    handleFile(e) {
-        e.preventDefault();
-        this.setState({
-            file: event.target.files[0]
-        })
+    // handleFile(e) {
+    //     e.preventDefault();
+    //     this.setState({
+    //         file: event.target.files[0]
+    //     })
 
-        // const fileReader = new FileReader();
-        // fileReader.onloadend = () => {
-        //     debugger
-        //     e.target.files.forEach(file => {
-        //         this.setState({file: file, url: fileReader.result});
-        //     })
-        // };
-    }
+    //     // const fileReader = new FileReader();
+    //     // fileReader.onloadend = () => {
+    //     //     debugger
+    //     //     e.target.files.forEach(file => {
+    //     //         this.setState({file: file, url: fileReader.result});
+    //     //     })
+    //     // };
+    // }
 
     handleFileUpload(e) {
         this.setState({file: e.target.files});

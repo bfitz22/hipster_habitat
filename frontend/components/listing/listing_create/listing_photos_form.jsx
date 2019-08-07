@@ -3,14 +3,12 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
-import NavRight from './nav_right';
-import NavLeft from './nav_left';
 
 class ListingPhotosForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            file: null,
+            files: null,
             url: null
         };
         this.onClick = this.onClick.bind(this);
@@ -25,20 +23,28 @@ class ListingPhotosForm extends React.Component {
     
     handleFile(e) {
         e.preventDefault();
-        this.setState({
-            file: event.target.files[0]
-        })
-
-        // const fileReader = new FileReader();
-        // fileReader.onloadend = () => {
-        //     debugger
-        //     e.target.files.forEach(file => {
-        //         this.setState({file: file, url: fileReader.result});
-        //     })
-        // };
-    }
+        const fileReader = new FileReader();
+// send direclty to action, state not required
+        fileReader.onloadend = () => {
+            this.setState({files: e.target.files}).then(
+                this.state.files.forEach(file => {
+                    this.setState({file: file, url: fileReader.result});
+                })
+            );
+        }
+    };
+    
+    // handleFileUpload(e) {
+    //     this.setState({file: e.target.files});
+    //     const fd = new FormData();
+    //     fd.append('image', this.state.file, this.state.file.name)
+    // }
 
     handleFileUpload(e) {
+        for (let i = 0; i < e.target.files.length; i++) {
+            this.setState({file: file})
+        }
+
         this.setState({file: e.target.files});
         const fd = new FormData();
         fd.append('image', this.state.file, this.state.file.name)

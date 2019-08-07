@@ -13,10 +13,15 @@ class Api::ListingsController < ApplicationController
     end
 
     def create 
-        @listing = Listing.create(listing_params)
-        amenity = JSON.parse(amenity_params[:amenity])
-        @listing.create_amenity(amenity)
-        render 'api/listings/show'
+        @listing = Listing.new(listing_params)
+
+        if @listing.save
+            amenity = JSON.parse(amenity_params[:amenity])
+            @listing.create_amenity(amenity)
+            render 'api/listings/show'
+        else
+            render json: @listing.errors.full_messages, status 400
+        end
     end
 
     private
@@ -39,7 +44,7 @@ class Api::ListingsController < ApplicationController
             :location,
             :check_in,
             :check_out,
-            photos: []
+            :photos
         )
     end
 

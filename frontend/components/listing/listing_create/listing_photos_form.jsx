@@ -24,6 +24,7 @@ class ListingPhotosForm extends React.Component {
     handleFile(e) {
         e.preventDefault();
         const fileReader = new FileReader();
+        // TODO: upload functionality
 // send direclty to action, state not required
         fileReader.onloadend = () => {
             this.setState({files: e.target.files}).then(

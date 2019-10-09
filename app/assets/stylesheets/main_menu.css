@@ -146,10 +146,6 @@
     font-size: 20px; 
 }
 
-.fa-search:hover {
-    cursor: pointer; 
-}
-
 .filter-buttons {
     width: 98%;
     height: 100px;

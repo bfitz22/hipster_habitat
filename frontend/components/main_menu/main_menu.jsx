@@ -1,19 +1,40 @@
 import React from 'react';
 import MainMenuItem from './main_menu_item';
 import Search from './search';
+import classNames from 'classnames';
+
 
 class MainMenu extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { arr: [
+                {title: "Anytime", active: false, image: "far fa-calendar"},
+                {title: "Campsites", site: "tent", active: false, image: "fas fa-campground"},
+                {title: "Lodging", site: "cabin", active: false, image: "fas fa-home"},
+                {title: "RVs", site: "rv", active: false, image: "fas fa-shuttle-van"}
+            ], 
+            filteredListings: this.props.listings
+        }
         this.sliceListings = this.sliceListings.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchListings();
+        this.setState({ arr: this.state.arr, filteredListings: this.props.listings })
+    }
+
+    toggle(index) {
+        let arr = this.state.arr;
+        arr[index].active = !arr[index].active;
+        this.setState({ arr: arr });
+    }
+
+    applyFilters() {
+        
     }
 
     sliceListings() {
-      return this.props.listings.slice(0, 3);
+        return this.props.listings.slice(0, 3);
     }
 
     searchIdeas(query) {
@@ -25,6 +46,12 @@ class MainMenu extends React.Component {
     }
 
     render() {
+        const options = this.state.arr.map((el, i) => 
+            <button key={i} className={el.active ? "filtered" : "unfiltered"} 
+            onClick={() => this.toggle(i)}><i className={classNames(el.image, "search-image")} ></i>
+            {el.title}</button>
+        )
+
         return (
         <div className="splash">
         <div className="home">
@@ -39,6 +66,10 @@ class MainMenu extends React.Component {
         <div className="search-bar-container">
           <div className="search-bar">
             <Search searchIdeas={this.searchIdeas.bind(this)}/>
+            <div className="filter-buttons">
+                {options}
+                <button className="search-button">Search</button>
+            </div>
           </div>
         </div>
         <div className="main-menu">

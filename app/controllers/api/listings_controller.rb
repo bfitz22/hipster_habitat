@@ -20,7 +20,7 @@ class Api::ListingsController < ApplicationController
             @listing.create_amenity(amenity)
             render 'api/listings/show'
         else
-            render json: @listing.errors.full_messages, status 400
+            render json: @listing.errors.full_messages, status: 400
         end
     end
 

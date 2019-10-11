@@ -22,7 +22,6 @@ class MainMenu extends React.Component {
 
     componentDidMount() {
         this.props.fetchListings();
-        this.setState({ arr: this.state.arr })
     }
 
     toggle(index) {
@@ -34,8 +33,10 @@ class MainMenu extends React.Component {
 
     applyFilters() {
         let listings = [];
+        let count = 0;
         this.state.arr.forEach((el) => {
             if (el.active) {
+                count += 1
                 this.props.listings.forEach((listing) => {
                     if (el.site === listing.site) {
                         listings.push(listing)
@@ -43,20 +44,17 @@ class MainMenu extends React.Component {
                 })
             }
         })
-        this.setState({ filteredListings: listings })
+        if (count > 0) {
+            return listings
+        } else {
+            listings = this.props.listings
+            return listings 
+        }
     }
 
     sliceListings() {
         return this.props.listings.slice(0, 3);
     }
-
-    // searchIdeas(query) {
-    //     let listings = this.props.listings.filter((listing) => {
-    //         return listing.title.toLowerCase().includes(query.toLowerCase()) ||
-    //         listing.description.toLowerCase().includes(query.toLowerCase())
-    //     });
-    //     this.setState({ searchListings: listings })
-    // }
 
     render() {
         const options = this.state.arr.map((el, i) => 
@@ -78,7 +76,7 @@ class MainMenu extends React.Component {
         </div>
         <div className="search-bar-container">
           <div className="search-bar">
-            <Search searchIdeas={this.searchIdeas.bind(this)}/>
+            <Search listings={this.applyFilters()}/>
             <div className="filter-buttons">
                 {options}
                 <button className="search-button">Search</button>

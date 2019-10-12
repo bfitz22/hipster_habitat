@@ -5,6 +5,7 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = { searchListings: [] }
+        this.sliceListings = this.sliceListings.bind(this);
     }
 
     // searchQuery(query) {
@@ -16,6 +17,10 @@ class Search extends React.Component {
     // }
 
     handleSearch(e) {
+        if (e.target.value === "") { 
+            this.setState({ searchListings: [] })
+            return 
+        };
         let listings = this.props.listings.filter((listing) => {
             return listing.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
             listing.description.toLowerCase().includes(e.target.value.toLowerCase()) ||
@@ -24,15 +29,19 @@ class Search extends React.Component {
         });
         this.setState({ searchListings: listings })
     }
+
+    sliceListings() {
+        return this.state.searchListings.slice(0, 5);
+    }
     
     render() {
         return (
             <>
                 <div className="search-input">
                     <i className="fas fa-search"></i>
-                    <input className="search" type="text" placeholder="Try Yosemite, Napa, pets..."
+                    <input id="whatever" className="search" type="text" placeholder="Try Yosemite, Napa, pets..."
                     onKeyUp={this.handleSearch.bind(this)}/>
-                    {this.state.searchListings.map(listing => <SearchResults key={listing.id} listing={listing}/>)}
+                    {this.sliceListings().map(listing => <SearchResults key={listing.id} listing={listing}/>)}
                 </div>
                 <div className="spacer"></div>
             </>

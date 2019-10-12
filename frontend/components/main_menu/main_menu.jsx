@@ -35,7 +35,7 @@ class MainMenu extends React.Component {
         let listings = [];
         let count = 0;
         this.state.arr.forEach((el) => {
-            if (el.active) {
+            if (el.site && el.active) {
                 count += 1
                 this.props.listings.forEach((listing) => {
                     if (el.site === listing.site) {

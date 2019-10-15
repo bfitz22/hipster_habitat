@@ -4,12 +4,12 @@ const SearchResults = ( props ) => {
     var pic = props.listing.listing_photos[0];
 
     return (
-        <div>
-            <a href={`/#/listings/${props.listing.id}`}>
+        <>
+            <a href={`/#/listings/${props.listing.id}`} className="result-link">
                 <p>{props.listing.title}</p>
                 {/* <img src={pic} /> */}
             </a>
-        </div>
+        </>
     )
 }
 

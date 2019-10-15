@@ -5,7 +5,7 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = { searchListings: [] }
-        this.sliceListings = this.sliceListings.bind(this);
+        // this.sliceListings = this.sliceListings.bind(this);
     }
 
     // searchQuery(query) {
@@ -30,18 +30,22 @@ class Search extends React.Component {
         this.setState({ searchListings: listings })
     }
 
-    sliceListings() {
-        return this.state.searchListings.slice(0, 5);
-    }
+    // sliceListings() {
+    //     return this.state.searchListings.slice(0, 5);
+    // }
     
     render() {
         return (
             <>
                 <div className="search-input">
                     <i className="fas fa-search"></i>
-                    <input id="whatever" className="search" type="text" placeholder="Try Yosemite, Napa, pets..."
+                    <input id="search-text" className="search" type="text" placeholder="Try Yosemite, Napa, pets..."
                     onKeyUp={this.handleSearch.bind(this)}/>
-                    {this.sliceListings().map(listing => <SearchResults key={listing.id} listing={listing}/>)}
+                </div>
+                <div className="results-container">
+                    <div className="results">  
+                        {this.state.searchListings.map(listing => <SearchResults key={listing.id} listing={listing}/>)}
+                    </div>
                 </div>
                 <div className="spacer"></div>
             </>

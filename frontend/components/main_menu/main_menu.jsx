@@ -29,6 +29,7 @@ class MainMenu extends React.Component {
         arr[index].active = !arr[index].active;
         this.setState({ arr: arr });
         this.applyFilters();
+        document.getElementById("search-text").focus();
     }
 
     applyFilters() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import MainMenuItem from './main_menu_item';
-import Search from './search';
+// import Search from './search';
+import SearchResults from './search_results';
 import classNames from 'classnames';
 
 
@@ -12,13 +13,13 @@ class MainMenu extends React.Component {
                 {title: "Campsites", site: "tent", active: false, image: "fas fa-campground"},
                 {title: "Lodging", site: "cabin", active: false, image: "fas fa-home"},
                 {title: "RVs", site: "rv", active: false, image: "fas fa-shuttle-van"}
-            ]
+            ], 
+            filteredListings: this.props.listings,
+            searchListings: []
         }
         this.sliceListings = this.sliceListings.bind(this);
         this.applyFilters = this.applyFilters.bind(this);
     }
-
-    // MainMenu(filteredListings) >> Search(searchListings) >> SearchModal
 
     componentDidMount() {
         this.props.fetchListings();
@@ -46,11 +47,29 @@ class MainMenu extends React.Component {
             }
         })
         if (count > 0) {
-            return listings
+            // return listings
+            this.setState({ filteredListings: listings })
         } else {
             listings = this.props.listings
-            return listings 
+            // return listings
+            this.setState({ filteredListings: listings }) 
         }
+    }
+
+    handleSearch(e) {
+        if (e.target.value === "") { 
+            this.setState({ searchListings: [] })
+            return 
+        };
+        const filteredListings = this.state.filteredListings.length > 0 ? this.state.filteredListings : this.props.listings
+
+        let listings = filteredListings.filter((listing) => {
+            return listing.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            listing.description.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            listing.site.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            listing.location.toLowerCase().includes(e.target.value.toLowerCase())
+        });
+        this.setState({ searchListings: listings })
     }
 
     sliceListings() {
@@ -77,7 +96,18 @@ class MainMenu extends React.Component {
         </div>
         <div className="search-bar-container">
           <div className="search-bar">
-            <Search listings={this.applyFilters()}/>
+            <div className="search-input">
+                <i className="fas fa-search"></i>
+                <input id="search-text" className="search" type="text" placeholder="Try Yosemite, Napa, pets..."
+                onKeyUp={this.handleSearch.bind(this)}/>
+            </div>
+            <div className="results-container">
+                <div className="results">  
+                    {this.state.searchListings.map(listing => <SearchResults key={listing.id} listing={listing}/>)}
+                </div>
+            </div>
+            <div className="spacer"></div>
+            {/* <Search listings={this.applyFilters()}/> */}
             <div className="filter-buttons">
                 {options}
                 <button className="search-button">Search</button>

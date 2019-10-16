@@ -1,8 +1,7 @@
 import React from 'react';
 import MainMenuItem from './main_menu_item';
-import SearchResults from './search_results';
 import classNames from 'classnames';
-
+import SearchModal from '../modal/search_modal';
 
 class MainMenu extends React.Component {
     constructor(props) {
@@ -14,7 +13,6 @@ class MainMenu extends React.Component {
                 {title: "RVs", site: "rv", active: false, image: "fas fa-shuttle-van"}
             ], 
             filteredListings: this.props.listings,
-            searchListings: []
         }
         this.sliceListings = this.sliceListings.bind(this);
         this.applyFilters = this.applyFilters.bind(this);
@@ -46,18 +44,16 @@ class MainMenu extends React.Component {
             }
         })
         if (count > 0) {
-            // return listings
             this.setState({ filteredListings: listings })
         } else {
             listings = this.props.listings
-            // return listings
             this.setState({ filteredListings: listings }) 
         }
     }
 
     handleSearch(e) {
         if (e.target.value === "") { 
-            this.setState({ searchListings: [] })
+            this.props.closeModal();
             return 
         };
         const filteredListings = this.state.filteredListings.length > 0 ? this.state.filteredListings : this.props.listings
@@ -68,7 +64,7 @@ class MainMenu extends React.Component {
             listing.site.toLowerCase().includes(e.target.value.toLowerCase()) ||
             listing.location.toLowerCase().includes(e.target.value.toLowerCase())
         });
-        this.setState({ searchListings: listings })
+        this.props.openSearchModal(listings);
     }
 
     sliceListings() {
@@ -98,11 +94,12 @@ class MainMenu extends React.Component {
             <div className="search-input">
                 <i className="fas fa-search"></i>
                 <input id="search-text" className="search" type="text" placeholder="Try Yosemite, Napa, pets..."
-                onKeyUp={this.handleSearch.bind(this)}/>
+                onFocus={this.handleSearch.bind(this)} onKeyUp={this.handleSearch.bind(this)}/>
             </div>
             <div className="results-container">
                 <div className="results">  
-                    {this.state.searchListings.map(listing => <SearchResults key={listing.id} listing={listing}/>)}
+                <SearchModal />
+                    {/* {this.state.searchListings.map(listing => <SearchResults key={listing.id} listing={listing}/>)} */}
                 </div>
             </div>
             <div className="spacer"></div>

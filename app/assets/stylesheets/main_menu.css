@@ -112,23 +112,28 @@
 }
 
 .results {
-    font-size: 15.7px; 
-    font-family: "calibre", helvetica, sans-serif;
-    font-weight: 200;
-    color: rgb(51, 51, 51);
+    z-index: 1;
+    position: absolute;
+    background: white; 
+    box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
+    border: none; 
+    width: 98%; 
+    margin-right: 15px; 
+    display: flex;
+    flex-direction: column;
 }
 
 .results-container {
-    z-index: 1;
-    box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
     border: none; 
     width: 98%;
-    margin-top: 20px; 
     margin-left: 15px; 
-    margin-right: 15px; 
-    display: flex;
-    flex-direction: row; 
-    align-items: center; 
+    margin-right: 15px;  
+}
+
+.result-icon {
+    margin-left: 10px;
+    margin-right: 20px; 
+    font-size: 20px; 
 }
 
 .result-link {
@@ -137,7 +142,8 @@
 }
 
 .result-link p {
-    margin: 10px;
+    width: 25%;
+    padding: 10px 10px 20px 10px;
     border-bottom: 1px solid #ebebeb;
     font-size: 1rem;
     color: rgb(67, 67, 67);

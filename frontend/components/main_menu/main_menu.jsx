@@ -1,6 +1,5 @@
 import React from 'react';
 import MainMenuItem from './main_menu_item';
-// import Search from './search';
 import SearchResults from './search_results';
 import classNames from 'classnames';
 
@@ -107,7 +106,6 @@ class MainMenu extends React.Component {
                 </div>
             </div>
             <div className="spacer"></div>
-            {/* <Search listings={this.applyFilters()}/> */}
             <div className="filter-buttons">
                 {options}
                 <button className="search-button">Search</button>

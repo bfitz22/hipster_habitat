@@ -99,7 +99,6 @@ class MainMenu extends React.Component {
             <div className="results-container">
                 <div className="results">  
                 <SearchModal />
-                    {/* {this.state.searchListings.map(listing => <SearchResults key={listing.id} listing={listing}/>)} */}
                 </div>
             </div>
             <div className="spacer"></div>

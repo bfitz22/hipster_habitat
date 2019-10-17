@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import SearchResults from '../main_menu/search_results';
 
 const SearchModal = ({listings, closeModal}) => {
-    if (!listings) {
+    if (!listings || typeof listings === 'string' || listings instanceof String) {
         return null;
     } else {
         return (

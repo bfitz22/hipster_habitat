@@ -29,6 +29,11 @@ class Listing < ApplicationRecord
     has_many_attached :photos
 
     has_one :amenity
+
+    has_many :appointments
+
+    has_many :clients, 
+        through: :appointments
     
     # has_many :reviews
 

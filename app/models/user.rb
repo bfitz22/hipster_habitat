@@ -21,7 +21,12 @@ class User < ApplicationRecord
 
     has_many :listings,
         foreign_key: :host_id
-    has_many :bookings
+    
+    has_many :appointments
+
+    has_many :bookings,
+        through: :appointments
+    
     has_many :reviews
 
     after_initialize :ensure_session_token

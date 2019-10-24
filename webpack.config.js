@@ -1,5 +1,5 @@
 const path = require('path');
-const multi = require('multi-loader');
+// const multi = require('multi-loader');
 
 module.exports = {
     entry: './frontend/hipster_habitat.jsx',
@@ -12,14 +12,17 @@ module.exports = {
             {
                 test: [/\.jsx?$/],
                 exclude: /node_modules/,
-                loader: multi(
-                    'babel-loader',
-                    'style-loader',
-                    'css-loader'
-                ),
+                loader: 'babel-loader',
                 query: {
                     presets: ['@babel/env', '@babel/react']
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             }
         ]
     },

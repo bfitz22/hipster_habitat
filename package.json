@@ -15,9 +15,11 @@
     "file-type": "^11.1.0",
     "fs": "0.0.1-security",
     "lodash": "^4.17.13",
+    "moment": "^2.24.0",
     "multiparty": "^4.2.1",
     "react": "^16.10.2",
     "react-addons-css-transition-group": "^15.6.2",
+    "react-big-calendar": "^0.22.1",
     "react-dom": "^16.10.2",
     "react-native-aws3": "0.0.9",
     "react-native-image-picker": "^0.28.1",
@@ -29,7 +31,10 @@
     "webpack-cli": "^3.3.9"
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "css-loader": "^3.2.0",
+    "multi-loader": "^0.1.0",
+    "redux-logger": "^3.0.6",
+    "style-loader": "^1.0.0"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",

@@ -3,6 +3,8 @@ import MainMenuItem from './main_menu_item';
 import classNames from 'classnames';
 import SearchModal from '../modal/search_modal';
 
+import BigCalendar from '../calendar';
+
 class MainMenu extends React.Component {
     constructor(props) {
         super(props);
@@ -88,6 +90,7 @@ class MainMenu extends React.Component {
                 campsites, ranches, vineyards, public parks, 
                 and more.
             </div>
+            <BigCalendar />
         </div>
         <div className="search-bar-container">
           <div className="search-bar">

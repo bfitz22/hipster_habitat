@@ -1,6 +1,6 @@
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
-export const OPEN_SEARCH_MODAL = "OPEN_SEARCH_MODAL";
+export const OPEN_OBJECT_MODAL = "OPEN_OBJECT_MODAL";
 
 export const openModal = modal => {
     return {
@@ -9,10 +9,10 @@ export const openModal = modal => {
     };
 };
 
-export const openSearchModal = listings => {
+export const openObjectModal = objects => {
     return {
-        type: OPEN_SEARCH_MODAL,
-        listings
+        type: OPEN_OBJECT_MODAL,
+        objects
     }
 }
 

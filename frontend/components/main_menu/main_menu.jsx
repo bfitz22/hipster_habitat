@@ -64,6 +64,7 @@ class MainMenu extends React.Component {
             listing.site.toLowerCase().includes(e.target.value.toLowerCase()) ||
             listing.location.toLowerCase().includes(e.target.value.toLowerCase())
         });
+        // TODO: add amenities to search results
         this.props.openSearchModal(listings);
     }
 

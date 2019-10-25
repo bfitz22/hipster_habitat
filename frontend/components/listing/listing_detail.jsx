@@ -2,9 +2,15 @@ import React from 'react';
 import Slideshow from '../slideshow/slideshow';
 import Booking_Box from './booking_box/booking_box';
 
+import CalendarModal from '../modal/calendar_modal';
+
 class ListingDetail extends React.Component {
     componentDidMount() {
         this.props.fetchListing(this.props.match.params.listingId);
+    }
+
+    handleClick() {
+        this.props.openCalendarModal(this.props.listing.appointments)
     }
     
     render() {
@@ -169,7 +175,38 @@ class ListingDetail extends React.Component {
                 <div className="fake-box"></div>
             </div>
             <div id="anchor">
-              <Booking_Box listing={listing} />
+              {/* <Booking_Box listing={listing} openCalendarModal={this.props.openCalendarModal} /> */}
+                <div className="booking-box">
+                    <div className="booking-div-col">
+                        <section className="price">${listing.price}</section>
+                        <section className="per-night">per night</section>
+                    </div>
+                    <div className="booking-div">
+                        <div className="check-in-div" 
+                        onClick={this.handleClick.bind(this)}
+                        >
+                        <section className="check-bold">Check in</section>
+                        <section>{listing.check_in}</section>
+                        </div>
+                        <div className="check-in-div">
+                        <section className="check-bold">Check out</section>
+                        <section>{listing.check_out}</section>
+                        </div>
+                        <div className="guests-div">
+                        <section className="check-bold">Guests</section>
+                        <section>Max: {listing.max_capacity}</section>
+                        </div>
+                    </div>
+                    <div className="booking-div-space">
+                        <section className="base-price">Base price x 2 nights</section>
+                        <br/>
+                        <section>${`${listing.price}` * 2}</section>
+                    </div>
+                    <div className="booking-div">
+                        <button className="booking-button">Request to book</button>
+                    </div>
+                    <CalendarModal />
+                </div>
             </div>
             <div className="activities-show">
                 <div className="activities-containter">

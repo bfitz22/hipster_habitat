@@ -1,5 +1,5 @@
 import React from 'react';
-import BigCalendar from '../../calendar';
+import CalendarModal from '../../modal/calendar_modal';
 
 const Booking_Box = (props) => {
     return(
@@ -9,7 +9,9 @@ const Booking_Box = (props) => {
                 <section className="per-night">per night</section>
             </div>
             <div className="booking-div">
-                <div className="check-in-div">
+                <div className="check-in-div" 
+                onClick={props.openCalendarModal(props.listing.appointments)}
+                >
                 <section className="check-bold">Check in</section>
                 <section>{props.listing.check_in}</section>
                 </div>
@@ -30,7 +32,7 @@ const Booking_Box = (props) => {
             <div className="booking-div">
                 <button className="booking-button">Request to book</button>
             </div>
-            <BigCalendar />
+            <CalendarModal />
         </div>
     )
 }

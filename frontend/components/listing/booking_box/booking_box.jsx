@@ -1,4 +1,5 @@
 import React from 'react';
+import BigCalendar from '../../calendar';
 
 const Booking_Box = (props) => {
     return(
@@ -29,6 +30,7 @@ const Booking_Box = (props) => {
             <div className="booking-div">
                 <button className="booking-button">Request to book</button>
             </div>
+            <BigCalendar />
         </div>
     )
 }

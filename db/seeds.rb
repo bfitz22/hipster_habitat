@@ -192,8 +192,8 @@ Amenity.create!({
 
 Appointment.destroy_all
 Appointment.create!({
-    booking_id: crystal_lake.id,
-    client_id: user.id,
+    listing_id: crystal_lake.id,
+    user_id: user.id,
     start: "2019-11-05",
     end: "2019-11-07",
     num_guests: 2

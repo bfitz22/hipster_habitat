@@ -16,8 +16,8 @@ class Api::AppointmentsController < ApplicationController
 
     def appointment_params
         params.require(:appointment).permit(
-            :booking_id,
-            :client_id, 
+            :listing_id,
+            :user_id, 
             :start,
             :end,
             :num_guests

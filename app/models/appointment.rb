@@ -12,7 +12,7 @@
 #
 
 class Appointment < ApplicationRecord
-    validates :client_id, :booking_id, :start, :end, presence: true
+    validates :client_id, :booking_id, :start, :end, :num_guests presence: true
 
     belongs_to :client, 
         primary_key: :id,

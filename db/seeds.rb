@@ -35,8 +35,6 @@ hope = Listing.create!({
     lat: 40.864753,
     lng: -73.796967,
     location: "Bronx, New York",
-    check_in: "Thursday, April 19",
-    check_out: "Thursday, April 26",
     site: "tent"
 })
 file = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_hope.jpg')
@@ -63,8 +61,6 @@ firewood = Listing.create!({
     lat: 40.743440,
     lng: -74.295977,
     location: "Essex County, New Jersey",
-    check_in: "Thursday, April 19",
-    check_out: "Thursday, April 26",
     site: "rv"
 })
 file1 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_firewood.jpg')
@@ -92,8 +88,6 @@ crystal_lake = Listing.create!({
     lat: 41.255690,
     lng: -73.395061,
     location: "Weston, Connecticut",
-    check_in: "Friday, September 13",
-    check_out: "never",
     site: "cabin"
 })
 file2 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_crystal_lake.jpg')
@@ -120,8 +114,6 @@ north_star = Listing.create!({
     lat: 40.745739,
     lng: -73.843275,
     location: "Queens, New York",
-    check_in: "Thursday, April 19",
-    check_out: "Thursday, April 26",
     site: "cabin"
 })
 file18 = open('https://s3.amazonaws.com/hipsterhabitat-dev/camp_white_pine.jpg')
@@ -196,4 +188,13 @@ Amenity.create!({
     is_fishing: false,
     is_horseback: false,
     is_climbing: true
+})
+
+Appointment.destroy_all
+Appointment.create!({
+    booking_id: crystal_lake.id,
+    client_id: user.id,
+    start: "2019-11-05",
+    end: "2019-11-07",
+    num_guests: 2
 })

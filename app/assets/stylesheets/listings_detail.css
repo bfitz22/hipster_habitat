@@ -242,8 +242,20 @@
   border-bottom: none; 
   height: 295px; 
   width: 319px; 
-  position: fixed;
+  position: absolute;
   top: 525px; 
+  right: 400px; 
+  background-color: white;
+}
+
+.fixed-box {
+  z-index: 1;
+  border: 2px solid rgb(235, 235, 235);
+  border-bottom: none; 
+  height: 295px; 
+  width: 319px; 
+  position: fixed;
+  top: 25px; 
   right: 400px; 
   background-color: white;
 }

@@ -6,24 +6,33 @@ import CalendarModal from '../modal/calendar_modal';
 class ListingDetail extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {scrolled: "booking-box"};
         this.listenToScroll = this.listenToScroll.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchListing(this.props.match.params.listingId);
+        document.addEventListener('scroll', () => {
+            document.documentElement.dataset.scroll = window.scrollY;
+        });
         document.addEventListener('scroll', this.listenToScroll);
     }
 
     componentWillUnmount() {
+        document.removeEventListener('scroll', () => {
+            document.documentElement.dataset.scroll = window.scrollY;
+        });
         document.removeEventListener('scroll', this.listenToScroll);
     }
 
     listenToScroll() {
-        debugger
-        if (document.body.scrollTop >= 567) {
-            this.setState({ scrolled: "booking-box-free" })
-        }
+        const box = document.getElementById("booking-box");
+        if (document.documentElement.dataset.scroll >= 567 && !box.classList.contains("fixed-box")) {
+            box.classList.remove("booking-box");
+            box.classList.add("fixed-box");
+        } else if (document.documentElement.dataset.scroll < 567 && !box.classList.contains("booking-box")) {
+            box.classList.remove("fixed-box");
+            box.classList.add("booking-box");
+        } 
     }
 
     handleClick() {
@@ -69,25 +78,23 @@ class ListingDetail extends React.Component {
         })
         return (
             <div id="cake" className="whole-show-page">
-            <Slideshow listing={listing}/>
-            <div className="show-page">
-                <div className="listing-show-item">
-                    <div className="listing-show-title">
-                        <p>{listing.location}</p>
-                        <br/>
-                        <h1>{listing.title}</h1>
+                <Slideshow listing={listing}/>
+                <div className="show-page">
+                    <div className="listing-show-item">
+                        <div className="listing-show-title">
+                            <p>{listing.location}</p>
+                            <br/>
+                            <h1>{listing.title}</h1>
+                        </div>
+                        <div className="listing-show-description">
+                            <span className="host-id">Host: {host}</span>
+                            <p className="description">{listing.description}</p>
+                        </div>
+                        <InfoBoxes listing={listing}/>
                     </div>
-                    <div className="listing-show-description">
-                        <span className="host-id">Host: {host}</span>
-                        <p className="description">{listing.description}</p>
-                    </div>
-                    <InfoBoxes listing={listing}/>
+                    <div className="fake-box"></div>
                 </div>
-                <div className="fake-box"></div>
-            </div>
-            <div id="anchor">
-                <div className={this.state.scrolled}> 
-                {/* TODO: change booking box classname when scroll position changes */}
+                <div id="booking-box" className="booking-box"> 
                     <div className="booking-div-col">
                         <section className="price">${listing.price}</section>
                         <section className="per-night">per night</section>
@@ -115,17 +122,16 @@ class ListingDetail extends React.Component {
                     </div>
                     <CalendarModal />
                 </div>
-            </div>
-            <div className="activities-show">
-                <div className="activities-containter">
-                    <p className="activity-p">Activities</p>
-                    <p className="activity-p2" >Offered on the Host's property or nearby.</p>
-                    <div className="activity-box-container">
-                        <div className="activity-boxes">{available_activities}</div>
+                <div className="activities-show">
+                    <div className="activities-containter">
+                        <p className="activity-p">Activities</p>
+                        <p className="activity-p2" >Offered on the Host's property or nearby.</p>
+                        <div className="activity-box-container">
+                            <div className="activity-boxes">{available_activities}</div>
+                        </div>
                     </div>
+                    <div className="fake-box"></div>
                 </div>
-                <div className="fake-box"></div>
-            </div>
           </div>
         )
     }

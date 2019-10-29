@@ -14,7 +14,7 @@ const SearchResults = ( props ) => {
     return (
         <>
             <a href={`/#/listings/${props.listing.id}`} className="result-link">
-                <p className="ind result">
+                <p className="ind-result">
                     <i className={classNames(icon, "result-icon")}></i>
                     {props.listing.title}
                 </p>

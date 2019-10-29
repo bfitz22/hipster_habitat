@@ -1,12 +1,29 @@
 import React from 'react';
 import Slideshow from '../slideshow/slideshow';
-import Booking_Box from './booking_box/booking_box';
-
+import InfoBoxes from './info_boxes';
 import CalendarModal from '../modal/calendar_modal';
 
 class ListingDetail extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {scrolled: "booking-box"};
+        this.listenToScroll = this.listenToScroll.bind(this);
+    }
+
     componentDidMount() {
         this.props.fetchListing(this.props.match.params.listingId);
+        document.addEventListener('scroll', this.listenToScroll);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('scroll', this.listenToScroll);
+    }
+
+    listenToScroll() {
+        debugger
+        if (document.body.scrollTop >= 567) {
+            this.setState({ scrolled: "booking-box-free" })
+        }
     }
 
     handleClick() {
@@ -27,80 +44,6 @@ class ListingDetail extends React.Component {
         }
 
         if (!listing) return null; 
-
-        let campfires; let pets; let toilets; let water; let showers; let wifi;
-
-        if (listing.amenity.campfires_allowed) { 
-            campfires = <div className="info-item">
-                            <img src="https://s3.amazonaws.com/hipsterhabitat-dev/campfire.png" />
-                            <li>Campfires allowed</li>
-                        </div>
-        } else { 
-            campfires = <div className="itemless">
-                            <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-fire.png" />  
-                            <li>Campfires not allowed</li>
-                        </div>
-        }
-
-        if (listing.amenity.pets_allowed) { 
-            pets = <div className="info-item">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/dog.png" />  
-                        <li>Pets allowed</li>
-                    </div>
-        } else {
-            pets = <div className="itemless">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-pets.png" />  
-                        <li>Pets not allowed</li>
-                    </div>
-        }
-
-        if (listing.amenity.is_toilets) { 
-            toilets = <div className="info-item">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/toilet+(1).png" />  
-                        <li>Toilet available</li>
-                    </div>
-        } else {
-            toilets = <div className="itemless">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-toileting+(1).png" />  
-                        <li>No toilet</li>
-                    </div>
-        }
-
-        if (listing.amenity.is_water) { 
-            water = <div className="info-item">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/water.png" />  
-                        <li>Water available</li>
-                    </div>
-        } else {
-            water = <div className="itemless">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-water.png" />  
-                        <li>No water</li>
-                    </div>
-        }
-
-        if (listing.amenity.is_showers) {
-            showers = <div className="info-item">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/shower.png" />  
-                        <li>Showers available</li>
-                    </div>
-        } else {
-            showers = <div className="itemless">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-shower.png" />  
-                        <li>No showers</li>
-                    </div>
-        }
-
-        if (listing.amenity.is_wifi) {
-            wifi = <div className="info-item">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/wifi.png" />  
-                        <li>WiFi available</li>
-                    </div>
-        } else {
-            wifi = <div className="itemless">
-                        <img src="https://s3.amazonaws.com/hipsterhabitat-dev/no-wifi.png" />  
-                        <li>No WiFi</li>
-                    </div>
-        }
 
         const activities = [[listing.amenity.is_hiking, <i className="fas fa-hiking"></i>, "Hiking"],
             [listing.amenity.is_biking, <i className="fas fa-bicycle"></i>, "Biking"],
@@ -125,7 +68,7 @@ class ListingDetail extends React.Component {
             }
         })
         return (
-            <div className="whole-show-page">
+            <div id="cake" className="whole-show-page">
             <Slideshow listing={listing}/>
             <div className="show-page">
                 <div className="listing-show-item">
@@ -138,45 +81,13 @@ class ListingDetail extends React.Component {
                         <span className="host-id">Host: {host}</span>
                         <p className="description">{listing.description}</p>
                     </div>
-                    <div className="info-boxes">
-                        <div className="info">
-                            <span>Campsite Area</span>
-                            <div className="info-item">
-                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/camping-tent.png" />
-                                <li>Bring your own tents</li>
-                            </div>
-                            <div className="info-item">
-                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/placeholder+(1).png" />
-                                <li>15 sites</li>
-                            </div>
-                            <div className="info-item">
-                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/multiple-users-silhouette.png" />
-                                <li>Up to {listing.max_capacity} guests per site</li>
-                            </div>
-                            <div className="info-item">
-                                <img src="https://s3.amazonaws.com/hipsterhabitat-dev/wheelchair.png" />
-                                <li>Wheelchair access</li>
-                            </div>
-                        </div>
-                        <div className="info">
-                            <span>Essentials</span>
-                            {campfires}
-                            {pets}
-                            {toilets}
-                        </div>
-                        <div className="info">
-                            <span>Amenities</span>
-                            {water}
-                            {showers}
-                            {wifi}
-                        </div>
-                    </div>
+                    <InfoBoxes listing={listing}/>
                 </div>
                 <div className="fake-box"></div>
             </div>
             <div id="anchor">
-              {/* <Booking_Box listing={listing} openCalendarModal={this.props.openCalendarModal} /> */}
-                <div className="booking-box">
+                <div className={this.state.scrolled}> 
+                {/* TODO: change booking box classname when scroll position changes */}
                     <div className="booking-div-col">
                         <section className="price">${listing.price}</section>
                         <section className="per-night">per night</section>
@@ -201,9 +112,6 @@ class ListingDetail extends React.Component {
                         <section className="base-price">Base price x 2 nights</section>
                         <br/>
                         <section>${`${listing.price}` * 2}</section>
-                    </div>
-                    <div className="booking-div">
-                        <button className="booking-button">Request to book</button>
                     </div>
                     <CalendarModal />
                 </div>

@@ -1,11 +1,15 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import BigCalendar from '../calendar';
+import BigCalendar from '../listing/booking_box/calendar';
 
 const CalendarModal = ({appointments, closeModal}) => {
     if (!appointments || typeof appointments === 'string') {
-        return null;
+        return (
+            <div className="booking-button-div">
+                <button className="booking-button">Request to book</button>
+            </div>
+        )
     } else {
         const events = [];
         appointments.map(appointment => {

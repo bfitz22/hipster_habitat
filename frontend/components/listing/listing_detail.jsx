@@ -26,10 +26,10 @@ class ListingDetail extends React.Component {
 
     listenToScroll() {
         const box = document.getElementById("booking-box");
-        if (document.documentElement.dataset.scroll >= 567 && !box.classList.contains("fixed-box")) {
+        if (document.documentElement.dataset.scroll >= 567) {
             box.classList.remove("booking-box");
             box.classList.add("fixed-box");
-        } else if (document.documentElement.dataset.scroll < 567 && !box.classList.contains("booking-box")) {
+        } else {
             box.classList.remove("fixed-box");
             box.classList.add("booking-box");
         } 

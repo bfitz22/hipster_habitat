@@ -1,6 +1,6 @@
 import React from 'react';
 import Slideshow from '../slideshow/slideshow';
-import InfoBoxes from './info_boxes';
+import InfoBoxes from './sub_components/info_boxes';
 import CalendarModal from '../modal/calendar_modal';
 
 class ListingDetail extends React.Component {

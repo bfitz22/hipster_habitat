@@ -1,7 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import BigCalendar from '../listing/booking_box/calendar';
+import BigCalendar from '../listing/sub_components/calendar';
 
 const CalendarModal = ({appointments, closeModal}) => {
     if (!appointments || typeof appointments === 'string') {

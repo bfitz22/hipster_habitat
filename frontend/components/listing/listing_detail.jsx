@@ -34,10 +34,6 @@ class ListingDetail extends React.Component {
             box.classList.add("booking-box");
         } 
     }
-
-    handleClick() {
-        this.props.openCalendarModal(this.props.listing.appointments)
-    }
     
     render() {
         const { listing } = this.props;
@@ -58,7 +54,7 @@ class ListingDetail extends React.Component {
             [listing.amenity.is_biking, <i className="fas fa-bicycle"></i>, "Biking"],
             [listing.amenity.is_swimming, <i className="fas fa-swimmer"></i>, "Swimming"],
             [listing.amenity.is_fishing, <i className="fas fa-fish"></i>, "Fishing"],
-            [listing.amenity.is_horseback, <i className="fas fa-horse"></i>, "Horseback-Riding"],
+            [listing.amenity.is_horseback, <i className="fas fa-horse"></i>, "Horseback"],
             [listing.amenity.is_climbing, <i className="fas fa-mountain"></i>, "Climbing"]
             ]
 
@@ -98,22 +94,6 @@ class ListingDetail extends React.Component {
                     <div className="booking-div-col">
                         <section className="price">${listing.price}</section>
                         <section className="per-night">per night</section>
-                    </div>
-                    <div className="booking-div">
-                        <div className="check-in-div" 
-                        onClick={this.handleClick.bind(this)}
-                        >
-                        <section className="check-bold">Check in</section>
-                        <section>{listing.check_in}</section>
-                        </div>
-                        <div className="check-in-div">
-                        <section className="check-bold">Check out</section>
-                        <section>{listing.check_out}</section>
-                        </div>
-                        <div className="guests-div">
-                        <section className="check-bold">Guests</section>
-                        <section>Max: {listing.max_capacity}</section>
-                        </div>
                     </div>
                     <CalendarModal listing={listing}/>
                 </div>

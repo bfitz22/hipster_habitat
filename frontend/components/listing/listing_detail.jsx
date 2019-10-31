@@ -115,12 +115,7 @@ class ListingDetail extends React.Component {
                         <section>Max: {listing.max_capacity}</section>
                         </div>
                     </div>
-                    <div className="booking-div-space">
-                        <section className="base-price">Base price x 2 nights</section>
-                        <br/>
-                        <section>${`${listing.price}` * 2}</section>
-                    </div>
-                    <CalendarModal />
+                    <CalendarModal listing={listing}/>
                 </div>
                 <div className="activities-show">
                     <div className="activities-containter">

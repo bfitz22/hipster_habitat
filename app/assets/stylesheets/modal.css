@@ -36,7 +36,13 @@
 }
 
 .calendar-child {
-    z-index: 4;
+    z-index: 2;
+    background: purple;
+}
+
+.calendar-container {
+    z-index: 2;
+    background: red;
 }
 
 .search-background {

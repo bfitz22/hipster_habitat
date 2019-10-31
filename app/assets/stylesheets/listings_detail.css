@@ -239,7 +239,6 @@
 .booking-box {
   z-index: 1;
   border: 2px solid rgb(235, 235, 235);
-  border-bottom: none; 
   height: 295px; 
   width: 319px; 
   position: absolute;
@@ -251,7 +250,6 @@
 .fixed-box {
   z-index: 1;
   border: 2px solid rgb(235, 235, 235);
-  border-bottom: none; 
   height: 295px; 
   width: 319px; 
   position: fixed;
@@ -272,6 +270,7 @@
 
 .booking-button-div {
   border-bottom: 2px solid rgb(235, 235, 235);
+  border-bottom: none; 
   width: 100%;
   height: 25%;
   display: flex; 

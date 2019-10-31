@@ -7,18 +7,7 @@ class BigCalendar extends React.Component {
     constructor(props) {
         super(props);
         this.localizer = momentLocalizer(moment);
-    }
-
-    setDates() {
-        const events = []
-        this.props.events.map(event => {
-            return events.push({
-                start: new Date(event.start),
-                end: new Date(event.end),
-                title: "Title",
-                allDay: true 
-            })
-        })
+        this.state;
     }
 
     render() {

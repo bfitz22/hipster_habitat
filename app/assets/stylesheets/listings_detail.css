@@ -340,9 +340,14 @@
   font-family: "calibre", helvetica, sans-serif;
 }
 
-.check-bold {
+.check-bold { 
   font-weight: 600;
   margin-bottom: 10px; 
+}
+
+.check-guests {
+  font-weight: 600;
+  margin: 5px 0px 10px 0px; 
 }
 
 .booking-button {
@@ -361,4 +366,9 @@
   cursor: pointer;
   color: #40d9ac;
   border: 3px solid #40d9ac;
+}
+
+.guest-select {
+  margin-right: 10px;
+  width: 80px;
 }

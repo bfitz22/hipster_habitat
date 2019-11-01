@@ -11,13 +11,24 @@ class BigCalendar extends React.Component {
     }
 
     render() {
+        const events = [];
+        this.props.appointments.map(appointment => {
+            events.push({
+                start: appointment.start,
+                end: appointment.end,
+                title: "",
+                allDay: true
+            })
+        })
         return (
             <div className="calendar-container">
                 <Calendar
+                    selectable="ignoreEvents"
                     localizer={this.localizer}
-                    events={this.props.events}
+                    events={events}
                     startAccessor="start"
                     endAccessor="end"
+                    onSelectSlot={(slotInfo) => this.props.selectSlot(slotInfo)}
                 />
             </div>
         )

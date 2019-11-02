@@ -15,6 +15,14 @@ class SessionForm extends React.Component {
         this.redirect = this.redirect.bind(this);
     }
 
+    componentDidMount() {
+        document.getElementById("body").classList.add("modal-open");
+    }
+
+    componentWillUnmount() {
+        document.getElementById("body").classList.remove("modal-open");
+    }
+
     redirect() {
         location.href = this.props.host
     }

@@ -25,6 +25,10 @@
     padding: 20px;
 }
 
+.modal-open {
+    overflow: hidden;
+}
+
 .dropdown-background {
     display: flex;
     justify-content: flex-end;

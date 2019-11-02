@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 
 
 class Dropdown extends React.Component  {
+    componentDidMount() {
+        document.getElementById("body").classList.add("modal-open");
+    }
+
+    componentWillUnmount() {
+        document.getElementById("body").classList.remove("modal-open");
+    }
+    
     handleClick() {
         this.props.logout().then(this.props.closeModal())
     }

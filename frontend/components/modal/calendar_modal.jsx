@@ -24,6 +24,7 @@ class CalendarModal extends React.Component {
     handleDateClick(check) {
         let events = this.events.slice();
         let event = {
+            title: "current selection",
             start: this.state.check_in,
             end: this.state.check_out
         }
@@ -44,7 +45,19 @@ class CalendarModal extends React.Component {
             if ((start >= this.events[i].start && start <= this.events[i].end) ||
             (this.events[i].start >= start && this.events[i].start <= end)) { return null };
         }
-        this.selectingCheckIn ? this.setState({check_in: start}) : this.setState({check_out: end})
+        if (this.selectingCheckIn){
+            if (this.state.check_out === "- - -") {
+                this.setState({check_in: start, check_out: start})
+            } else { 
+                this.setState({check_in: start}) 
+            }
+        } else {
+            if (this.state.check_in === "- - -") {
+                this.setState({check_in: end, check_out: end})
+            } else {
+                this.setState({check_out: end})
+            }
+        }
         this.closeModal();
     }
 

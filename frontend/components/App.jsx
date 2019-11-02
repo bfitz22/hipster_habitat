@@ -17,7 +17,7 @@ import ListingConfirm from './listing/listing_create/listing_confirm';
 import { AuthRoute } from '../util/route_utils';
 
 const App = () => (
-        <div className="body">     
+        <div id="body" className="body">     
             <Route exact path="/" component={Nav}/>
             <Route path="/discover" component={Nav}/>
             

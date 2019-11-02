@@ -16,13 +16,14 @@ class BigCalendar extends React.Component {
             events.push({
                 start: appointment.start,
                 end: appointment.end,
-                title: "",
+                title: appointment.title ? appointment.title : "",
                 allDay: true
             })
         })
         return (
             <div className="calendar-container">
                 <Calendar
+                    views={['month']}
                     selectable="ignoreEvents"
                     localizer={this.localizer}
                     events={events}

@@ -12,7 +12,8 @@ class CalendarModal extends React.Component {
             check_out: "- - -",
             num_guests: "",
             listing_id: this.props.listing.id,
-            number: false
+            number: false,
+            title: "current"
         }
         this.selectingCheckIn;
         this.events = this.props.listing.appointments;
@@ -82,15 +83,24 @@ class CalendarModal extends React.Component {
     render() {
         // debugger
         let i;
+        let guestDisplay;
         const max = this.props.listing.max_capacity;
-        const options= [];
+        const options= [""];
         for (i = 1; i <= max; i++) {
             options.push(<option key={i} value={i}>{i}</option>)
         }
 
-        const guestDisplay = this.state.number ?
-        <select className="guest-select" value={this.state.num_guests} onChange={this.updateGuests}>{options}</select>
-        : <section>Max: {max}</section>
+         
+        if (this.state.number) {
+            guestDisplay = <select className="guest-select" value={this.state.num_guests} onChange={this.updateGuests}>{options}</select>
+        } else {
+            if (this.state.num_guests === "") {
+                guestDisplay = <section className="guest-display">Max: {max}</section>
+            } else {
+                guestDisplay = <section className="guest-display">{this.state.num_guests} Guests</section>
+            }
+        }
+        
 
         const bookingDiv = 
             <div className="booking-div">

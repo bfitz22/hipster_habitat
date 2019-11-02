@@ -324,7 +324,7 @@
   height: 100%;
   display: flex; 
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   font-size: 15px;  
   font-family: "calibre", helvetica, sans-serif;
 }
@@ -335,19 +335,23 @@
   height: 100%;
   display: flex; 
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   font-size: 15px;  
   font-family: "calibre", helvetica, sans-serif;
 }
 
+.check-in-div:hover, .guests-div:hover {
+  cursor: pointer;
+}
+
 .check-bold { 
   font-weight: 600;
-  margin-bottom: 10px; 
+  margin: 15px 0 10px 0; 
 }
 
 .check-guests {
   font-weight: 600;
-  margin: 5px 0px 10px 0px; 
+  margin: 15px 0px 10px 0px; 
 }
 
 .booking-button {
@@ -368,7 +372,11 @@
   border: 3px solid #40d9ac;
 }
 
+.guest-display {
+  margin-top: 5px; 
+}
+
 .guest-select {
-  margin-right: 10px;
+  margin: 0 10px 0 0;
   width: 80px;
 }

@@ -12,8 +12,7 @@ class CalendarModal extends React.Component {
             check_out: "- - -",
             num_guests: "",
             listing_id: this.props.listing.id,
-            number: false,
-            title: "current"
+            number: false
         }
         this.selectingCheckIn;
         this.events = this.props.listing.appointments;
@@ -25,7 +24,7 @@ class CalendarModal extends React.Component {
     handleDateClick(check) {
         let events = this.events.slice();
         let event = {
-            title: "current selection",
+            title: "current",
             start: this.state.check_in,
             end: this.state.check_out
         }
@@ -37,7 +36,7 @@ class CalendarModal extends React.Component {
     handleNumClick() {
         this.setState({number: !(this.state.number)}) 
     }
-
+    
     selectSlot(slotInfo) {
         let start = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD");
         let end = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DD");
@@ -75,13 +74,21 @@ class CalendarModal extends React.Component {
         }
     }
 
+    formatDate(date) {
+        if (date === "- - -") {return date}
+        let newDate = new Date(date + "T12:00:00Z");
+        var monthNames = [
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+            "Aug", "Sep", "Oct", "Nov", "Dec"
+          ];
+        return monthNames[newDate.getMonth()] + " " + newDate.getDate() + " " + newDate.getFullYear()
+    }
 
     closeModal() {
         this.props.closeModal();
     }
 
     render() {
-        // debugger
         let i;
         let guestDisplay;
         const max = this.props.listing.max_capacity;
@@ -106,11 +113,11 @@ class CalendarModal extends React.Component {
             <div className="booking-div">
                 <div className="check-in-div" onClick={() => {this.handleDateClick("in")}}>
                     <section className="check-bold">Check in</section>
-                    <section>{this.state.check_in}</section>
+                    <section>{this.formatDate(this.state.check_in)}</section>
                 </div>
                 <div className="check-in-div" onClick={() => {this.handleDateClick("out")}}>
                     <section className="check-bold">Check out</section>
-                    <section>{this.state.check_out}</section>
+                    <section>{this.formatDate(this.state.check_out)}</section>
                 </div>
                 <div className="guests-div" onClick={this.handleNumClick.bind(this)}>
                     <section className="check-guests">Guests</section>

@@ -4,12 +4,9 @@ class Api::AppointmentsController < ApplicationController
         if @appointment.save
             render 'api/appointments/show'
         else
-            render json: @appointment.errors.full_messages, status: 400
+            # render json: @appointment.errors.full_messages, status: 400
+            render "please sign up or login to make a booking", status: 400
         end
-    end
-
-    def show
-        @appointment = Appointment.find(params[:id])
     end
 
     private

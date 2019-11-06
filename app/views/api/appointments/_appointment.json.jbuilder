@@ -1,0 +1,1 @@
+json.extract! @appointment, :id, :user_id, :listing_id, :start, :end, :num_guests

@@ -25,6 +25,6 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
     resources :listings, only: [:index, :show, :create]
-    resources :appointments, only: [:create, :show]
+    resources :appointments, only: [:create]
   end
 end

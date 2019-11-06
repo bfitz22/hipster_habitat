@@ -54,9 +54,3 @@ export const createListing = listing => dispatch => {
 export const updateCreation = (key, value) => dispatch => {
     return dispatch(updateCreationState(key, value))
 };
-
-export const createAppointment = appointment => dispatch => {
-    return APITUtil.createAppointment(appointment).then(
-        response => dispatch(receiveListing(response))
-    )
-}

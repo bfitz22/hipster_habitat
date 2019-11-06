@@ -22,7 +22,7 @@ class CalendarModal extends React.Component {
         this.selectSlot = this.selectSlot.bind(this);
         this.updateGuests = this.updateGuests.bind(this);
     }
-    
+
     handleClick() {
         if (this.state.start !== "- - -" && this.state.end !== "- - -"
         && this.num_guests !== "") {
@@ -101,23 +101,27 @@ class CalendarModal extends React.Component {
         let i;
         let guestDisplay;
         const max = this.props.listing.max_capacity;
-        const options= [""];
+        const options= [<option key="0" value=""></option>];
         for (i = 1; i <= max; i++) {
             options.push(<option key={i} value={i}>{i}</option>)
         }
-
          
         if (this.state.number) {
             guestDisplay = <select className="guest-select" value={this.state.num_guests} onChange={this.updateGuests}>{options}</select>
         } else {
             if (this.state.num_guests === "") {
-                guestDisplay = <section className="guest-display">Max: {max}</section>
+                guestDisplay = <>
+                    <section className="check-guests">Guests</section>
+                    <section className="guest-display">Max: {max}</section>
+                </>
             } else {
-                guestDisplay = <section className="guest-display">{this.state.num_guests} Guests</section>
+                guestDisplay = <>
+                    <section className="check-guests">Guests</section>
+                    <section className="guest-display">{this.state.num_guests} Guests</section>
+                </>
             }
         }
         
-
         const bookingDiv = 
             <div className="booking-div">
                 <div className="check-in-div" onClick={() => {this.handleDateClick("in")}}>
@@ -129,10 +133,16 @@ class CalendarModal extends React.Component {
                     <section>{this.formatDate(this.state.end)}</section>
                 </div>
                 <div className="guests-div" onClick={this.handleNumClick.bind(this)}>
-                    <section className="check-guests">Guests</section>
                     {guestDisplay}
                 </div>
             </div>
+
+        let bookingButton;
+        if (this.state.start === "- - -" || this.state.num_guests === "") {
+            bookingButton = <button className="not-booking-button">Request to book</button>
+        } else {
+            bookingButton = <button className="booking-button" onClick={this.handleClick.bind(this)}>Request to book</button>
+        }
 
         if (!this.props.appointments || typeof this.props.appointments === 'string') {
             return (
@@ -144,7 +154,7 @@ class CalendarModal extends React.Component {
                     <section>${`${this.props.listing.price}` * 2}</section>
                 </div>
                 <div className="booking-button-div">
-                    <button className="booking-button" onClick={this.handleClick.bind(this)}>Request to book</button>
+                    {bookingButton}
                 </div>
                 </>
             )

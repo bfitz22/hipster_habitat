@@ -372,11 +372,30 @@
   border: 3px solid #40d9ac;
 }
 
+.not-booking-button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(117, 117, 117);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: none; 
+  width: 300px; 
+  height: 55px; 
+  font-weight: bold;
+  font-size: 16px;  
+  font-family: "calibre", helvetica, sans-serif;
+}
+
 .guest-display {
   margin-top: 5px; 
 }
 
 .guest-select {
-  margin: 0 10px 0 0;
+  background-color: white;
+  text-indent: 5px;
+  margin: 20px 10px 0 0;
+  height: 50%;
   width: 80px;
+}
+
+.guest-select:focus {
+  border: 3px solid #40d9ac;
 }

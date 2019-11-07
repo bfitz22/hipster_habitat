@@ -48,6 +48,7 @@ class BigCalendar extends React.Component {
                     localizer={this.localizer}
                     events={events}
                     onSelectSlot={(slotInfo) => this.props.selectSlot(slotInfo)}
+                    onSelectEvent={event => this.props.selectEvent(event)}
                     // eventPropGetter={this.eventStyleGetter(event)}
                 />
             </div>

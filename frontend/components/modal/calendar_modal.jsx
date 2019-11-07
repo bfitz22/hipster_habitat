@@ -14,19 +14,25 @@ class CalendarModal extends React.Component {
             num_guests: "",
             listing_id: this.props.listing.id,
             user_id: this.props.currentUser,
-            number: false
+            number: false,
+            errors: []
         }
         this.selectingCheckIn;
         this.events = this.props.listing.appointments;
         this.handleDateClick = this.handleDateClick.bind(this);
         this.selectSlot = this.selectSlot.bind(this);
         this.updateGuests = this.updateGuests.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     }
 
     handleClick() {
         if (this.state.start !== "- - -" && this.state.end !== "- - -"
         && this.num_guests !== "") {
-            this.props.createAppointment(this.state)
+            if (this.state.user_id) {
+                this.props.createAppointment(this.state)
+            } else {
+                this.setState({ errors: ["sign up or login to make a booking"] })
+            }
         }
     }
 
@@ -48,11 +54,8 @@ class CalendarModal extends React.Component {
     
     selectSlot(slotInfo) {
         let start = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD");
-        let tomorrow = new Date(start);
-        tomorrow.setDate(tomorrow.getDate() + 2);
         let end = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DD");
-        let yesterday = new Date(end);
-        yesterday.setDate(yesterday.getDate());
+        
         let i;
         for (i = 0; i < this.events.length; i++) {
             if ((start >= this.events[i].start && start <= this.events[i].end) ||
@@ -60,32 +63,52 @@ class CalendarModal extends React.Component {
         }
         if (this.selectingCheckIn){
             if (this.state.end === "- - -") {
+                let tomorrow = new Date(start);
+                tomorrow.setDate(tomorrow.getDate() + 2);
                 tomorrow = moment(tomorrow.toLocaleString()).format("YYYY-MM-DD");
-                this.setState({start: start, end: tomorrow})
+                this.setState({start: start, end: tomorrow, errors: []})
             } else if (new Date(start).getDate() < new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate()) { 
-                this.setState({start: start}) 
+                this.setState({start: start, errors: []}) 
             }
         } else {
             if (this.state.start === "- - -") {
+                let yesterday = new Date(end);
+                yesterday.setDate(yesterday.getDate()); 
                 yesterday = moment(yesterday.toLocaleString()).format("YYYY-MM-DD");
-                this.setState({start: yesterday, end: end})
+                this.setState({start: yesterday, end: end, errors: []})
             } else if (new Date(end).getDate() > new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate()){
-                this.setState({end: end})
+                this.setState({end: end, errors: []})
             }
         }
         this.closeModal();
     }
 
+    selectEvent(event) {
+        if (event) {
+            this.setState({errors: ["this slot is already booked"]})
+        }
+    }
+
+    renderErrors() {
+        if (this.state.errors.length > 0) {
+            return (
+                <ul className="login-errors">
+                    {this.state.errors.map((error, i) => (
+                        <li key={`error-${i}`}>
+                            <i className="fas fa-exclamation-circle"></i>{error}
+                        </li>
+                    ))}
+                </ul>
+            )
+        }
+    }
+
     updateGuests(e) {
         let num_guests = e.currentTarget.value
         if (num_guests <= this.props.listing.max_capacity) {
-            this.setState({
-                num_guests: num_guests
-            })
+            this.setState({ num_guests: num_guests, errors: [] })
         } else {
-            this.setState({
-                num_guests: 2
-            })
+            this.setState({ num_guests: 2, errors: [] })
         }
     }
 
@@ -169,6 +192,7 @@ class CalendarModal extends React.Component {
                 <div className="booking-button-div">
                     {bookingButton}
                 </div>
+                {this.renderErrors()}
                 </>
             )
         } else {
@@ -178,9 +202,11 @@ class CalendarModal extends React.Component {
                 <div className="search-background" onClick={this.closeModal.bind(this)}>
                 </div>
                 <div className="calendar-child" onClick={e => e.stopPropagation()}>
+                    {this.renderErrors()}
                     <BigCalendar 
                         appointments={this.props.appointments}
                         selectSlot={slotInfo => this.selectSlot(slotInfo)}
+                        selectEvent={event => this.selectEvent(event)}
                     />
                 </div>
                 </>

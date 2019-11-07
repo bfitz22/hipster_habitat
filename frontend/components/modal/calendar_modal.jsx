@@ -33,7 +33,7 @@ class CalendarModal extends React.Component {
     handleDateClick(check) {
         let events = this.events.slice();
         let event = {
-            title: "current",
+            title: "",
             start: this.state.start,
             end: this.state.end
         }
@@ -48,7 +48,11 @@ class CalendarModal extends React.Component {
     
     selectSlot(slotInfo) {
         let start = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD");
+        let tomorrow = new Date(start);
+        tomorrow.setDate(tomorrow.getDate() + 2);
         let end = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DD");
+        let yesterday = new Date(end);
+        yesterday.setDate(yesterday.getDate());
         let i;
         for (i = 0; i < this.events.length; i++) {
             if ((start >= this.events[i].start && start <= this.events[i].end) ||
@@ -56,13 +60,15 @@ class CalendarModal extends React.Component {
         }
         if (this.selectingCheckIn){
             if (this.state.end === "- - -") {
-                this.setState({start: start, end: start})
+                tomorrow = moment(tomorrow.toLocaleString()).format("YYYY-MM-DD");
+                this.setState({start: start, end: tomorrow})
             } else { 
                 this.setState({start: start}) 
             }
         } else {
             if (this.state.start === "- - -") {
-                this.setState({start: end, end: end})
+                yesterday = moment(yesterday.toLocaleString()).format("YYYY-MM-DD");
+                this.setState({start: yesterday, end: end})
             } else {
                 this.setState({end: end})
             }
@@ -122,6 +128,13 @@ class CalendarModal extends React.Component {
             }
         }
         
+        let numNights;
+        if (this.state.start !== "- - -") {
+            numNights = new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate() - new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate() 
+        } else {
+            numNights = 2;
+        }
+        
         const bookingDiv = 
             <div className="booking-div">
                 <div className="check-in-div" onClick={() => {this.handleDateClick("in")}}>
@@ -149,9 +162,9 @@ class CalendarModal extends React.Component {
                 <>
                 {bookingDiv}
                 <div className="booking-div-space">
-                    <section className="base-price">Base price x 2 nights</section>
+                    <section className="base-price">Base price x {numNights} nights</section>
                     <br/>
-                    <section>${`${this.props.listing.price}` * 2}</section>
+                    <section>${`${this.props.listing.price}` * `${numNights}`}</section>
                 </div>
                 <div className="booking-button-div">
                     {bookingButton}

@@ -36,7 +36,7 @@ class BigCalendar extends React.Component {
             events.push({
                 start: new Date(appointment.start + "T12:00:00Z"),
                 end: new Date(appointment.end + "T12:05:00Z"),
-                title: appointment.title ? appointment.title : "booked",
+                title: appointment.title ? appointment.title : "",
                 allDay: true
             })
         })

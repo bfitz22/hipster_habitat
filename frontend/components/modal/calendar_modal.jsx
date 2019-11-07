@@ -62,14 +62,14 @@ class CalendarModal extends React.Component {
             if (this.state.end === "- - -") {
                 tomorrow = moment(tomorrow.toLocaleString()).format("YYYY-MM-DD");
                 this.setState({start: start, end: tomorrow})
-            } else { 
+            } else if (new Date(start).getDate() < new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate()) { 
                 this.setState({start: start}) 
             }
         } else {
             if (this.state.start === "- - -") {
                 yesterday = moment(yesterday.toLocaleString()).format("YYYY-MM-DD");
                 this.setState({start: yesterday, end: end})
-            } else {
+            } else if (new Date(end).getDate() > new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate()){
                 this.setState({end: end})
             }
         }

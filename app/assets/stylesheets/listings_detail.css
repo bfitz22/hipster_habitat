@@ -243,7 +243,7 @@
   width: 319px; 
   position: absolute;
   top: 525px; 
-  right: 400px; 
+  left: 1200px;
   background-color: white;
 }
 
@@ -254,7 +254,7 @@
   width: 319px; 
   position: fixed;
   top: 25px; 
-  right: 400px; 
+  left: 1200px;  
   background-color: white;
 }
 

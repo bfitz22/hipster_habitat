@@ -29,9 +29,18 @@ class CalendarModal extends React.Component {
         if (this.state.start !== "- - -" && this.state.end !== "- - -"
         && this.num_guests !== "") {
             if (this.state.user_id) {
-                this.props.createAppointment(this.state)
+                this.props.createAppointment(this.state);
+                this.setState({ errors: ["booking successfully scheduled"] })
+                setTimeout(
+                    function() { this.setState({ errors: [] }) }.bind(this),
+                    3000
+                );
             } else {
                 this.setState({ errors: ["sign up or login to make a booking"] })
+                setTimeout(
+                    function() { this.setState({ errors: [] }) }.bind(this),
+                    3000
+                );
             }
         }
     }
@@ -66,18 +75,18 @@ class CalendarModal extends React.Component {
                 let tomorrow = new Date(start);
                 tomorrow.setDate(tomorrow.getDate() + 2);
                 tomorrow = moment(tomorrow.toLocaleString()).format("YYYY-MM-DD");
-                this.setState({start: start, end: tomorrow, errors: []})
+                this.setState({start: start, end: tomorrow})
             } else if (new Date(start).getDate() < new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate()) { 
-                this.setState({start: start, errors: []}) 
+                this.setState({start: start}) 
             }
         } else {
             if (this.state.start === "- - -") {
                 let yesterday = new Date(end);
                 yesterday.setDate(yesterday.getDate()); 
                 yesterday = moment(yesterday.toLocaleString()).format("YYYY-MM-DD");
-                this.setState({start: yesterday, end: end, errors: []})
+                this.setState({start: yesterday, end: end})
             } else if (new Date(end).getDate() > new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate()){
-                this.setState({end: end, errors: []})
+                this.setState({end: end})
             }
         }
         this.closeModal();
@@ -85,14 +94,19 @@ class CalendarModal extends React.Component {
 
     selectEvent(event) {
         if (event) {
-            this.setState({errors: ["this slot is already booked"]})
+            this.setState({errors: ["this slot is already booked"]});
+            setTimeout(
+                function() { this.setState({ errors: [] }) }.bind(this),
+                3000
+            );
         }
     }
-
+    
     renderErrors() {
+        let css = this.state.errors[0] === "booking successfully scheduled" ? "booking-success" : "booking-errors"
         if (this.state.errors.length > 0) {
             return (
-                <ul className="login-errors">
+                <ul className={css}>
                     {this.state.errors.map((error, i) => (
                         <li key={`error-${i}`}>
                             <i className="fas fa-exclamation-circle"></i>{error}
@@ -106,9 +120,9 @@ class CalendarModal extends React.Component {
     updateGuests(e) {
         let num_guests = e.currentTarget.value
         if (num_guests <= this.props.listing.max_capacity) {
-            this.setState({ num_guests: num_guests, errors: [] })
+            this.setState({ num_guests: num_guests })
         } else {
-            this.setState({ num_guests: 2, errors: [] })
+            this.setState({ num_guests: 2 })
         }
     }
 
@@ -202,12 +216,12 @@ class CalendarModal extends React.Component {
                 <div className="search-background" onClick={this.closeModal.bind(this)}>
                 </div>
                 <div className="calendar-child" onClick={e => e.stopPropagation()}>
-                    {this.renderErrors()}
                     <BigCalendar 
                         appointments={this.props.appointments}
                         selectSlot={slotInfo => this.selectSlot(slotInfo)}
                         selectEvent={event => this.selectEvent(event)}
                     />
+                    {this.renderErrors()}
                 </div>
                 </>
             )

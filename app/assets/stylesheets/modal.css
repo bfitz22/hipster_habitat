@@ -42,12 +42,12 @@
 
 .calendar-child {
     z-index: 2;
-    background: purple;
 }
 
 .calendar-container {
     z-index: 2;
-    background: red;
+    background: white;
+    height: 319px;
 }
 
 .search-background {

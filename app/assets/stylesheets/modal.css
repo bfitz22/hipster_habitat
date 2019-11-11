@@ -42,12 +42,17 @@
 
 .calendar-child {
     z-index: 2;
+    background: white; 
 }
 
 .calendar-container {
     z-index: 2;
     background: white;
     height: 319px;
+}
+
+.rbc-calendar {
+    height: 319px; 
 }
 
 .search-background {

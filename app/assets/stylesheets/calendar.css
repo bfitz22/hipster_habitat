@@ -3,6 +3,53 @@
 *= require_self
 */
 
-.rbc-event {
-    background-color: #e6e6e6;
+.rbc-ellipsis, .rbc-event-label, .rbc-row-segment .rbc-event-content, .rbc-show-more {
+    background-color: #e6e6e6 !important;
+    color: blue !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
 }
+
+.rbc-row-content {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.rbc-row-content > div:last-child:not(:first-child) {
+    position: absolute !important;
+    top: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.rbc-toolbar {
+    z-index: 2 !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    font-family: "calibre", helvetica, sans-serif !important;
+}
+
+.rbc-toolbar > span:last-child:not(:first-child) {
+    display: none !important; 
+}
+
+.rbc-btn-group > button:first-child:not(:last-child) {
+    display: none !important;
+}
+
+.rbc-event {
+    background-color: #e6e6e6 !important;
+    cursor: default !important;
+    height: 100% !important;
+}
+
+.rbc-date-cell > a:hover {
+    cursor: text !important;
+}
+
+.rbc-row-content:hover {
+    cursor: pointer !important;
+}
+

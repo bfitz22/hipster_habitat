@@ -30,7 +30,12 @@ class CalendarModal extends React.Component {
         && this.num_guests !== "") {
             if (this.state.user_id) {
                 this.props.createAppointment(this.state);
-                this.setState({ errors: ["booking successfully scheduled"] })
+                this.setState({ 
+                    start: "- - -",
+                    end: "- - -",
+                    num_guests: "",
+                    errors: ["booking successfully scheduled"] 
+                })
                 setTimeout(
                     function() { this.setState({ errors: [] }) }.bind(this),
                     3000

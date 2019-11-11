@@ -45,6 +45,10 @@
     height: 100% !important;
 }
 
+.rbc-date-cell {
+    z-index: 5 !important;
+}
+
 .rbc-date-cell > a:hover {
     cursor: text !important;
 }

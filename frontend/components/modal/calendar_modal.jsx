@@ -36,16 +36,10 @@ class CalendarModal extends React.Component {
                     num_guests: "",
                     errors: ["booking successfully scheduled"] 
                 })
-                setTimeout(
-                    function() { this.setState({ errors: [] }) }.bind(this),
-                    3000
-                );
+                this.clearErrors()
             } else {
                 this.setState({ errors: ["sign up or login to make a booking"] })
-                setTimeout(
-                    function() { this.setState({ errors: [] }) }.bind(this),
-                    3000
-                );
+                this.clearErrors()
             }
         }
     }
@@ -69,30 +63,63 @@ class CalendarModal extends React.Component {
     selectSlot(slotInfo) {
         let start = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD");
         let end = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DD");
+        let startDate = new Date(start + "T12:00:00Z").getDate();
+        let endDate = new Date(end + "T12:00:00Z").getDate();
+        let tomorrow = new Date(start + "T12:00:00Z");
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        let yesterday = new Date(end + "T12:00:00Z");
+        yesterday.setDate(yesterday.getDate() - 1); 
         
-        let i;
-        for (i = 0; i < this.events.length; i++) {
-            if ((start >= this.events[i].start && start <= this.events[i].end) ||
-            (this.events[i].start >= start && this.events[i].start <= end)) { return null };
+        for (let i = 0; i < this.events.length; i++) {
+            let apptStart = moment(this.events[i].start.toLocaleString()).format("YYYY-MM-DD");
+            let apptEnd = moment(this.events[i].end.toLocaleString()).format("YYYY-MM-DD");
+            let apptStartDate = new Date(apptStart + "T12:00:00Z").getDate();
+            let apptEndDate = new Date(apptEnd + "T12:00:00Z").getDate();
+        
+            if (this.selectingCheckIn){
+                if (this.state.end === "- - -") {
+                    if ((tomorrow.getDate() >= apptStartDate && tomorrow.getDate() <= apptEndDate) ||
+                    (apptStartDate >= startDate && apptStartDate <= tomorrow.getDate())) { 
+                        this.setState({errors: ["there is a scheduling conflict"]})
+                        this.clearErrors();
+                        return 
+                    } 
+                } else if (new Date(start).getDate() < new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate()) {
+                    if ((startDate >= apptStartDate && startDate <= apptEndDate) ||
+                    (apptStartDate >= startDate && apptStartDate <= new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate())) { 
+                        this.setState({errors: ["there is a scheduling conflict"]})
+                        this.clearErrors();
+                        return 
+                    } 
+                }
+            } else {
+                if (this.state.start === "- - -") {
+                    if ((yesterday.getDate() >= apptStartDate && yesterday.getDate() <= apptEndDate) ||
+                    (apptStartDate >= yesterday.getDate() && apptStartDate <= endDate)) { 
+                        this.setState({errors: ["there is a scheduling conflict"]})
+                        this.clearErrors();
+                        return 
+                    } 
+                } else if (new Date(end).getDate() > new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate()){
+                    if ((new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate() >= apptStartDate && new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate() <= apptEndDate) ||
+                    (apptStartDate >= new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate() && apptStartDate <= endDate)) { 
+                        this.setState({errors: ["there is a scheduling conflict"]})
+                        this.clearErrors();
+                        return 
+                    }
+                }
+            }
         }
-        if (this.selectingCheckIn){
-            if (this.state.end === "- - -") {
-                let tomorrow = new Date(start);
-                tomorrow.setDate(tomorrow.getDate() + 2);
-                tomorrow = moment(tomorrow.toLocaleString()).format("YYYY-MM-DD");
-                this.setState({start: start, end: tomorrow})
-            } else if (new Date(start).getDate() < new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate()) { 
-                this.setState({start: start}) 
-            }
-        } else {
-            if (this.state.start === "- - -") {
-                let yesterday = new Date(end);
-                yesterday.setDate(yesterday.getDate()); 
-                yesterday = moment(yesterday.toLocaleString()).format("YYYY-MM-DD");
-                this.setState({start: yesterday, end: end})
-            } else if (new Date(end).getDate() > new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate()){
-                this.setState({end: end})
-            }
+        if (this.selectingCheckIn && this.state.end === "- - -") {
+            tomorrow = moment(tomorrow.toLocaleString()).format("YYYY-MM-DD");
+            this.setState({start: start, end: tomorrow})
+        } else if (this.selectingCheckIn && new Date(start).getDate() < new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate()) {
+            this.setState({start: start})
+        } else if (!this.selectingCheckIn && this.state.start === "- - -") {
+            yesterday = moment(yesterday.toLocaleString()).format("YYYY-MM-DD");
+            this.setState({start: yesterday, end: end})
+        } else if (!this.selectingCheckIn && new Date(end).getDate() > new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate()) {
+            this.setState({end: end})
         }
         this.closeModal();
     }
@@ -100,21 +127,19 @@ class CalendarModal extends React.Component {
     selectEvent(event) {
         if (event) {
             this.setState({errors: ["this slot is already booked"]});
-            setTimeout(
-                function() { this.setState({ errors: [] }) }.bind(this),
-                3000
-            );
+            this.clearErrors();
         }
     }
     
     renderErrors() {
-        let css = this.state.errors[0] === "booking successfully scheduled" ? "booking-success" : "booking-errors"
         if (this.state.errors.length > 0) {
+            let css = this.state.errors[0] === "booking successfully scheduled" ? "booking-success" : "booking-errors";
+            let icon = this.state.errors[0] === "booking successfully scheduled" ? "fas fa-check-circle" : "fas fa-exclamation-circle";
             return (
                 <ul className={css}>
                     {this.state.errors.map((error, i) => (
                         <li key={`error-${i}`}>
-                            <i className="fas fa-exclamation-circle"></i>{error}
+                            <i className={icon}></i> {error}
                         </li>
                     ))}
                 </ul>
@@ -143,6 +168,13 @@ class CalendarModal extends React.Component {
 
     closeModal() {
         this.props.closeModal();
+    }
+
+    clearErrors() {
+        setTimeout(
+            function() { this.setState({ errors: [] }) }.bind(this),
+            3000
+        );
     }
 
     render() {

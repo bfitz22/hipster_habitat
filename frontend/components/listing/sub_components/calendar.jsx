@@ -10,26 +10,6 @@ class BigCalendar extends React.Component {
         this.state;
     }
 
-    // componentDidMount() {
-    //     let events = document.getElementsByClassName("rbc-event");
-    //     debugger
-    //     for (var i = 0; i < events.length; i++) {
-    //         for(var j = 0; j < events[i].children.length; j++)
-    //         events[i].children[j].title === "current" ? events[i].style.backgroundColor = "#40d9ac" : events[i].style.backgroundColor = "#e6e6e6"
-    //     }
-    // }
-
-    // eventStyleGetter(event) {
-    //     console.log(event);
-    //     var backgroundColor = event.hexColor;
-    //     var style = {
-    //         backgroundColor: backgroundColor
-    //     };
-    //     return {
-    //         style: style
-    //     };
-    // }
-
     render() {
         const events = [];
         this.props.appointments.map(appointment => {
@@ -49,7 +29,6 @@ class BigCalendar extends React.Component {
                     events={events}
                     onSelectSlot={(slotInfo) => this.props.selectSlot(slotInfo)}
                     onSelectEvent={event => this.props.selectEvent(event)}
-                    // eventPropGetter={this.eventStyleGetter(event)}
                 />
             </div>
         )

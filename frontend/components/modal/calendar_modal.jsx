@@ -23,6 +23,7 @@ class CalendarModal extends React.Component {
         this.selectSlot = this.selectSlot.bind(this);
         this.updateGuests = this.updateGuests.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.clearErrors = this.clearErrors.bind(this);
     }
 
     handleClick() {
@@ -34,40 +35,50 @@ class CalendarModal extends React.Component {
                     start: "- - -",
                     end: "- - -",
                     num_guests: "",
-                    errors: ["booking successfully scheduled"] 
+                    errors: this.state.errors.push("booking successfully scheduled")
                 })
                 this.clearErrors()
             } else {
-                this.setState({ errors: ["sign up or login to make a booking"] })
+                this.setState({ errors: this.state.errors.push("sign up or login to make a booking") })
                 this.clearErrors()
             }
         }
     }
 
     handleDateClick(check) {
-        let events = this.events.slice();
-        let event = {
-            title: "",
-            start: this.state.start,
-            end: this.state.end
+        this.props.openCalendarModal(this.events)
+        let checkIn = document.getElementById("check-in-div");
+        let checkOut = document.getElementById("check-out-div");
+        if (check === "in") {
+            this.selectingCheckIn = true;
+            checkOut.classList.remove("selecting-div");
+            checkIn.classList.add("selecting-div");
+        } else {
+            this.selectingCheckIn = false;
+            checkOut.classList.add("selecting-div");
+            checkIn.classList.remove("selecting-div");
         }
-        events.push(event);
-        this.props.openCalendarModal(events)
-        check === "in" ? this.selectingCheckIn = true : this.selectingCheckIn = false;
     }
 
     handleNumClick() {
+        let box = document.getElementById("guests-div");
+        this.state.number ? box.classList.remove("selecting-div") : box.classList.add("selecting-div");
         this.setState({number: !(this.state.number)}) 
     }
     
     selectSlot(slotInfo) {
-        let start = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD");
-        let end = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DD");
-        let startDate = new Date(start + "T12:00:00Z").getDate();
-        let endDate = new Date(end + "T12:00:00Z").getDate();
-        let tomorrow = new Date(start + "T12:00:00Z");
+        let selected = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DD");
+        let selectedDate = new Date(selected + "T12:00:00Z").getDate();
+        let selectedMonth = new Date(selected + "T12:00:00Z").getMonth();
+        let today = new Date();
+        if (today.getMonth() > selectedMonth || (today.getMonth === selectedMonth && today.getDate() > selectedDate)) { 
+            this.setState({ errors: this.state.errors.push("please select an upcoming date") })
+            this.clearErrors();
+            return
+        }
+        let tomorrow = new Date(selected + "T12:00:00Z");
         tomorrow.setDate(tomorrow.getDate() + 1);
-        let yesterday = new Date(end + "T12:00:00Z");
+        let yesterday = new Date(selected + "T12:00:00Z");
         yesterday.setDate(yesterday.getDate() - 1); 
         
         for (let i = 0; i < this.events.length; i++) {
@@ -75,35 +86,55 @@ class CalendarModal extends React.Component {
             let apptEnd = moment(this.events[i].end.toLocaleString()).format("YYYY-MM-DD");
             let apptStartDate = new Date(apptStart + "T12:00:00Z").getDate();
             let apptEndDate = new Date(apptEnd + "T12:00:00Z").getDate();
+            let apptStartMonth = new Date(apptStart + "T12:00:00Z").getMonth();
+            let apptEndMonth = new Date(apptEnd + "T12:00:00Z").getMonth();
         
             if (this.selectingCheckIn){
+                let end = moment(this.state.end.toLocaleString()).format("YYYY-MM-DD");
+                let endDate = new Date(end + "T12:00:00Z");
                 if (this.state.end === "- - -") {
-                    if ((tomorrow.getDate() >= apptStartDate && tomorrow.getDate() <= apptEndDate) ||
-                    (apptStartDate >= startDate && apptStartDate <= tomorrow.getDate())) { 
-                        this.setState({errors: ["there is a scheduling conflict"]})
+                    if ((tomorrow.getMonth() === apptStartMonth && tomorrow.getMonth() === apptEndMonth && (tomorrow.getDate() >= apptStartDate && tomorrow.getDate() <= apptEndDate)) ||
+                    (tomorrow.getMonth === apptStartMonth && tomorrow.getMonth() !== apptEndMonth && tomorrow.getDate() >= apptStartDate) ||
+                    (tomorrow.getMonth() !== apptStartMonth && tomorrow.getMonth() === apptEndMonth && tomorrow.getDate() <= apptEndDate)) {
+                        let errors = this.state.errors
+                        errors.push("there is a scheduling CONFLICT")
+                        this.setState({errors: errors})
                         this.clearErrors();
                         return 
                     } 
-                } else if (new Date(start).getDate() < new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate()) {
-                    if ((startDate >= apptStartDate && startDate <= apptEndDate) ||
-                    (apptStartDate >= startDate && apptStartDate <= new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate())) { 
-                        this.setState({errors: ["there is a scheduling conflict"]})
+                } else if (selectedDate < endDate.getDate()) {
+                    if ((selectedDate >= apptStartDate && selectedDate <= apptEndDate) ||
+                    (selectedMonth >= apptStartMonth && selectedMonth <= apptEndMonth) ||
+                    (apptStartDate >= selectedDate && apptStartDate <= endDate.getDate()) ||
+                    (apptStartMonth >= selectedMonth && apptStartMonth <= endDate.getMonth())) { 
+                        let errors = this.state.errors
+                        errors.push("there is a scheduling CONFLICT")
+                        this.setState({errors: errors})
                         this.clearErrors();
                         return 
                     } 
                 }
             } else {
+                let start = moment(this.state.start.toLocaleString()).format("YYYY-MM-DD");
+                let startDate = new Date(start + "T12:00:00Z");
                 if (this.state.start === "- - -") {
-                    if ((yesterday.getDate() >= apptStartDate && yesterday.getDate() <= apptEndDate) ||
-                    (apptStartDate >= yesterday.getDate() && apptStartDate <= endDate)) { 
-                        this.setState({errors: ["there is a scheduling conflict"]})
+                    if ((yesterday.getMonth() === apptStartMonth && yesterday.getMonth() === apptEndMonth && (yesterday.getDate() >= apptStartDate && yesterday.getDate() <= apptEndDate)) ||
+                    (yesterday.getMonth === apptStartMonth && yesterday.getMonth() !== apptEndMonth && yesterday.getDate() >= apptStartDate) ||
+                    (yesterday.getMonth() !== apptStartMonth && yesterday.getMonth() === apptEndMonth && yesterday.getDate() <= apptEndDate)) { 
+                        let errors = this.state.errors
+                        errors.push("there is a scheduling CONFLICT")
+                        this.setState({errors: errors})
                         this.clearErrors();
                         return 
                     } 
-                } else if (new Date(end).getDate() > new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate()){
-                    if ((new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate() >= apptStartDate && new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate() <= apptEndDate) ||
-                    (apptStartDate >= new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate() && apptStartDate <= endDate)) { 
-                        this.setState({errors: ["there is a scheduling conflict"]})
+                } else if (selectedDate > startDate.getDate()){
+                    if ((startDate.getDate() >= apptStartDate && startDate.getDate() <= apptEndDate) ||
+                    (startDate.getMonth() >= apptStartMonth && startDate.getMonth() <= apptEndMonth) ||
+                    (apptStartDate >= startDate.getDate() && apptStartDate <= selectedDate) ||
+                    (apptStartMonth >= startDate.getMonth() && apptStartMonth <= selectedMonth)) { 
+                        let errors = this.state.errors
+                        errors.push("there is a scheduling CONFLICT")
+                        this.setState({errors: errors})
                         this.clearErrors();
                         return 
                     }
@@ -112,21 +143,23 @@ class CalendarModal extends React.Component {
         }
         if (this.selectingCheckIn && this.state.end === "- - -") {
             tomorrow = moment(tomorrow.toLocaleString()).format("YYYY-MM-DD");
-            this.setState({start: start, end: tomorrow})
-        } else if (this.selectingCheckIn && new Date(start).getDate() < new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate()) {
-            this.setState({start: start})
+            this.setState({start: selected, end: tomorrow})
+        } else if (this.selectingCheckIn && new Date(selected).getDate() < new Date(moment(this.state.end.toLocaleString()).format("YYYY-MM-DD")).getDate()) {
+            this.setState({start: selected})
         } else if (!this.selectingCheckIn && this.state.start === "- - -") {
             yesterday = moment(yesterday.toLocaleString()).format("YYYY-MM-DD");
-            this.setState({start: yesterday, end: end})
-        } else if (!this.selectingCheckIn && new Date(end).getDate() > new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate()) {
-            this.setState({end: end})
+            this.setState({start: yesterday, end: selected})
+        } else if (!this.selectingCheckIn && new Date(selected).getDate() > new Date(moment(this.state.start.toLocaleString()).format("YYYY-MM-DD")).getDate()) {
+            this.setState({end: selected})
         }
         this.closeModal();
     }
 
     selectEvent(event) {
         if (event) {
-            this.setState({errors: ["this slot is already booked"]});
+            let errors = this.state.errors
+            errors.push("this slot is already BOOKED")
+            this.setState({errors: errors})
             this.clearErrors();
         }
     }
@@ -138,7 +171,7 @@ class CalendarModal extends React.Component {
             return (
                 <ul className={css}>
                     {this.state.errors.map((error, i) => (
-                        <li key={`error-${i}`}>
+                        <li className="error-key" key={`error-${i}`}>
                             <i className={icon}></i> {error}
                         </li>
                     ))}
@@ -168,11 +201,15 @@ class CalendarModal extends React.Component {
 
     closeModal() {
         this.props.closeModal();
+        document.getElementById("check-in-div").classList.remove("selecting-div");
+        document.getElementById("check-out-div").classList.remove("selecting-div");
     }
 
     clearErrors() {
+        let errors = this.state.errors;
         setTimeout(
-            function() { this.setState({ errors: [] }) }.bind(this),
+            function() { errors.shift()
+                this.setState({ errors: errors }) }.bind(this),
             3000
         );
     }
@@ -211,15 +248,15 @@ class CalendarModal extends React.Component {
         
         const bookingDiv = 
             <div className="booking-div">
-                <div className="check-in-div" onClick={() => {this.handleDateClick("in")}}>
+                <div id="check-in-div" className="check-in-div" onClick={() => {this.handleDateClick("in")}}>
                     <section className="check-bold">Check in</section>
                     <section>{this.formatDate(this.state.start)}</section>
                 </div>
-                <div className="check-in-div" onClick={() => {this.handleDateClick("out")}}>
+                <div id="check-out-div" className="check-in-div" onClick={() => {this.handleDateClick("out")}}>
                     <section className="check-bold">Check out</section>
                     <section>{this.formatDate(this.state.end)}</section>
                 </div>
-                <div className="guests-div" onClick={this.handleNumClick.bind(this)}>
+                <div id="guests-div" className="guests-div" onClick={this.handleNumClick.bind(this)}>
                     {guestDisplay}
                 </div>
             </div>

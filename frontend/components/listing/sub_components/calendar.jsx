@@ -10,14 +10,30 @@ class BigCalendar extends React.Component {
         this.state;
     }
 
+    eventStyleGetter(event, start, end, isSelected) {
+        console.log(event);
+        var backgroundColor = '#' + event.hexColor;
+        var style = {
+            backgroundColor: backgroundColor,
+            borderRadius: '0px',
+            opacity: 0.8,
+            color: 'black',
+            border: '0px',
+            display: 'block'
+        };
+        return {
+            style: style
+        };
+    }
+
     render() {
         const events = [];
         this.props.appointments.map(appointment => {
             events.push({
                 start: new Date(appointment.start + "T12:00:00Z"),
                 end: new Date(appointment.end + "T12:05:00Z"),
-                title: appointment.title ? appointment.title : "",
-                allDay: true
+                allDay: true,
+                hexColor: appointment.user_id === this.props.currentUser ? "40d9ac" : "e6e6e6"
             })
         })
         return (
@@ -29,6 +45,7 @@ class BigCalendar extends React.Component {
                     events={events}
                     onSelectSlot={(slotInfo) => this.props.selectSlot(slotInfo)}
                     onSelectEvent={event => this.props.selectEvent(event)}
+                    eventPropGetter={this.eventStyleGetter}
                 />
             </div>
         )

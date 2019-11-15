@@ -300,6 +300,7 @@ class CalendarModal extends React.Component {
                 <div className="calendar-child" onClick={e => e.stopPropagation()}>
                     <BigCalendar 
                         appointments={this.props.appointments}
+                        currentUser={this.props.currentUser}
                         selectSlot={slotInfo => this.selectSlot(slotInfo)}
                         selectEvent={event => this.selectEvent(event)}
                     />

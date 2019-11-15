@@ -31,15 +31,19 @@ class CalendarModal extends React.Component {
         && this.num_guests !== "") {
             if (this.state.user_id) {
                 this.props.createAppointment(this.state);
+                let errors = this.state.errors
+                errors.push("booking successfully scheduled")
                 this.setState({ 
                     start: "- - -",
                     end: "- - -",
                     num_guests: "",
-                    errors: this.state.errors.push("booking successfully scheduled")
+                    errors: errors
                 })
                 this.clearErrors()
             } else {
-                this.setState({ errors: this.state.errors.push("sign up or login to make a booking") })
+                let errors = this.state.errors
+                errors.push("sign up or login to make a booking")
+                this.setState({ errors: errors })
                 this.clearErrors()
             }
         }

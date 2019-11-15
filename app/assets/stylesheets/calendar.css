@@ -4,8 +4,6 @@
 */
 
 .rbc-ellipsis, .rbc-event-label, .rbc-row-segment .rbc-event-content, .rbc-show-more {
-    background-color: #e6e6e6 !important;
-    color: blue !important;
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;

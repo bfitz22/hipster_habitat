@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createAppointment } from '../../actions/appointment_actions';
 import { openObjectModal, closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
@@ -30,15 +30,15 @@ class CalendarModal extends React.Component {
         if (this.state.start !== "- - -" && this.state.end !== "- - -"
         && this.num_guests !== "") {
             if (this.state.user_id) {
-                this.props.createAppointment(this.state);
-                let errors = this.state.errors
-                errors.push("booking successfully scheduled")
+                this.props.createAppointment(this.state).then(window.location.reload(false))
                 this.setState({ 
                     start: "- - -",
                     end: "- - -",
                     num_guests: "",
                     errors: errors
                 })
+                let errors = this.state.errors
+                errors.push("booking successfully scheduled")
                 this.clearErrors()
             } else {
                 let errors = this.state.errors

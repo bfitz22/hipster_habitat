@@ -13,7 +13,7 @@ class BigCalendar extends React.Component {
     eventStyleGetter(event, start, end, isSelected) {
         var backgroundColor = '#' + event.hexColor;
         var style = {
-            backgroundColor: backgroundColor
+            backgroundColor: backgroundColor,
         };
         return {
             style: style

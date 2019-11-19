@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createAppointment } from '../../actions/appointment_actions';
 import { openObjectModal, closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';

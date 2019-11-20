@@ -74,7 +74,6 @@ class MainMenu extends React.Component {
                 }
             }
         }
-        // TODO: add amenities to search results
         this.props.openSearchModal(listings);
     }
 

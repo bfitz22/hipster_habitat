@@ -231,19 +231,21 @@ class CalendarModal extends React.Component {
             options.push(<option key={i} value={i}>{i}</option>)
         }
          
-        if (this.state.number) {
-            guestDisplay = <select className="guest-select" value={this.state.num_guests} onChange={this.updateGuests}>{options}</select>
+        if (this.state.number) { 
+            guestDisplay = <div id="guests-div" className="guests-div" onClick={this.handleNumClick.bind(this)}>
+                                <select className="guest-select" value={this.state.num_guests} onChange={this.updateGuests}>{options}</select>
+                            </div>
         } else {
             if (this.state.num_guests === "") {
-                guestDisplay = <>
+                guestDisplay = <div id="guests-div" className="inactive-div" onClick={this.handleNumClick.bind(this)}>  
                     <section className="check-guests">Guests</section>
                     <section className="guest-display">Max: {max}</section>
-                </>
+                </div>
             } else {
-                guestDisplay = <>
+                guestDisplay = <div id="guests-div" className="guests-div" onClick={this.handleNumClick.bind(this)}>
                     <section className="check-guests">Guests</section>
                     <section className="guest-display">{this.state.num_guests} Guests</section>
-                </>
+                </div>
             }
         }
         
@@ -264,9 +266,7 @@ class CalendarModal extends React.Component {
                     <section className="check-bold">Check out</section>
                     <section>{this.formatDate(this.state.end)}</section>
                 </div>
-                <div id="guests-div" className="guests-div" onClick={this.handleNumClick.bind(this)}>
-                    {guestDisplay}
-                </div>
+                {guestDisplay}
             </div>
 
         let bookingButton;

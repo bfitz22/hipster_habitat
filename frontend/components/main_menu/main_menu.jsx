@@ -67,9 +67,9 @@ class MainMenu extends React.Component {
          
         for (let j = 0; j < filteredListings.length; j++) {
             let amenities = Object.entries(filteredListings[j].amenity);
-            for (let i = 0; i <= amenities.length; i++) {
+            for (let i = 0; i < amenities.length; i++) {
                 if (amenities[i][0].includes(e.target.value.toLowerCase()) && amenities[i][1] === true) {
-                    listings.push(filteredListings[j])
+                    if ( !listings.includes(filteredListings[j]) ) { listings.push(filteredListings[j]) }
                     break 
                 }
             }

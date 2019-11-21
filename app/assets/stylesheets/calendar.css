@@ -27,6 +27,7 @@
     display: flex !important;
     flex-direction: row-reverse !important;
     font-family: "calibre", helvetica, sans-serif !important;
+    margin-top: 5px !important;
 }
 
 .rbc-toolbar > span:last-child:not(:first-child) {

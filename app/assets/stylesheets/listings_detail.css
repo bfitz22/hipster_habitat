@@ -346,6 +346,19 @@
   font-family: "calibre", helvetica, sans-serif;
 }
 
+.inactive-div {
+  background-color: rgb(230, 230, 230);
+  z-index: 2;
+  padding-left: 15px; 
+  width: 100%;
+  height: 100%;
+  display: flex; 
+  flex-direction: column;
+  justify-content: start;
+  font-size: 15px;  
+  font-family: "calibre", helvetica, sans-serif;
+}
+
 .check-in-div:hover, .guests-div:hover {
   cursor: pointer;
 }

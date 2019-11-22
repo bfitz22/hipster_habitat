@@ -138,10 +138,10 @@
 .result-link {
     text-decoration: none;
     color: rgb(51, 51, 51);
+    
 }
 
 .result-link p {
-    width: 25%;
     padding: 10px 10px 20px 10px;
     border-bottom: 1px solid #ebebeb;
     font-size: 1rem;

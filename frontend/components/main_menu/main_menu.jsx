@@ -107,9 +107,7 @@ class MainMenu extends React.Component {
                 onFocus={this.handleSearch.bind(this)} onKeyUp={this.handleSearch.bind(this)}/>
             </div>
             <div className="results-container">
-                <div className="results">  
                 <SearchModal />
-                </div>
             </div>
             <div className="spacer"></div>
             <div className="filter-buttons">

@@ -8,13 +8,13 @@ const SearchModal = ({listings, closeModal}) => {
         return null;
     } else {
         return (
-            <>
+            <div className="results">
             <div className="search-background" onClick={closeModal}>
             </div>
             <div className="search-child" onClick={e => e.stopPropagation()}>
                 {listings.map(listing => <SearchResults key={listing.id} listing={listing}/>)}
             </div>
-            </>
+            </div>
         );
     }
 }

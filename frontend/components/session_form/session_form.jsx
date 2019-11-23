@@ -21,10 +21,11 @@ class SessionForm extends React.Component {
 
     componentWillUnmount() {
         document.getElementById("body").classList.remove("modal-open");
+        this.props.fetchUser;
     }
 
     redirect() {
-        location.href = this.props.host
+        location.href = "/#/listing_create/"
     }
 
     update(field) {
@@ -36,9 +37,9 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = merge({}, this.state);
-        if (this.props.host === "/#/listing_create/") {
+        if (this.props.host === "/listing_create/") {
             this.props.processForm(user).then(this.props.closeModal)
-            .then(this.redirect); 
+            .then(this.redirect()); 
         } else {
         this.props.processForm(user).then(this.props.closeModal);
         }

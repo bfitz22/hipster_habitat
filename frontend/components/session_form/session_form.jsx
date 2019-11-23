@@ -12,7 +12,7 @@ class SessionForm extends React.Component {
             last_name: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.redirect = this.redirect.bind(this);
+        // this.redirect = this.redirect.bind(this);
     }
 
     componentDidMount() {
@@ -25,7 +25,7 @@ class SessionForm extends React.Component {
     }
 
     redirect() {
-        location.href = "/#/listing_create/"
+        this.props.history.push('/listing_create/')
     }
 
     update(field) {
@@ -37,9 +37,9 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = merge({}, this.state);
-        if (this.props.host === "/listing_create/") {
+        if (this.props.host === "/#/listing_create/") {
             this.props.processForm(user).then(this.props.closeModal)
-            .then(this.redirect()); 
+            .then(this.redirect.bind(this)); 
         } else {
         this.props.processForm(user).then(this.props.closeModal);
         }

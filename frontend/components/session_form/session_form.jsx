@@ -12,7 +12,6 @@ class SessionForm extends React.Component {
             last_name: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.redirect = this.redirect.bind(this);
     }
 
     componentDidMount() {

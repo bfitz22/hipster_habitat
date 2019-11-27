@@ -29,7 +29,7 @@ class CalendarModal extends React.Component {
     handleClick() {
         if (this.state.start !== "- - -" && this.state.end !== "- - -"
         && this.num_guests !== "") {
-            if (this.state.user_id) {
+            if (this.props.currentUser) {
                 this.props.createAppointment(this.state).then(window.location.reload(false))
                 this.setState({ 
                     start: "- - -",

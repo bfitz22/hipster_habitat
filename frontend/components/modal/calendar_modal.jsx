@@ -13,7 +13,6 @@ class CalendarModal extends React.Component {
             end: "- - -",
             num_guests: "",
             listing_id: this.props.listing.id,
-            user_id: this.props.currentUser,
             number: false,
             errors: []
         }
@@ -30,7 +29,9 @@ class CalendarModal extends React.Component {
         if (this.state.start !== "- - -" && this.state.end !== "- - -"
         && this.num_guests !== "") {
             if (this.props.currentUser) {
-                this.props.createAppointment(this.state).then(window.location.reload(false))
+                let appt_props = this.state;
+                appt_props.user_id = this.props.currentUser;
+                this.props.createAppointment(appt_props).then(window.location.reload(false))
                 this.setState({ 
                     start: "- - -",
                     end: "- - -",

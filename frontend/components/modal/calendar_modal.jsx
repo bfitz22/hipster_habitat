@@ -31,7 +31,7 @@ class CalendarModal extends React.Component {
             if (this.props.currentUser) {
                 let appt_props = this.state;
                 appt_props.user_id = this.props.currentUser;
-                this.props.createAppointment(appt_props).then(window.location.reload(false))
+                this.props.createAppointment(appt_props);
                 this.setState({ 
                     start: "- - -",
                     end: "- - -",

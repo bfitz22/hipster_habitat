@@ -11,27 +11,29 @@ class ListingLocationForm extends React.Component {
         super(props);
         // const lat = this.props.lat || "";
         // const lng = this.props.lng || "";
-        const location = this.props.location || "";
-        // this.state = { lat, lng, location }
-        this.state = { location }
+        const city = this.props.location || "";
+        this.state = { 
+            city,
+            errors: [] };
         this.onClick = this.onClick.bind(this);
         this.geocode = Geocode;
         this.geocode.setApiKey("AIzaSyC0pn1ErvinGCDqDgU6Dvj6XeiOqNEF9L0");
     }
 
     onClick() {
-        this.geocode.fromAddress(this.state.location).then(
+        let address = this.state.street + " " + this.state.city + " " + this.state.USstate + " " + this.state.zip;
+        this.geocode.fromAddress(address).then(
             response => {
+                debugger
                 const { lat, lng } = response.results[0].geometry.location;
-                console.log(lat, lng);
+                this.props.updateCreation("lat", lat)
+                this.props.updateCreation("lng", lng)
+                this.props.updateCreation("location", this.state.city + ", " + this.state.USstate)
             },
             error => {
                 console.log(error);
             }
         )
-        // this.props.updateCreation("lat", this.state.lat)
-        // this.props.updateCreation("lng", this.state.lng)
-        this.props.updateCreation("location", this.state.location)
         location.href = "/#/listing_create/price"
     }
     
@@ -63,9 +65,14 @@ class ListingLocationForm extends React.Component {
                             <h2>What is the address of your Listing?</h2>
                         </div>
                         <div className="form-input">
-                            {/* <input type="number" placeholder="latitude" value={this.state.lat} onChange={this.update("lat")}/>
-                            <input type="number" placeholder="longitude" value={this.state.lng} onChange={this.update("lng")} /> */}
-                            <input type="text" placeholder="123 Broadway New York, NY 10001" value={this.state.location} onChange={this.update("location")} />
+                            <p>Street Address</p>
+                            <input type="text" value={this.state.street} onChange={this.update("street")}/>
+                            <p>City</p>
+                            <input type="text" value={this.state.city} onChange={this.update("city")} />
+                            <p>State</p>
+                            <input type="text" value={this.state.USstate} onChange={this.update("USstate")} />
+                            <p>Zip Code</p>
+                            <input type="text" value={this.state.zip} onChange={this.update("zip")} />
                         </div>
                         <div>
                             {ok}

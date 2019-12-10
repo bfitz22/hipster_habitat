@@ -415,9 +415,9 @@
   width: 80px;
 }
 
-.guest-select:focus {
+/* .guest-select:focus {
   border: 3px solid #40d9ac;
-}
+} */
 
 .booking-errors {
   background-color: #fef2d6;

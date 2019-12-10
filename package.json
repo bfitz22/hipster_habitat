@@ -21,6 +21,7 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-big-calendar": "^0.22.1",
     "react-dom": "^16.10.2",
+    "react-geocode": "^0.2.1",
     "react-native-aws3": "0.0.9",
     "react-native-image-picker": "^0.28.1",
     "react-redux": "^6.0.1",

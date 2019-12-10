@@ -1,6 +1,6 @@
 import React from 'react';
 import ListingIndexItem from './listing_index_item';
-import ListingMap from '../listing_map/listing_map';
+// import ListingMap from '../listing_map/listing_map';
 import MarkerManager from '../listing_map/marker_manager';
 // import FilterForm from '../listing_map/filter_form';
 
@@ -52,6 +52,7 @@ class ListingIndex extends React.Component {
     }
 
     render() {
+      // debugger
         return (
           <div className="index">
             <section className="index-list">

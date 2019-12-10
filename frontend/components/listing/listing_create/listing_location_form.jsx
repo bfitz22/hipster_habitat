@@ -1,4 +1,5 @@
 import React from 'react';
+import Geocode from 'react-geocode';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
@@ -8,16 +9,28 @@ import { connect } from 'react-redux';
 class ListingLocationForm extends React.Component {
     constructor(props) {
         super(props);
-        const lat = this.props.lat || "";
-        const lng = this.props.lng || "";
+        // const lat = this.props.lat || "";
+        // const lng = this.props.lng || "";
         const location = this.props.location || "";
-        this.state = { lat, lng, location }
+        // this.state = { lat, lng, location }
+        this.state = { location }
         this.onClick = this.onClick.bind(this);
+        this.geocode = Geocode;
+        this.geocode.setApiKey("AIzaSyC0pn1ErvinGCDqDgU6Dvj6XeiOqNEF9L0");
     }
 
     onClick() {
-        this.props.updateCreation("lat", this.state.lat)
-        this.props.updateCreation("lng", this.state.lng)
+        this.geocode.fromAddress(this.state.location).then(
+            response => {
+                const { lat, lng } = response.results[0].geometry.location;
+                console.log(lat, lng);
+            },
+            error => {
+                console.log(error);
+            }
+        )
+        // this.props.updateCreation("lat", this.state.lat)
+        // this.props.updateCreation("lng", this.state.lng)
         this.props.updateCreation("location", this.state.location)
         location.href = "/#/listing_create/price"
     }
@@ -47,12 +60,12 @@ class ListingLocationForm extends React.Component {
                 <div className="form-vessel">
                     <div className="form-container">
                         <div className="listing-form-title">
-                            <h2>What are the coordinates of your Listing?</h2>
+                            <h2>What is the address of your Listing?</h2>
                         </div>
                         <div className="form-input">
-                            <input type="number" placeholder="latitude" value={this.state.lat} onChange={this.update("lat")}/>
-                            <input type="number" placeholder="longitude" value={this.state.lng} onChange={this.update("lng")} />
-                            <input type="text" placeholder="city, state" value={this.state.location} onChange={this.update("location")} />
+                            {/* <input type="number" placeholder="latitude" value={this.state.lat} onChange={this.update("lat")}/>
+                            <input type="number" placeholder="longitude" value={this.state.lng} onChange={this.update("lng")} /> */}
+                            <input type="text" placeholder="123 Broadway New York, NY 10001" value={this.state.location} onChange={this.update("location")} />
                         </div>
                         <div>
                             {ok}

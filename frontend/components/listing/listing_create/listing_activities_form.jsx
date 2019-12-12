@@ -22,16 +22,22 @@ class ListingActivitiesForm extends React.Component {
     }
 
     onClick() {
-        this.state.arr.map(el => {
+        let i = 6;
+        let j = 0;
+        while (i < this.props.amenity_arr.length) {
+            let el = this.state.arr[j]
             if (el.active) {
-                this.props.amenity_arr.push([el.type, true])
+                this.props.amenity_arr[i] = [el.type, true];
             } else {
-                this.props.amenity_arr.push([el.type, false])
+                this.props.amenity_arr[i] = [el.type, false];
             }
-        }),
+            i++
+            j++
+        }
         this.props.updateCreation("amenity", this.props.amenity_arr);
         location.href = "/#/listing_create/check_in"
     }
+    
 
     toggle(index) {
         let arr = this.state.arr;
@@ -54,13 +60,16 @@ class ListingActivitiesForm extends React.Component {
             onClick={() => this.toggle(i)}>{el.title}</div>
         )
 
+        let next = null;
+        if (this.state.arr.every(el => el.active != null)) { next = "/#/listing_create/check_in" }
+
         return (
             <>
             <ListingNav />
             <div className="form-body">
                     <div className="nav-arrow-container">
-                        <NavLeft/>
-                        <NavRight/>
+                        <NavLeft prev={"/#/listing_create/amenities"}/>
+                        <NavRight next={next}/>
                     </div>
                 <div className="form-vessel">
                     <div className="form-container">
@@ -93,12 +102,12 @@ class ListingActivitiesForm extends React.Component {
 
 const msp = ({ entities: { creations } }) => {
     return {
-        is_hiking: creations.is_hiking,
-        is_swimming: creations.is_swimming,
-        is_horseback: creations.is_horseback,
-        is_biking: creations.is_biking,
-        is_fishing: creations.is_fishing,
-        is_climbing: creations.is_climbing,
+        is_hiking: creations.amenity[6][1],
+        is_swimming: creations.amenity[7][1],
+        is_horseback: creations.amenity[8][1],
+        is_biking: creations.amenity[9][1],
+        is_fishing: creations.amenity[10][1],
+        is_climbing: creations.amenity[11][1],
         amenity_arr: creations.amenity
     }
 }

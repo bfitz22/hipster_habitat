@@ -21,21 +21,31 @@ class ListingAmenitiesForm extends React.Component {
         }
     }
 
+    // onClick() {
+    //     this.state.arr.map(el => {
+    //         if (el.active) {
+    //             this.props.amenity_arr.push([el.type, true])
+    //         } else {
+    //             this.props.amenity_arr.push([el.type, false])
+    //         }
+    //     }),
+    //     this.props.updateCreation("amenity", this.props.amenity_arr);
+    //     location.href = "/#/listing_create/activities"
+    // }
     onClick() {
-        this.state.arr.map(el => {
+        let i = 0;
+        while (i < 6) {
+            let el = this.state.arr[i]
             if (el.active) {
-                this.props.amenity_arr.push([el.type, true])
+                this.props.amenity_arr[i] = [el.type, true];
             } else {
-                this.props.amenity_arr.push([el.type, false])
+                this.props.amenity_arr[i] = [el.type, false];
             }
-        }),
+            i++
+        }
         this.props.updateCreation("amenity", this.props.amenity_arr);
         location.href = "/#/listing_create/activities"
     }
-
-    // update(type, value) {
-    //     return updateCreation(type, value)
-    // }
 
     toggle(index) {
         let arr = this.state.arr;
@@ -58,13 +68,16 @@ class ListingAmenitiesForm extends React.Component {
             onClick={() => this.toggle(i)}>{el.title}</div>
         )
 
+        let next = null;
+        if (this.state.arr.every(el => el.active != null)) { next = "/#/listing_create/activities" }
+
         return (
             <>
             <ListingNav />
             <div className="form-body">
                     <div className="nav-arrow-container">
-                        <NavLeft/>
-                        <NavRight/>
+                        <NavLeft prev={"/#/listing_create/site_type"}/>
+                        <NavRight next={next}/>
                     </div>
                 <div className="form-vessel">
                     <div className="form-container">
@@ -97,13 +110,13 @@ class ListingAmenitiesForm extends React.Component {
 
 const msp = ({ entities: { creations } }) => {
     return {
-        is_pets: creations.is_pets,
-        is_campfires: creations.is_campfires,
-        is_water: creations.is_water,
-        is_toilets: creations.is_toilets,
-        is_showers: creations.is_showers,
-        is_wifi: creations.is_wifi,
-        amenity_arr: creations.amenity
+        is_pets: creations.amenity[0][1],
+        is_campfires: creations.amenity[1][1],
+        is_water: creations.amenity[2][1],
+        is_toilets: creations.amenity[3][1],
+        is_showers: creations.amenity[4][1],
+        is_wifi: creations.amenity[5][1],
+        amenity_arr: creations.amenity   
     }
 }
 

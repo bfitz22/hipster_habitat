@@ -19,7 +19,7 @@ class ListingCheckinForm extends React.Component {
     }
 
     onClick() {
-        this.props.updateCreation("check_in", this.state.check_out),
+        this.props.updateCreation("check_in", this.state.check_in),
         this.props.updateCreation("check_out", this.state.check_out),
         location.href = "/#/listing_create/confirm"
     }
@@ -39,17 +39,34 @@ class ListingCheckinForm extends React.Component {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>
         }
 
-        const times = this.options.map((el, i) => 
-            <option key={i} value={el}>{el}</option>
-        )
+        let options = this.options;
+        const checkInTimes = options.map((el, i) => {
+            if (this.state.check_in === el) {
+                return <option key={i} defaultValue={el}>{el}</option>
+            } else {
+                return <option key={i} value={el}>{el}</option>
+            }
+        })
+
+        let otherOptions = this.options;
+        const checkOutTimes = otherOptions.map((el, i) => {
+            if (this.state.check_out === el) {
+                return <option key={i} defaultValue={el}>{el}</option>
+            } else {
+                return <option key={i} value={el}>{el}</option>
+            }
+        })
+
+        let next = null;
+        if (this.props.check_in) { next = "/#/listing_create/confirm" }
         
         return (
             <>
             <ListingNav />
             <div className="form-body">
                 <div className="nav-arrow-container">
-                    <NavLeft/>
-                    <NavRight/>
+                    <NavLeft prev={"/#/listing_create/activities"}/>
+                    <NavRight next={next}/>
                 </div>
                 <div className="form-vessel">
                     <div className="form-container">
@@ -58,9 +75,9 @@ class ListingCheckinForm extends React.Component {
                         </div>
                         <div className="form-input">
                             <p>Check in after...</p>
-                            <select name="check-in" value={this.state.check_in} onChange={this.update("check_in")}>{times}</select>
+                            <select name="check-in" value={this.state.check_in} onChange={this.update("check_in")}>{checkInTimes}</select>
                             <p>Check out before...</p>
-                            <select name="check-out" value={this.state.check_out} onChange={this.update("check_out")}>{times}</select> 
+                            <select name="check-out" value={this.state.check_out} onChange={this.update("check_out")}>{checkOutTimes}</select> 
                         </div>
                         <div>
                             {ok}

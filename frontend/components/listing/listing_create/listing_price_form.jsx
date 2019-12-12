@@ -34,13 +34,16 @@ class ListingPriceForm extends React.Component {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>
         }
 
-            return (
+        let next = null;
+        if (this.props.price) { next = "/#/listing_create/site_type" }
+
+        return (
             <>
             <ListingNav />
             <div className="form-body">
                 <div className="nav-arrow-container">
-                    <NavLeft/>
-                    <NavRight/>
+                    <NavLeft prev={"/#/listing_create/location"}/>
+                    <NavRight next={next}/>
                 </div>
                 <div className="form-vessel">
                     <div className="form-container">

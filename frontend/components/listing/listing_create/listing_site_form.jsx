@@ -51,13 +51,16 @@ class ListingSiteForm extends React.Component {
             onClick={() => this.toggle(i)}>{el.name}<i className={classNames(el.image, "site-image")}></i></div>
         )
 
+        let next = null; 
+        if (this.props.site) { next = "/#/listing_create/amenities" }
+
         return (
             <>
             <ListingNav />
             <div className="form-body">
                     <div className="nav-arrow-container">
-                        <NavLeft/>
-                        <NavRight/>
+                        <NavLeft prev={"/#/listing_create/price"}/>
+                        <NavRight next={next}/>
                     </div>
                 <div className="form-vessel">
                     <div className="form-container">

@@ -35,14 +35,17 @@ class ListingForm extends React.Component {
         } else {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>
         }
-        
+
+        let next = null;
+        if (this.props.title) { next = "/#/listing_create/location"}
+
         return (
             <>
             <ListingNav />
             <div className="form-body">
                 <div className="nav-arrow-container">
                     <NavLeft/>
-                    <NavRight/>
+                    <NavRight next={next}/>
                 </div>
                 <div className="form-vessel">
                     <div className="form-container">
@@ -59,7 +62,6 @@ class ListingForm extends React.Component {
                             </div>
                         </div>
                         <div>
-                            {/* <button className="ok" onClick={this.onClick}>Ok</button> */}
                             {ok}
                         </div>
                     </div>
@@ -83,8 +85,7 @@ const msp = ({ session, entities: { users, creations } }) => {
     return {
         currentUser: users[session.id],
         title: creations.title,
-        description: creations.description,
-        nextPage: creations.nextPage
+        description: creations.description
     };
 };
 

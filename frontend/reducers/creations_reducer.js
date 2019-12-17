@@ -1,9 +1,11 @@
 import { UPDATE_CREATION_STATE } from '../actions/listing_actions';
 import { merge } from 'lodash';
 
-const creationsReducer = (state = {title: "d", description: "c", host_id: 46, lat: 5, lng: 5, location: "c", check_in: "4", check_out: "23", max_capacity: 4, price: 3, site: "tent",
-amenity: [["is_pets", true], ["is_campfires", true], ["is_water", true], ["is_toilets", false], ["is_showers", false], ["is_wifi", false], ["is_hiking", true],
-["is_biking", true], ["is_swimming", false], ["is_fishing", true], ["is_horseback", true], ["is_climbing", true]]}, action) => {
+const creationsReducer = (state = {title: "", description: "", host_id: "", lat: "", lng: "", 
+    location: "", street: "", zip: "", check_in: "", check_out: "", max_capacity: "", price: "", site: "",
+    amenity: [["is_pets", null], ["is_campfires", null], ["is_water", null], ["is_toilets", null], ["is_showers", null], 
+    ["is_wifi", null], ["is_hiking", null], ["is_biking", null], ["is_swimming", null], ["is_fishing", null], 
+    ["is_horseback", null], ["is_climbing", null]]}, action) => {
     Object.freeze(state);
     switch(action.type) {
         case UPDATE_CREATION_STATE:

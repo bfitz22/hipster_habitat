@@ -126,17 +126,30 @@
     padding: 40px;
 }
 
+.confirm-div {
+    width: 100%;
+    margin: 0px 20px 0px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirm-div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 .listing-form-title {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 670px !important;
-    margin: 0px 0px 0px 20px;
     font-size: 32px; 
     font-family: "calibre", helvetica, sans-serif;
     line-height: 1.5;
     text-align: start;
     text-indent: 0; 
+    margin-top: 30px;
     padding: 0;
 }
 
@@ -155,15 +168,23 @@
 }
 
 .form-input {
-    margin: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: space-around;
     font-family: "calibre", helvetica, sans-serif;
     font-size: 18px;
-    height: 300px;  
     width: 100%;
+}
+
+.form-input > p {
+    margin: 50px 0px 50px 0px;
+}
+
+.edit-link {
+    margin-top: 15px;
+    font-family: "calibre", helvetica, sans-serif;
+    font-size: 18px;
 }
 
 .form-capacity {

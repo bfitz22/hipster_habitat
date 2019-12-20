@@ -30,52 +30,84 @@ class ListingConfirm extends React.Component {
             <ListingNav />
             <div className="confirm-form-body">
                 <div className="nav-arrow-container">
-                    <NavLeft/>
-                    <NavRight/>
                 </div>
                 <div className="form-vessel">
                     <div className="confirm-form-container">
-                        <h1>Please review your listing's details</h1>
                         <div className="listing-form-title">
-                            <h2>Title and Description</h2>
+                            <h2>Please review your listing's details</h2>
                         </div>
-                        <div className="form-input">
-                            <p>Title: {this.props.creations.title}</p>
-                            <p>Description: {this.props.creations.description}</p>
+                        <br/>
+                        <br/>
+                        <div className="confirm-div">
+                            <div>
+                            <div className="listing-form-title">
+                                <h2>Title and Description</h2>
+                            </div>
+                            <div className="form-input">
+                                <p>Title: {this.props.creations.title}</p>
+                                <p>Description: {this.props.creations.description}</p>
+                            </div>
+                            </div>
+                            <a className="edit-link" href="/#/listing_create/">Edit</a>
                         </div>
-                        <div className="listing-form-title">
-                            <h2>Location</h2>
+                        <div className="confirm-div">
+                            <div>
+                            <div className="listing-form-title">
+                                <h2>Location</h2>
+                            </div>
+                            <div className="form-input">
+                                <p>Latitude: {this.props.creations.lat}</p>
+                                <p>Longitude: {this.props.creations.lng}</p>
+                                <p>Location: {this.props.creations.location}</p>
+                            </div>
+                            </div>
+                            <a className="edit-link" href="/#/listing_create/location">Edit</a>
                         </div>
-                        <div className="form-input">
-                            <p>Latitude: {this.props.creations.lat}</p>
-                            <p>Longitude: {this.props.creations.lng}</p>
-                            <p>Location: {this.props.creations.location}</p>
+                        <div className="confirm-div">
+                            <div>
+                            <div className="listing-form-title">
+                                <h2>Max Capacity and Price per Night</h2>
+                            </div>
+                            <div className="form-input">
+                                <p>Max Capacity: {this.props.creations.max_capacity}</p>
+                                <p>Price per Night: {this.props.creations.price}</p>
+                            </div>
+                            </div>
+                            <a className="edit-link" href="/#/listing_create/price">Edit</a>
                         </div>
-                        <div className="listing-form-title">
-                            <h2>Max Capacity and Price per Night</h2>
+                        <div className="confirm-div">
+                            <div>
+                            <div className="listing-form-title">
+                                <h2>Type of Site</h2>
+                            </div>
+                            <div className="form-input">
+                                <p>{this.props.creations.site}</p>
+                            </div>
+                            </div>
+                            <a className="edit-link" href="/#/listing_create/site_type">Edit</a>
                         </div>
-                        <div className="form-input">
-                            <p>Max Capacity: {this.props.creations.max_capacity}</p>
-                            <p>Price per Night: {this.props.creations.price}</p>
+                        <div className="confirm-div">
+                            <div>
+                            <div className="listing-form-title">
+                                <h2>Amenities and Activities Available</h2>
+                            </div>
+                            <div className="form-input">
+                                <div className="form-buttons">{amenities}</div>
+                            </div>
+                            </div>
+                            <a className="edit-link" href="/#/listing_create/amenities">Edit</a>
                         </div>
-                        <div className="listing-form-title">
-                            <h2>Type of Site</h2>
-                        </div>
-                        <div className="form-input">
-                            <p>{this.props.creations.site}</p>
-                        </div>
-                        <div className="listing-form-title">
-                            <h2>Amenities and Activities Available</h2>
-                        </div>
-                        <div className="form-input">
-                            <div className="form-buttons">{amenities}</div>
-                        </div>
-                        <div className="listing-form-title">
-                            <h2>Available Times for Checking In and Out</h2>
-                        </div>
-                        <div className="form-input">
-                            <p>Check in after: {this.props.creations.check_in}</p>
-                            <p>Check out before: {this.props.creations.check_out}</p>
+                        <div className="confirm-div">
+                            <div>
+                            <div className="listing-form-title">
+                                <h2>Available Times for Checking In and Out</h2>
+                            </div>
+                            <div className="form-input">
+                                <p>Check in after: {this.props.creations.check_in}</p>
+                                <p>Check out before: {this.props.creations.check_out}</p>
+                            </div>
+                            </div>
+                            <a className="edit-link" href="/#/listing_create/check_in">Edit</a>
                         </div>
                         <div>
                             <button className="ok-create" onClick={this.onClick}>Create Your Listing!</button>

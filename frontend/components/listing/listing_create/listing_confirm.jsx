@@ -1,8 +1,7 @@
 import React from 'react';
 import { createListing } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
-import NavRight from './nav_right';
-import NavLeft from './nav_left';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 
 class ListingConfirm extends React.Component {
@@ -17,6 +16,23 @@ class ListingConfirm extends React.Component {
     }
 
     render() {
+        let image;
+        if (this.props.creations.site === "tent") {
+            image = "fas fa-campground"
+        } else if (this.props.creations.site === "cabin") {
+            image = "fas fa-home"
+        } else if (this.props.creations.site === "rv") {
+            image = "fas fa-shuttle-van"
+        }
+        
+        let siteName = this.props.creations.site.toUpperCase();
+
+        let site = <div className="amenity-div">
+            {siteName}
+            <div><i className={classNames(image, "site-confirm-image")}></i>
+            <i className="fas fa-check"></i></div>
+        </div>
+
         let true_amenities = this.props.creations.amenity.filter(amenity => 
             amenity[1] === true 
         )
@@ -56,9 +72,9 @@ class ListingConfirm extends React.Component {
                                 <h2>Location</h2>
                             </div>
                             <div className="form-input">
-                                <p>Latitude: {this.props.creations.lat}</p>
-                                <p>Longitude: {this.props.creations.lng}</p>
-                                <p>Location: {this.props.creations.location}</p>
+                                <p>Address: {this.props.creations.street}</p>
+                                <p>City/State: {this.props.creations.location}</p>
+                                <p>Zipcode: {this.props.creations.zip}</p>
                             </div>
                             </div>
                             <a className="edit-link" href="/#/listing_create/location">Edit</a>
@@ -70,7 +86,7 @@ class ListingConfirm extends React.Component {
                             </div>
                             <div className="form-input">
                                 <p>Max Capacity: {this.props.creations.max_capacity}</p>
-                                <p>Price per Night: {this.props.creations.price}</p>
+                                <p>Price per Night: ${this.props.creations.price}</p>
                             </div>
                             </div>
                             <a className="edit-link" href="/#/listing_create/price">Edit</a>
@@ -80,8 +96,8 @@ class ListingConfirm extends React.Component {
                             <div className="listing-form-title">
                                 <h2>Type of Site</h2>
                             </div>
-                            <div className="form-input">
-                                <p>{this.props.creations.site}</p>
+                            <div className="site-confirm">
+                            <div className="form-buttons">{site}</div>
                             </div>
                             </div>
                             <a className="edit-link" href="/#/listing_create/site_type">Edit</a>

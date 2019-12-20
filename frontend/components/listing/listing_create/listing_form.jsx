@@ -57,6 +57,7 @@ class ListingForm extends React.Component {
                             <div >
                                 <input id="title" type="text" placeholder="Title" value={this.state.title} onChange={this.update("title")}/>
                             </div>
+                            <br/>
                             <div >
                                 <textarea id="description" type="text" placeholder="Description" value={this.state.description} onChange={this.update("description")}></textarea>
                             </div>

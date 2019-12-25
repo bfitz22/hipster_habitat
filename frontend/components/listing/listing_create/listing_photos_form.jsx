@@ -16,30 +16,23 @@ class ListingPhotosForm extends React.Component {
         this.handleFileUpload = this.handleFileUpload.bind(this);
     }
 
+    handleFile(e) {
+        debugger
+        const reader = new FileReader();
+        const file = e.currentTarget.files[0];
+        reader.onloadend = () =>
+        this.setState({ imageUrl: reader.result, imageFile: file});
+        if (file) {
+        reader.readAsDataURL(file);
+        } else {
+        this.setState({ imageUrl: "", imageFile: null });
+        }    
+    }
+
     onClick() {
         updateCreation("photos",)
         location.href = "/"
     }
-    
-    handleFile(e) {
-        e.preventDefault();
-        const fileReader = new FileReader();
-        // TODO: upload functionality
-// send direclty to action, state not required
-        fileReader.onloadend = () => {
-            this.setState({files: e.target.files}).then(
-                this.state.files.forEach(file => {
-                    this.setState({file: file, url: fileReader.result});
-                })
-            );
-        }
-    };
-    
-    // handleFileUpload(e) {
-    //     this.setState({file: e.target.files});
-    //     const fd = new FormData();
-    //     fd.append('image', this.state.file, this.state.file.name)
-    // }
 
     handleFileUpload(e) {
         for (let i = 0; i < e.target.files.length; i++) {
@@ -55,20 +48,26 @@ class ListingPhotosForm extends React.Component {
     }
 
     render() {
+        debugger
         return (
             <>
             <ListingNav />
             <div className="form-body">
-                <form className="form-vessel" action="upload.php" encType="multipart/form-data">
+                <div className="form-vessel" action="upload.php" encType="multipart/form-data">
                     <div className="form-container">
                         <div className="listing-form-title">
                             <h2>Upload photos of your Listing</h2>
                         </div>
-                        <div className="form-input">
-                            <input className="upload-field" id="file" type="file" name="fileToUpload" onChange={this.handleFile} />
-                            <label htmlFor="file" className="image-upload" ><i className="fas fa-camera"></i>Click to add photos</label>
-                            <button className="upload-button" onClick={this.handleFileUpload}>Upload</button>
-                        </div>
+
+                            <div className="form-input">
+                                <form>
+                                    <input className="upload-field" id="file" type="file" onChange={this.handleFile}/>
+                                    <label htmlFor="file" className="image-upload" ><i className="fas fa-camera"></i>Click to add photos</label>
+                                    {/* {previewImg} */}
+                                </form>
+                            </div>
+
+                            {/* <button className="upload-button" onClick={this.handleFileUpload}>Upload</button> */}
                         <div>
                             <button className="ok-create" onClick={this.onClick}>Create Your Listing!</button>
                         </div>
@@ -84,7 +83,7 @@ class ListingPhotosForm extends React.Component {
                             listing with it </p>
                         </div>
                     </div>
-                </form>
+                </div>
                 
             </div>
             </>

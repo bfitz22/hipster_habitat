@@ -67,7 +67,7 @@ class ListingPhotosForm extends React.Component {
                                 </form>
                             </div>
 
-                            {/* <button className="upload-button" onClick={this.handleFileUpload}>Upload</button> */}
+                            <button className="upload-button" onClick={this.handleFileUpload}>Upload</button>
                         <div>
                             <button className="ok-create" onClick={this.onClick}>Create Your Listing!</button>
                         </div>

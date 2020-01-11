@@ -10,6 +10,7 @@ class ListingActivitiesForm extends React.Component {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.onEnter = this.onEnter.bind(this);
         this.state = { "arr": [
                 {type: "is_hiking", active: this.props.is_hiking, title: "Hiking"},
                 {type: "is_biking", active: this.props.is_biking, title: "Biking"},
@@ -38,6 +39,12 @@ class ListingActivitiesForm extends React.Component {
         location.href = "/#/listing_create/check_in"
     }
     
+    onEnter(e) { 
+        if (e.keyCode === 13 && e.shiftKey === false && this.state.arr.some(el => el.active)) {
+            e.preventDefault();
+            this.onClick();
+        }
+    }
 
     toggle(index) {
         let arr = this.state.arr;
@@ -72,7 +79,7 @@ class ListingActivitiesForm extends React.Component {
                         <NavRight next={next}/>
                     </div>
                 <div className="form-vessel">
-                    <div className="form-container">
+                    <div className="form-container" onKeyDown={this.onEnter} tabIndex="0">
                         <div className="listing-form-title">
                             <h2>Select the activities available near your listing</h2> 
                         </div>
@@ -103,10 +110,10 @@ class ListingActivitiesForm extends React.Component {
 const msp = ({ entities: { creations } }) => {
     return {
         is_hiking: creations.amenity[6][1],
-        is_swimming: creations.amenity[7][1],
-        is_horseback: creations.amenity[8][1],
-        is_biking: creations.amenity[9][1],
-        is_fishing: creations.amenity[10][1],
+        is_biking: creations.amenity[7][1],
+        is_swimming: creations.amenity[8][1],
+        is_fishing: creations.amenity[9][1],
+        is_horseback: creations.amenity[10][1],
         is_climbing: creations.amenity[11][1],
         amenity_arr: creations.amenity
     }

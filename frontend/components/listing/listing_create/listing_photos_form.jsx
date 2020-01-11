@@ -67,7 +67,7 @@ class ListingPhotosForm extends React.Component {
                                 </form>
                             </div>
 
-                            <button className="upload-button" onClick={this.handleFileUpload}>Upload</button>
+                            {/* <button className="upload-button" onClick={this.handleFileUpload}>Upload</button> */}
                         <div>
                             <button className="ok-create" onClick={this.onClick}>Create Your Listing!</button>
                         </div>
@@ -79,8 +79,8 @@ class ListingPhotosForm extends React.Component {
                             <p className="directions-body">Make sure you put the best photo first.
                             <br/>
                             <br/>
-                            This photo appears in HipsterHabitat searches so it's important you showcase your
-                            listing with it </p>
+                            These photos appear in HipsterHabitat searches so it's important you showcase your
+                            listing with them </p>
                         </div>
                     </div>
                 </div>

@@ -12,12 +12,20 @@ class ListingPriceForm extends React.Component {
         const price = this.props.price || "";
         this.state = { max_capacity, price}
         this.onClick = this.onClick.bind(this);
+        this.onEnter = this.onEnter.bind(this);
     }
 
     onClick() {
         this.props.updateCreation("max_capacity", this.state.max_capacity)
         this.props.updateCreation("price", this.state.price)
         location.href = "/#/listing_create/site_type"
+    }
+
+    onEnter(e) {
+        if (e.keyCode === 13 && e.shiftKey === false && this.state.max_capacity !== "" && this.state.price !== "") {
+            e.preventDefault();
+            this.onClick();
+        }
     }
     
     update(type) {
@@ -46,7 +54,7 @@ class ListingPriceForm extends React.Component {
                     <NavRight next={next}/>
                 </div>
                 <div className="form-vessel">
-                    <div className="form-container">
+                    <div className="form-container" onKeyDown={this.onEnter}>
                         <div className="listing-form-title">
                             <h2>How many people can your site accommodate?</h2>
                         </div>

@@ -11,6 +11,7 @@ class ListingSiteForm extends React.Component {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.onEnter = this.onEnter.bind(this);
         this.state = { "arr": [
             {type: "tent", name: "Campsites", active: this.props.site === "tent", image: "fas fa-campground"},
             {type: "cabin", name: "Lodging", active: this.props.site === "cabin", image: "fas fa-home"},
@@ -25,6 +26,13 @@ class ListingSiteForm extends React.Component {
             }
         }),
         location.href = "/#/listing_create/amenities"
+    }
+
+    onEnter(e) { 
+        if (e.keyCode === 13 && e.shiftKey === false && this.state.arr.some(el => el.active)) {
+            e.preventDefault();
+            this.onClick();
+        }
     }
 
     toggle(index) {
@@ -63,11 +71,11 @@ class ListingSiteForm extends React.Component {
                         <NavRight next={next}/>
                     </div>
                 <div className="form-vessel">
-                    <div className="form-container">
+                    <div className="form-container" onKeyDown={this.onEnter} tabIndex="0">
                         <div className="listing-site-title">
                             <h2>Select what type of camping your site provides</h2> 
                         </div>
-                        <div className="form-buttons">
+                        <div className="form-buttons" >
                             {options}
                         </div>
                         <div>

@@ -10,6 +10,7 @@ class ListingAmenitiesForm extends React.Component {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.onEnter = this.onEnter.bind(this);
         this.state = { "arr": [
                 {type: "is_pets", active: this.props.is_pets, title: "Pets Allowed"},
                 {type: "is_campfires", active: this.props.is_campfires, title: "Campfires Allowed"},
@@ -34,6 +35,13 @@ class ListingAmenitiesForm extends React.Component {
         }
         this.props.updateCreation("amenity", this.props.amenity_arr);
         location.href = "/#/listing_create/activities"
+    }
+
+    onEnter(e) { 
+        if (e.keyCode === 13 && e.shiftKey === false && this.state.arr.some(el => el.active)) {
+            e.preventDefault();
+            this.onClick();
+        }
     }
 
     toggle(index) {
@@ -69,7 +77,7 @@ class ListingAmenitiesForm extends React.Component {
                         <NavRight next={next}/>
                     </div>
                 <div className="form-vessel">
-                    <div className="form-container">
+                    <div className="form-container" onKeyDown={this.onEnter} tabIndex="0">
                         <div className="listing-form-title">
                             <h2>Select the amenities available near your listing</h2> 
                         </div>

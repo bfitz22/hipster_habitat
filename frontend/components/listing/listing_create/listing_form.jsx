@@ -12,6 +12,7 @@ class ListingForm extends React.Component {
         const description = this.props.description || "";
         this.state = { title, description }
         this.onClick = this.onClick.bind(this);
+        this.onEnter = this.onEnter.bind(this);
     }
 
     onClick() {
@@ -20,6 +21,13 @@ class ListingForm extends React.Component {
         this.props.updateCreation("host_id", this.props.currentUser.id)
         this.props.updateCreation("amenity", [])
         location.href = "/#/listing_create/location"
+    }
+
+    onEnter(e) {
+        if (e.keyCode === 13 && e.shiftKey === false) {
+            e.preventDefault();
+            this.onClick();
+        }
     }
 
     update(type) {
@@ -59,7 +67,8 @@ class ListingForm extends React.Component {
                             </div>
                             <br/>
                             <div >
-                                <textarea id="description" type="text" placeholder="Description" value={this.state.description} onChange={this.update("description")}></textarea>
+                                <textarea id="description" type="text" placeholder="Description" value={this.state.description}
+                                onChange={this.update("description")} onKeyDown={this.onEnter}></textarea>
                             </div>
                         </div>
                         <div>

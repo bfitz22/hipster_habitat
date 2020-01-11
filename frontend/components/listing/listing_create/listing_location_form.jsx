@@ -22,6 +22,8 @@ class ListingLocationForm extends React.Component {
         this.onClick = this.onClick.bind(this);
         this.geocode = Geocode;
         this.geocode.setApiKey("AIzaSyC0pn1ErvinGCDqDgU6Dvj6XeiOqNEF9L0");
+        this.onEnter = this.onEnter.bind(this);
+        this.proceed = this.state.street !== "" && this.state.city !== "" && this.state.USstate !== "----" && this.state.zip !== "" ? true : false;
     }
 
     onClick() {
@@ -40,6 +42,13 @@ class ListingLocationForm extends React.Component {
             }
         )
         location.href = "/#/listing_create/price"
+    }
+
+    onEnter(e) {
+        if (e.keyCode === 13 && e.shiftKey === false && this.state.street !== "" && this.state.city !== "" && this.state.USstate !== "----" && this.state.zip !== "") {
+            e.preventDefault();
+            this.onClick();
+        }
     }
     
     update(type) {
@@ -86,7 +95,7 @@ class ListingLocationForm extends React.Component {
                         <div className="listing-form-title">
                             <h2>What is the address of your Listing?</h2>
                         </div>
-                        <div className="form-input">
+                        <div className="form-input" onKeyDown={this.onEnter}>
                             <p>Street Address</p>
                             <input type="text" value={this.state.street} placeholder={this.state.street} onChange={this.update("street")}/>
                             <p>City</p>

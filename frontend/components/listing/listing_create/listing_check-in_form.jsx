@@ -12,6 +12,7 @@ class ListingCheckinForm extends React.Component {
         const check_out = this.props.check_out || "";
         this.state = { check_in, check_out}
         this.onClick = this.onClick.bind(this);
+        this.onEnter = this.onEnter.bind(this);
         this.options = ["----", "12:00am", "1:00am", "2:00am", "3:00am", "4:00am",
         "5:00am", "6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am",
         "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", 
@@ -23,6 +24,15 @@ class ListingCheckinForm extends React.Component {
         this.props.updateCreation("check_out", this.state.check_out),
         location.href = "/#/listing_create/confirm"
     }
+
+    onEnter(e) {
+        if (e.keyCode === 13 && e.shiftKey === false && this.state.check_in !== "----" && this.state.check_in !== "" &&
+        this.state.check_out !== "----" && this.state.check_out !== "") {
+            e.preventDefault();
+            this.onClick();
+        }
+    }
+    
     
     update(type) {
         return (e) => this.setState({
@@ -73,7 +83,7 @@ class ListingCheckinForm extends React.Component {
                         <div className="listing-form-title">
                             <h2>Select how you'd like to check in Hipsters</h2>
                         </div>
-                        <div className="form-input">
+                        <div className="form-input" onKeyDown={this.onEnter}>
                             <p>Check in after...</p>
                             <select name="check-in" value={this.state.check_in} onChange={this.update("check_in")}>{checkInTimes}</select>
                             <p>Check out before...</p>

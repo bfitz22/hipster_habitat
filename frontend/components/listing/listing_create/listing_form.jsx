@@ -24,7 +24,7 @@ class ListingForm extends React.Component {
     }
 
     onEnter(e) {
-        if (e.keyCode === 13 && e.shiftKey === false) {
+        if (e.keyCode === 13 && e.shiftKey === false && this.state.title !== "" && this.state.description.length >= 15) {
             e.preventDefault();
             this.onClick();
         }
@@ -38,7 +38,7 @@ class ListingForm extends React.Component {
 
     render() {
         let ok;
-        if (this.state.title === "" || this.state.description === "") {
+        if (this.state.title === "" || this.state.description.length < 15) {
             ok = <button className="not-ok">Ok</button>
         } else {
             ok = <button className="ok" onClick={this.onClick}>Ok</button>
@@ -52,7 +52,6 @@ class ListingForm extends React.Component {
             <ListingNav />
             <div className="form-body">
                 <div className="nav-arrow-container">
-                    <NavLeft/>
                     <NavRight next={next}/>
                 </div>
                 <div className="form-vessel">
@@ -61,14 +60,14 @@ class ListingForm extends React.Component {
                             <h2>Welcome! <br/> Give us a Title and Description of your Listing</h2>
                         </div >
 
-                        <div className="form-input">
+                        <div className="form-input" onKeyDown={this.onEnter}>
                             <div >
                                 <input id="title" type="text" placeholder="Title" value={this.state.title} onChange={this.update("title")}/>
                             </div>
                             <br/>
                             <div >
                                 <textarea id="description" type="text" placeholder="Description" value={this.state.description}
-                                onChange={this.update("description")} onKeyDown={this.onEnter}></textarea>
+                                onChange={this.update("description")} ></textarea>
                             </div>
                         </div>
                         <div>

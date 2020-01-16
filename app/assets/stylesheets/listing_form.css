@@ -196,6 +196,7 @@
 } */
 
 .edit-link {
+    text-decoration: none;
     margin-top: 60px;
     font-family: "calibre", helvetica, sans-serif;
     font-size: 18px;

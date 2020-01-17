@@ -26,21 +26,22 @@ class CalendarModal extends React.Component {
     }
 
     handleClick() {
+        debugger
         if (this.state.start !== "- - -" && this.state.end !== "- - -"
         && this.num_guests !== "") {
             if (this.props.currentUser) {
                 let appt_props = this.state;
                 appt_props.user_id = this.props.currentUser;
                 this.props.createAppointment(appt_props);
+                let errors = this.state.errors
+                errors.push("booking successfully scheduled")
+                this.clearErrors()
                 this.setState({ 
                     start: "- - -",
                     end: "- - -",
                     num_guests: "",
                     errors: errors
                 })
-                let errors = this.state.errors
-                errors.push("booking successfully scheduled")
-                this.clearErrors()
             } else {
                 let errors = this.state.errors
                 errors.push("sign up or login to make a booking")
@@ -142,7 +143,7 @@ class CalendarModal extends React.Component {
                     }
                 } else {
                     let errors = this.state.errors
-                    errors.push("check out must be before check in")
+                    errors.push("check out must be after check in")
                     this.setState({errors: errors})
                     this.clearErrors();
                     return 

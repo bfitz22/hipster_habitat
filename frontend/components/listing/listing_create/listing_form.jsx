@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { updateCreation } from '../../../actions/listing_actions';
 import ListingNav from './listing_form_nav';
 import NavRight from './nav_right';
-import NavLeft from './nav_left';
 
 class ListingForm extends React.Component {
     constructor(props) {

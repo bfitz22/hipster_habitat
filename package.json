@@ -6,7 +6,7 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "aws-sdk": "^2.551.0",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "babel-loader": "^8.0.6",
     "bluebird": "^3.7.1",
     "bootstrap": "^3.4.1",

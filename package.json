@@ -15,7 +15,7 @@
     "file-type": "^11.1.0",
     "fs": "0.0.1-security",
     "lodash": "^4.17.13",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "multiparty": "^4.2.1",
     "react": "^16.10.2",
     "react-addons-css-transition-group": "^15.6.2",
